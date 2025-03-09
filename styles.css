@@ -1,0 +1,109 @@
+/* Fuente y márgenes generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ajustes de títulos */
+h1, h2, h3 {
+  margin-bottom: 1rem;
+}
+
+/* Efecto simple en las tarjetas */
+.card {
+  transition: box-shadow 0.2s ease;
+}
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Hero: centrar verticalmente */
+#inicio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px; /* Ajuste para que la navbar no tape el contenido */
+}
+
+/* Ajustes para secciones */
+section {
+  transition: background-color 0.3s ease;
+}
+
+/* Ajuste de color del botón "Contáctanos" y "Enviar" */
+.btn-warning {
+  font-weight: 600;
+  border: none;
+  color: #000;
+}
+.btn-warning:hover {
+  background-color: #e0a800;
+  color: #fff;
+}
+
+/* 🔹 Navbar Blanca */
+.navbar {
+  background-color: white !important;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Estilo de los enlaces de la navbar */
+.navbar-light .navbar-nav .nav-link {
+  color: #333 !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #FFC107 !important; /* Amarillo de la marca */
+}
+
+/* 🔹 Ajuste del logo en la navbar */
+.navbar-brand img {
+  max-width: 180px;
+}
+
+/* 🔹 Hero con imagen de fondo */
+.hero {
+  background-image: url("assets/tecnologia.jpg"); /* Asegúrate de subir esta imagen */
+  background-size: cover;
+  background-position: center;
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+/* 🔹 Oscurecer la imagen para mejorar legibilidad */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Puedes ajustar la opacidad */
+}
+
+/* 🔹 Asegurar que el texto del Hero esté por encima del overlay */
+.hero .container {
+  position: relative;
+  z-index: 1;
+  color: white;
+}
+
+/* 🔹 Footer blanco con texto oscuro */
+.footer-custom {
+  background-color: white;
+  color: #333;
+  text-align: center;
+  padding: 1rem 0;
+  border-top: 1px solid #ddd;
+}
