@@ -1,0 +1,15 @@
+# Basic redirect
+/home /
+/inicio /
+/index.html /
+
+# Redirect default Netlify subdomain to primary domain
+# https://mi-web-335.pages.dev/* https://plazasys.com/:splat 301!
+
+# Redirect www to non-www (optional)
+# https://www.plazasys.com/* https://plazasys.com/:splat 301!
+
+# Redirecciones 404 para URLs PHP antiguas
+/parking.php    /    404
+/search/portal.php    /    404
+/search/cc.php     /    404 
