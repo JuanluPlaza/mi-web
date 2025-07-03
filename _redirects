@@ -12,4 +12,5 @@
 # Redirecciones 404 para URLs PHP antiguas
 /parking.php / 404
 /search/portal.php / 404
-/search/cc.php / 404 
+/search/cc.php / 404
+/* /404.html 404
