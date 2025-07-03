@@ -107,3 +107,30 @@ section {
   padding: 1rem 0;
   border-top: 1px solid #ddd;
 }
+
+/* Dark mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+body.dark-mode .navbar {
+  background-color: #333 !important;
+}
+
+body.dark-mode .navbar-light .navbar-nav .nav-link {
+  color: #f1f1f1 !important;
+}
+
+body.dark-mode .navbar-light .navbar-nav .nav-link:hover {
+  color: #FFC107 !important;
+}
+
+body.dark-mode .bg-light {
+  background-color: #1e1e1e !important;
+}
+
+body.dark-mode footer.bg-dark {
+  background-color: #000 !important;
+}
+
