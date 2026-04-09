@@ -357,4 +357,10 @@ function um(){
     const st=document.getElementById('mSt');
     if(!mOn)st.innerHTML='<div class="d" style="background:rgba(255,255,255,.3)"></div><span style="color:rgba(255,255,255,.45)">PARADO</span>';
     else if(p<.6)st.innerHTML='<div class="d" style="background:var(--yellow)"></div><span style="color:var(--yellow)">NOMINAL</span>';
-    else if(p<.85)st.innerHTML='<div cla
+    else if(p<.85)st.innerHTML='<div class="d" style="background:var(--orange)"></div><span style="color:var(--orange)">ALTO</span>';
+    else st.innerHTML='<div class="d" style="background:var(--red)"></div><span style="color:var(--red)">ALERTA</span>';
+    requestAnimationFrame(um);
+}um();
+</script>
+</body>
+</html>
