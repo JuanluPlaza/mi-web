@@ -4,170 +4,185 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PLAZASYS - Automatización, IoT e Industria 4.0</title>
-  <meta name="description" content="PLAZASYS (Plaza Automated Systems), especialistas en automatización industrial, IoT e Industria 4.0. Soluciones inteligentes que optimizan procesos y mejoran la competitividad.">
-  <meta name="keywords" content="plazasys, PLAZASYS, automatización, IoT, industria 4.0, automatización industrial, IoT industrial, transformación digital, eficiencia, competitividad">
-  <meta name="author" content="PLAZASYS">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#FFA500">
-  <meta property="og:title" content="PLAZASYS - Automatización, IoT e Industria 4.0">
-  <meta property="og:description" content="PLAZASYS (Plaza Automated Systems), especialistas en automatización industrial, IoT e Industria 4.0. Soluciones inteligentes que optimizan procesos y mejoran la competitividad.">
-  <meta property="og:image" content="https://plazasys.com/assets/tecnologia.jpg">
-  <meta property="og:url" content="https://plazasys.com/">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="PLAZASYS - Automatización, IoT e Industria 4.0">
-  <meta name="twitter:description" content="Soluciones inteligentes de automatización industrial, IoT e Industria 4.0 para empresas más eficientes y competitivas.">
-  <meta name="twitter:image" content="https://plazasys.com/assets/tecnologia.jpg">
-  <link rel="canonical" href="https://plazasys.com/" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="description" content="PLAZASYS, especialistas en automatización industrial, IoT e Industria 4.0. Soluciones inteligentes que optimizan procesos y mejoran la competitividad.">
+  <meta name="theme-color" content="#f9d815">
+  <link rel="canonical" href="https://plazasys.com/">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    .logo-white-bg {
-    background-color: white;
-    padding: 5px;
-    border-radius: 5px;
-    width: 180px; /* Tamaño fijo */
-    max-width: 100%;
-  }
-
-  </style>
 </head>
 <body>
-<a href="#inicio" class="skip-link">Saltar al contenido</a>
+  <a href="#inicio" class="skip-link">Saltar al contenido</a>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
-  <div class="container">
-    <a class="navbar-brand" href="#inicio">
-      <img src="assets/logo.svg" alt="PlazaSys" class="logo-white-bg">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav d-flex align-items-center">
-        <li class="nav-item">
-          <a class="nav-link active" href="#inicio">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#sobre-nosotros">Sobre Nosotros</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#servicios">Servicios</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contacto">Contacto</a>
-        </li>
-        <li class="nav-item">
-          <button id="themeToggle" class="btn btn-link nav-link" type="button" aria-label="Cambiar modo de color" aria-pressed="false">Modo oscuro</button>
-        </li>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Principal">
+      <a href="#inicio" class="brand" aria-label="PLAZASYS Inicio">
+        <span class="brand-mark" aria-hidden="true">▣</span>
+        PLAZASYS
+      </a>
+
+      <button id="menuToggle" class="menu-toggle" type="button" aria-expanded="false" aria-controls="menuList" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul id="menuList" class="menu-list">
+        <li><a class="nav-link active" href="#inicio">Inicio</a></li>
+        <li><a class="nav-link" href="#servicios">Servicios</a></li>
+        <li><a class="nav-link" href="#sobre-nosotros">Nosotros</a></li>
+        <li><a class="nav-link" href="#contacto">Contacto</a></li>
       </ul>
+
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Cambiar modo de color" aria-pressed="false">Modo oscuro</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Automatización industrial</p>
+          <h1>Ingeniería, IoT y soluciones industriales que sí resuelven producción.</h1>
+          <p class="hero-text">Diseñamos e implementamos mejoras reales en planta: automatización, monitorización y prototipos de máquina para incrementar eficiencia y trazabilidad.</p>
+          <div class="hero-actions">
+            <a href="#contacto" class="btn btn-primary">Hablar con PLAZASYS</a>
+            <a href="#servicios" class="btn btn-secondary">Ver servicios</a>
+          </div>
+        </div>
+
+        <div class="kpi-grid" aria-label="Indicadores de ejemplo">
+          <article class="kpi-card">
+            <p class="kpi-label">OEE medio</p>
+            <p class="kpi-value">+18<span>%</span></p>
+            <p class="kpi-note">Mejora típica tras optimización de línea</p>
+          </article>
+          <article class="kpi-card">
+            <p class="kpi-label">Paradas no planificadas</p>
+            <p class="kpi-value">-22<span>%</span></p>
+            <p class="kpi-note">Con sensórica + alarmado inteligente</p>
+          </article>
+          <article class="kpi-card kpi-wide">
+            <p class="kpi-label">Estado</p>
+            <p class="kpi-terminal">plazasys.monitor<span>></span> <strong>online</strong> · integración PLC/SCADA activa</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios" class="section section-soft">
+      <div class="container">
+        <p class="eyebrow">Servicios</p>
+        <h2>Qué podemos mejorar en tu planta</h2>
+        <div class="service-grid">
+          <article class="service-card">
+            <h3>Automatización industrial</h3>
+            <p>Programación PLC/HMI, cuadros eléctricos y puesta en marcha de líneas productivas.</p>
+          </article>
+          <article class="service-card">
+            <h3>IoT & monitorización</h3>
+            <p>Captura de datos en tiempo real para decisiones más rápidas y operativas.</p>
+          </article>
+          <article class="service-card">
+            <h3>Ingeniería mecánica</h3>
+            <p>Rediseño de sistemas, fiabilidad de equipos y resolución de cuellos de botella.</p>
+          </article>
+          <article class="service-card">
+            <h3>Prototipado de máquinas</h3>
+            <p>Diseño y fabricación a medida cuando no existe una solución comercial adecuada.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre-nosotros" class="section">
+      <div class="container two-col">
+        <div>
+          <p class="eyebrow">Sobre nosotros</p>
+          <h2>Ingeniería cercana, implementación rigurosa.</h2>
+        </div>
+        <p class="about-text">En PLAZASYS convertimos problemas complejos en proyectos ejecutables. Combinamos automatización, software industrial e ingeniería mecánica para entregar mejoras medibles en productividad, calidad y mantenimiento.</p>
+      </div>
+    </section>
+
+    <section id="contacto" class="section cta-wrap">
+      <div class="container cta-box">
+        <h2>¿Quieres revisar una línea o proceso específico?</h2>
+        <p>Cuéntanos tu caso y te proponemos un enfoque técnico claro.</p>
+        <form action="mailto:info@plazasys.com" method="post" enctype="text/plain" class="contact-form">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" name="nombre" placeholder="Tu nombre" required>
+
+          <label for="correo">Correo electrónico</label>
+          <input id="correo" type="email" name="correo" placeholder="Tu correo" required>
+
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describe tu necesidad" required></textarea>
+
+          <button type="submit" class="btn btn-dark">Enviar mensaje</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <small>&copy; 2026 PLAZASYS (Plaza Automated Systems S.L.)</small>
+      <div class="footer-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#sobre-nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const body = document.body;
+      const toggle = document.getElementById('themeToggle');
+      const menuToggle = document.getElementById('menuToggle');
+      const menu = document.getElementById('menuList');
+      const navLinks = [...document.querySelectorAll('.nav-link')];
+      const sections = [...document.querySelectorAll('main section[id]')];
 
-<!-- Hero Section -->
-<!-- Hero Section con imagen de fondo -->
-<section id="inicio" class="hero text-center d-flex align-items-center">
-  <div class="container text-white">
-    <h1 class="display-4 fw-bold">PLAZASYS</h1>
-    <p class="lead">Automatización, IoT e Industria 4.0</p>
-    <p class="lead">Soluciones inteligentes para mejorar tu negocio</p>
-    <a href="#contacto" class="btn btn-warning btn-lg mt-3">Contáctanos</a>
-  </div>
-</section>
-
-
-<!-- Sobre Nosotros -->
-<section id="sobre-nosotros" class="py-5">
-  <div class="container">
-    <h2 class="mb-4 text-center">Sobre Nosotros</h2>
-    <p class="text-center">
-      En PLAZASYS (Plaza Automated Systems) somos especialistas en soluciones de automatización, IoT y transformación digital. Nuestro objetivo es optimizar procesos industriales para hacer tu negocio más eficiente y competitivo.
-    </p>
-  </div>
-</section>
-
-<!-- Servicios -->
-<section id="servicios" class="py-5 bg-light">
-  <div class="container">
-    <h2 class="text-center mb-5">Nuestros Servicios</h2>
-    <div class="row">
-      <div class="col-md-4 mb-4">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Automatización Industrial</h5>
-            <p class="card-text">Optimiza tus procesos industriales reduciendo costes y tiempos con tecnología avanzada.</p>
-          </div>
-        </div>
-      </div> <!-- Cierre de col-md-4 -->
-      <div class="col-md-4 mb-4">
-        <div class="card border-0 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">IoT & Conectividad</h5>
-            <p class="card-text">Conecta tus dispositivos y gestiona tu información en tiempo real para una mejor toma de decisiones.</p>
-          </div>
-        </div>
-      </div> <!-- Cierre de col-md-4 -->
-      <div class="col-md-4 mb-4">
-        <div class="card border-0 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Industria 4.0</h5>
-            <p class="card-text">Te asesoramos para integrar tecnologías emergentes y llevar tu empresa al siguiente nivel digital.</p>
-          </div>
-        </div>
-      </div> <!-- Cierre de col-md-4 -->
-    </div> <!-- Cierre de row -->
-  </div> <!-- Cierre de container -->
-</section>
-
-<!-- Contacto -->
-<section id="contacto" class="py-5">
-  <div class="container">
-    <h2 class="mb-4 text-center">Contacto</h2>
-    <form action="mailto:info@plazasys.com" method="post" enctype="text/plain" class="mx-auto" style="max-width:600px;">
-      <label for="nombre" class="form-label">Nombre</label>
-      <input id="nombre" type="text" class="form-control mb-3" name="nombre" placeholder="Tu nombre" required>
-      <label for="correo" class="form-label">Correo electrónico</label>
-      <input id="correo" type="email" class="form-control mb-3" name="correo" placeholder="Tu correo" required>
-      <label for="mensaje" class="form-label">Mensaje</label>
-      <textarea id="mensaje" name="mensaje" rows="4" class="form-control" placeholder="Tu mensaje" required></textarea>
-      <button type="submit" class="btn btn-warning w-100 mt-3">Enviar Mensaje</button>
-    </form>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="bg-dark text-white text-center py-3">
-  <div class="container">
-    <small>&copy; 2025 PLAZASYS (Plaza Automated Systems S.L.)</small>
-  </div>
-</footer>
-
-<!-- JS Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.getElementById('themeToggle');
-    const storedTheme = localStorage.getItem('theme');
-
-    if (storedTheme === 'dark') {
-      document.body.classList.add('dark-mode');
-      if (toggle) {
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'dark') {
+        body.classList.add('dark-mode');
         toggle.textContent = 'Modo claro';
         toggle.setAttribute('aria-pressed', 'true');
       }
-    }
 
-    if (toggle) {
       toggle.addEventListener('click', () => {
-        const isDark = document.body.classList.toggle('dark-mode');
+        const isDark = body.classList.toggle('dark-mode');
         toggle.textContent = isDark ? 'Modo claro' : 'Modo oscuro';
-        toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+        toggle.setAttribute('aria-pressed', String(isDark));
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       });
-    }
-  });
-</script>
+
+      menuToggle.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(open));
+      });
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          menu.classList.remove('open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        });
+      }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+      sections.forEach((section) => observer.observe(section));
+    });
+  </script>
 </body>
 </html>
