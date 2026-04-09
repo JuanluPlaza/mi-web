@@ -1,0 +1,5 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://plazasys.com/sitemap.xml
+
