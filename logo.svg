@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="48" viewBox="0 0 220 48" role="img" aria-labelledby="title desc">
+  <title id="title">PlazaSys Logo</title>
+  <desc id="desc">Logotipo de PlazaSys con símbolo amarillo y texto en gris oscuro.</desc>
+  <rect x="0" y="4" width="40" height="40" rx="10" fill="#F9D815"/>
+  <path d="M10 26h20" stroke="#1C1C1A" stroke-width="3" stroke-linecap="round"/>
+  <path d="M20 16v20" stroke="#1C1C1A" stroke-width="3" stroke-linecap="round"/>
+  <text x="52" y="31" fill="#3E3E3D" font-family="Instrument Sans, Arial, sans-serif" font-size="24" font-weight="700">PlazaSys</text>
+</svg>
