@@ -185,7 +185,77 @@
 
         .reveal{opacity:0;transform:translateY(16px);transition:opacity .65s var(--ease),transform .65s var(--ease)}.reveal.visible{opacity:1;transform:translateY(0)}
 
-        @media(max-width:1024px){.hero-in{grid-template-columns:1fr;gap:2rem}.svc-grid{grid-template-columns:1fr 1fr}.contact-grid{grid-template-columns:1fr 1fr}.sim-body{grid-template-columns:1fr}}
+        /* ===== PRUÉBALO — demos interactivos ===== */
+        .demo-cap{font-family:var(--mono);font-size:.66rem;color:var(--ink3);letter-spacing:.2px;margin:9px 4px 0;line-height:1.5}
+
+        /* --- A · SCADA --- */
+        .scada{padding:20px 22px;display:flex;flex-direction:column;gap:16px}
+        .scada-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+        .scada-mh{font-family:var(--mono);font-size:.72rem;color:rgba(255,255,255,.72);letter-spacing:.5px}
+        .scada-state{font-family:var(--mono);font-size:.58rem;letter-spacing:.6px;display:flex;align-items:center;gap:6px;padding:4px 11px;border-radius:100px;background:rgba(74,222,128,.13);color:var(--green);white-space:nowrap}
+        .scada-state.alarm{background:rgba(239,68,68,.16);color:var(--red);animation:scaBlink 1s step-end infinite}
+        .scada-state .d{width:6px;height:6px;border-radius:50%;background:currentColor}
+        @keyframes scaBlink{50%{opacity:.4}}
+        .scada-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+        .sc-card{background:rgba(255,255,255,.05);border:1px solid var(--dark-b);border-radius:10px;padding:12px 14px;transition:border-color .3s,background .3s}
+        .sc-card.alarm{border-color:rgba(239,68,68,.5);background:rgba(239,68,68,.08)}
+        .sc-card.warn{border-color:rgba(245,158,11,.5);background:rgba(245,158,11,.08)}
+        .sc-l{font-family:var(--mono);font-size:.5rem;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:5px}
+        .sc-v{font-family:var(--mono);font-size:1.5rem;font-weight:600;color:#fff;line-height:1;letter-spacing:-.5px}
+        .sc-v .u{font-size:.58rem;font-weight:400;color:rgba(255,255,255,.4);margin-left:3px}
+        .sc-card.alarm .sc-v{color:var(--red)}.sc-card.warn .sc-v{color:var(--orange)}
+        .sc-spark{width:100%;height:30px;margin-top:8px;display:block}
+        .sc-spark-line{fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+        .sc-spark-area{opacity:.16}
+        .scada-alarm{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+        .scada-alarm .sim-cl{margin:0;white-space:nowrap}
+        .scada-alarm input{flex:1;min-width:150px}
+        .sc-thr{font-family:var(--mono);font-size:.85rem;color:#fff;white-space:nowrap}
+        .scada-log{background:rgba(0,0,0,.25);border:1px solid var(--dark-b);border-radius:8px;padding:9px 12px;font-family:var(--mono);font-size:.62rem;line-height:1.55;max-height:120px;overflow:hidden}
+        .scada-log .lg{display:flex;gap:8px;align-items:baseline;color:rgba(255,255,255,.5);padding:2px 0;opacity:0;animation:ti .3s var(--ease) forwards}
+        .scada-log .lg time{color:rgba(255,255,255,.3);flex-shrink:0}
+        .scada-log .tag{font-weight:500;flex-shrink:0;width:42px}
+        .tag-ok{color:var(--green)}.tag-warn{color:var(--orange)}.tag-alarm{color:var(--red)}
+
+        /* --- C · LÍNEA / OEE --- */
+        .line-body{padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center}
+        .line-left{display:flex;flex-direction:column;gap:18px}
+        .line-flow{display:flex;align-items:center;gap:8px}
+        .line-node{font-family:var(--mono);font-size:.5rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+        .line-stage{flex:1;min-width:26px;height:30px;border:1px solid var(--dark-b);border-radius:6px;background:rgba(255,255,255,.04);position:relative;overflow:hidden}
+        .line-belt{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 12px,rgba(249,216,21,.55) 12px 18px);opacity:0;animation:belt .9s linear infinite;transition:opacity .3s}
+        .line-stage.run .line-belt{opacity:.5}
+        @keyframes belt{from{background-position:0 0}to{background-position:-30px 0}}
+        .line-btns{display:flex;gap:8px;flex-wrap:wrap}
+        .line-btn{font-family:var(--mono);font-size:.6rem;letter-spacing:.3px;padding:9px 12px;border-radius:7px;border:1px solid var(--dark-b);background:rgba(255,255,255,.06);color:rgba(255,255,255,.72);cursor:pointer;transition:.2s var(--ease)}
+        .line-btn:hover{background:rgba(255,255,255,.12);color:#fff}
+        .line-btn.stop{border-color:rgba(239,68,68,.4);color:#fca5a5}
+        .line-btn.stop.active{background:var(--red);color:#fff;border-color:var(--red)}
+        .line-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+        .kpi{background:rgba(255,255,255,.06);border:1px solid var(--dark-b);border-radius:10px;padding:14px;text-align:center}
+        .kpi-l{font-family:var(--mono);font-size:.5rem;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px}
+        .kpi-v{font-family:var(--mono);font-size:1.45rem;font-weight:600;color:#fff;line-height:1;letter-spacing:-.5px}
+        .kpi-v.oee{color:var(--yellow)}
+
+        /* --- B · CONFIGURADOR --- */
+        .cfg-body{padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+        .cfg-step{margin-bottom:18px}.cfg-step:last-child{margin-bottom:0}
+        .cfg-q{font-family:var(--mono);font-size:.58rem;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:9px}
+        .cfg-opts{display:flex;flex-wrap:wrap;gap:7px}
+        .chip{font-family:var(--mono);font-size:.65rem;padding:7px 12px;border-radius:7px;border:1px solid var(--dark-b);background:rgba(255,255,255,.05);color:rgba(255,255,255,.68);cursor:pointer;transition:.2s var(--ease);user-select:none}
+        .chip:hover{background:rgba(255,255,255,.1);color:#fff}
+        .chip.on{background:var(--yellow);color:var(--ink);border-color:var(--yellow);font-weight:600}
+        .cfg-arch{background:rgba(0,0,0,.22);border:1px solid var(--dark-b);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:14px}
+        .arch-flow{display:flex;align-items:stretch;gap:5px}
+        .arch-node{flex:1;text-align:center;padding:11px 5px;border:1px solid var(--dark-b);border-radius:8px;background:rgba(255,255,255,.04)}
+        .arch-node .an-t{font-family:var(--mono);font-size:.6rem;color:#fff;margin-bottom:3px}
+        .arch-node .an-s{font-family:var(--mono);font-size:.46rem;color:rgba(255,255,255,.42);line-height:1.35}
+        .arch-arrow{display:grid;place-items:center;color:var(--yellow);font-family:var(--mono);font-size:.85rem;flex-shrink:0}
+        .arch-sum{font-family:var(--mono);font-size:.64rem;color:rgba(255,255,255,.6);line-height:1.6}
+        .arch-sum b{color:#fff;font-weight:500}
+        .cfg-cta{width:100%;justify-content:center;margin-top:auto}
+
+        @media(max-width:1024px){.hero-in{grid-template-columns:1fr;gap:2rem}.svc-grid{grid-template-columns:1fr 1fr}.contact-grid{grid-template-columns:1fr 1fr}.sim-body,.line-body,.cfg-body{grid-template-columns:1fr}}
         @media(max-width:768px){
             .nav-l,.nav-r{display:none}
             .nav-l.open{display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:rgba(250,250,247,.97);backdrop-filter:blur(24px);padding:12px 2rem 18px;border-bottom:1px solid var(--line);gap:2px}
@@ -194,6 +264,8 @@
             .section{padding:4.5rem 1.5rem}
             .svc-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
             .widgets{grid-template-columns:1fr}
+            .scada-cards{grid-template-columns:1fr}
+            .arch-flow{flex-direction:column}.arch-arrow{transform:rotate(90deg)}
             .cta-box{padding:3rem 1.5rem}
             .footer-in{flex-direction:column;gap:12px;text-align:center}
         }
@@ -230,7 +302,7 @@
 
 <nav class="nav"><div class="nav-in">
     <a href="#inicio"><img src="plazasys-logo.svg" alt="PlazaSys" class="logo-img"></a>
-    <ul class="nav-l" id="navL"><li><a href="#inicio" class="active">Inicio</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#nosotros">Nosotros</a></li><li><a href="#contacto">Contacto</a></li></ul>
+    <ul class="nav-l" id="navL"><li><a href="#inicio" class="active">Inicio</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#pruebalo">Pruébalo</a></li><li><a href="#nosotros">Nosotros</a></li><li><a href="#contacto">Contacto</a></li></ul>
     <div class="nav-r"><div class="dot-on"></div>Online</div>
     <button class="burger" id="burg" aria-label="Menú"><svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button>
 </div></nav>
@@ -287,12 +359,53 @@
         <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon">🛠️</div><div class="svc-name">Prototipado de máquinas</div><p class="svc-text">Si la máquina que necesitas no existe, la diseñamos y la fabricamos a medida para tu proceso.</p></div>
     </div>
 
-    <!-- SIMULATOR — LIGHT -->
+</section>
+
+<div class="sep"><div class="sep-l"></div></div>
+
+<!-- PRUÉBALO -->
+<section class="section" id="pruebalo">
+    <div class="s-top reveal"><div class="s-label">Pruébalo</div><h2 class="s-title">Toca un sistema real</h2><p class="s-desc">Estos paneles funcionan como el software que instalamos en planta. No son vídeos: mueve, configura y mira cómo responden en tiempo real.</p></div>
+
+    <!-- A · DASHBOARD SCADA -->
     <div class="sim reveal">
-        <div class="sim-bar">
-            <div class="sim-dot" style="background:#FB7185"></div><div class="sim-dot" style="background:#FBBF24"></div><div class="sim-dot" style="background:#4ADE80"></div>
-            <span class="sim-bar-t">Simulador de motor</span>
+        <div class="sim-bar"><div class="sim-dot" style="background:#FB7185"></div><div class="sim-dot" style="background:#FBBF24"></div><div class="sim-dot" style="background:#4ADE80"></div><span class="sim-bar-t">Dashboard SCADA · monitorización en vivo</span></div>
+        <div class="scada">
+            <div class="scada-top"><div class="scada-mh">Inyectora #3 · Línea A</div><div class="scada-state" id="scSt"><div class="d"></div><span>EN MARCHA</span></div></div>
+            <div class="scada-cards">
+                <div class="sc-card" id="scCardT"><div class="sc-l">Temperatura</div><div class="sc-v" id="scTv">66<span class="u">°C</span></div><svg class="sc-spark" viewBox="0 0 200 30" preserveAspectRatio="none"><path class="sc-spark-area" id="scTA" fill="var(--yellow)"/><path class="sc-spark-line" id="scTL" stroke="var(--yellow)"/></svg></div>
+                <div class="sc-card" id="scCardV"><div class="sc-l">Vibración</div><div class="sc-v" id="scVv">2.3<span class="u">mm/s</span></div><svg class="sc-spark" viewBox="0 0 200 30" preserveAspectRatio="none"><path class="sc-spark-area" id="scVA" fill="var(--blue)"/><path class="sc-spark-line" id="scVL" stroke="var(--blue)"/></svg></div>
+                <div class="sc-card" id="scCardC"><div class="sc-l">Consumo</div><div class="sc-v" id="scCv">14.0<span class="u">kW</span></div><svg class="sc-spark" viewBox="0 0 200 30" preserveAspectRatio="none"><path class="sc-spark-area" id="scCA" fill="#fff"/><path class="sc-spark-line" id="scCL" stroke="rgba(255,255,255,.55)"/></svg></div>
+            </div>
+            <div class="scada-alarm"><div class="sim-cl">Umbral alarma temperatura</div><input type="range" class="sim-slider" id="scThr" min="60" max="90" value="75" step="1"><div class="sc-thr"><span id="scThrV">75</span> °C</div></div>
+            <div class="scada-log" id="scLog"></div>
         </div>
+    </div>
+    <p class="demo-cap">▸ Arrastra el umbral: cuando la temperatura lo supera, salta la alarma y queda registrada en el log de eventos.</p>
+
+    <!-- C · LÍNEA / OEE -->
+    <div class="sim reveal">
+        <div class="sim-bar"><div class="sim-dot" style="background:#FB7185"></div><div class="sim-dot" style="background:#FBBF24"></div><div class="sim-dot" style="background:#4ADE80"></div><span class="sim-bar-t">Simulador de línea · OEE en vivo</span></div>
+        <div class="line-body">
+            <div class="line-left">
+                <div class="line-flow"><span class="line-node">Entrada</span><div class="line-stage" id="lnSt1"><span class="line-belt"></span></div><span class="line-node">Proceso</span><div class="line-stage" id="lnSt2"><span class="line-belt"></span></div><span class="line-node">Salida</span><div class="line-stage" id="lnSt3"><span class="line-belt"></span></div></div>
+                <div><div class="sim-cl">Velocidad de línea</div><input type="range" class="sim-slider" id="lnSp" min="200" max="2000" value="1200" step="50"><div class="sim-vd"><span id="lnSpV">1.200</span> <span class="u">u/h</span></div></div>
+                <div><div class="sim-cl">Tasa de rechazo</div><input type="range" class="sim-slider" id="lnRj" min="0" max="10" value="3.2" step="0.1"><div class="sim-vd"><span id="lnRjV">3.2</span> <span class="u">%</span></div></div>
+                <div class="line-btns"><button class="line-btn stop" id="lnStop">⏸ PARO EMERGENCIA</button><button class="line-btn" id="lnReset">↻ RESET</button><button class="line-btn" id="lnTurno">⇄ TURNO: <span id="lnTurnoL">Mañana</span></button></div>
+            </div>
+            <div class="line-kpis">
+                <div class="kpi"><div class="kpi-l">OEE</div><div class="kpi-v oee" id="lnOee">—</div></div>
+                <div class="kpi"><div class="kpi-l">Unidades / hora</div><div class="kpi-v" id="lnUh">—</div></div>
+                <div class="kpi"><div class="kpi-l">Piezas OK (turno)</div><div class="kpi-v" id="lnOk">0</div></div>
+                <div class="kpi"><div class="kpi-l">Paradas</div><div class="kpi-v" id="lnPar">0</div></div>
+            </div>
+        </div>
+    </div>
+    <p class="demo-cap">▸ Cambia velocidad y rechazo y mira cómo se recalculan OEE, unidades/hora y piezas OK. El paro de emergencia cuenta como parada.</p>
+
+    <!-- D · PANEL ELÉCTRICO / MOTOR -->
+    <div class="sim reveal">
+        <div class="sim-bar"><div class="sim-dot" style="background:#FB7185"></div><div class="sim-dot" style="background:#FBBF24"></div><div class="sim-dot" style="background:#4ADE80"></div><span class="sim-bar-t">Panel eléctrico · arranque de motor</span></div>
         <div class="sim-body">
             <div class="sim-ctrls">
                 <div><div class="sim-cl">Velocidad objetivo</div><input type="range" class="sim-slider" id="simS" min="0" max="3000" value="0" step="10"><div class="sim-vd"><span id="simSV">0</span> <span class="u">rpm</span></div></div>
@@ -311,6 +424,34 @@
             </div>
         </div>
     </div>
+    <p class="demo-cap">▸ Enciende el motor y sube la velocidad: corriente, potencia, temperatura de bobinado y frecuencia del variador responden como en un arranque real.</p>
+
+    <!-- B · CONFIGURADOR -->
+    <div class="sim reveal">
+        <div class="sim-bar"><div class="sim-dot" style="background:#FB7185"></div><div class="sim-dot" style="background:#FBBF24"></div><div class="sim-dot" style="background:#4ADE80"></div><span class="sim-bar-t">Configurador de solución IoT</span></div>
+        <div class="cfg-body">
+            <div>
+                <div class="cfg-step"><div class="cfg-q">1 · ¿Qué máquina quieres monitorizar?</div><div class="cfg-opts" id="cfgMaq"><button class="chip on" data-v="Inyectora">Inyectora</button><button class="chip" data-v="Compresor">Compresor</button><button class="chip" data-v="Horno">Horno</button><button class="chip" data-v="Cinta transportadora">Cinta</button><button class="chip" data-v="Bomba">Bomba</button></div></div>
+                <div class="cfg-step"><div class="cfg-q">2 · ¿Qué quieres medir?</div><div class="cfg-opts" id="cfgMed"><button class="chip on" data-v="Temperatura">Temperatura</button><button class="chip on" data-v="Vibración">Vibración</button><button class="chip" data-v="Consumo">Consumo</button><button class="chip" data-v="Presión">Presión</button><button class="chip" data-v="Horas de marcha">Horas marcha</button></div></div>
+                <div class="cfg-step"><div class="cfg-q">3 · ¿Cómo quieres recibir los avisos?</div><div class="cfg-opts" id="cfgAvi"><button class="chip on" data-v="Email">Email</button><button class="chip" data-v="SMS">SMS</button><button class="chip" data-v="Panel web">Panel web</button><button class="chip" data-v="Telegram">Telegram</button></div></div>
+            </div>
+            <div class="cfg-arch">
+                <div class="cfg-q">Arquitectura propuesta</div>
+                <div class="arch-flow">
+                    <div class="arch-node"><div class="an-t">Sensores</div><div class="an-s" id="archSens">Temperatura, Vibración</div></div>
+                    <div class="arch-arrow">→</div>
+                    <div class="arch-node"><div class="an-t">Gateway</div><div class="an-s">PlazaSys · 4G/MQTT</div></div>
+                    <div class="arch-arrow">→</div>
+                    <div class="arch-node"><div class="an-t">Nube</div><div class="an-s">Panel web 24/7</div></div>
+                    <div class="arch-arrow">→</div>
+                    <div class="arch-node"><div class="an-t">Tú</div><div class="an-s" id="archAvi">Email</div></div>
+                </div>
+                <div class="arch-sum" id="archSum"></div>
+                <a class="btn btn-y cfg-cta" id="cfgCta" href="#contacto">Solicitar propuesta para esta configuración →</a>
+            </div>
+        </div>
+    </div>
+    <p class="demo-cap">▸ Elige las opciones y el esquema se actualiza. El botón abre un email con tu configuración ya redactada.</p>
 </section>
 
 <div class="sep"><div class="sep-l"></div></div>
@@ -345,7 +486,7 @@
 
 <footer class="footer"><div class="footer-in">
     <span class="footer-c">© 2026 PlazaSys — Plaza Automated Systems S.L. · Ontinyent, Valencia</span>
-    <div class="footer-l"><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></div>
+    <div class="footer-l"><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#pruebalo">Pruébalo</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></div>
 </div></footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -403,6 +544,75 @@ function um(){
     else st.innerHTML='<div class="d" style="background:var(--red)"></div><span style="color:var(--red)">ALERTA</span>';
     requestAnimationFrame(um);
 }um();
+
+/* ===== A · Dashboard SCADA ===== */
+(function(){
+    const el=id=>document.getElementById(id);
+    const W=200,H=30;
+    function spk(li,ai,d){const n=d.length,mn=Math.min(...d),mx=Math.max(...d),rg=mx-mn||1;const p=d.map((v,i)=>(i/(n-1)*W).toFixed(1)+','+(H-((v-mn)/rg)*H*.8-2).toFixed(1));el(li).setAttribute('d','M'+p.join('L'));el(ai).setAttribute('d','M'+p.join('L')+'L'+W+','+H+'L0,'+H+'Z')}
+    function seed(b,v,n){const a=[];for(let i=0;i<n;i++)a.push(b+(Math.random()-.5)*v*2);return a}
+    const N=34;let tD=seed(66,4,N),vD=seed(2.3,.5,N),cD=seed(14,2,N);
+    let tb=66,vb=2.3,cb=14,alarmed=false,warned=false;
+    const log=el('scLog'),st=el('scSt'),cardT=el('scCardT'),cardV=el('scCardV');
+    function clk(){return new Date().toTimeString().slice(0,8)}
+    function push(tag,cls,msg){const r=document.createElement('div');r.className='lg';r.innerHTML='<time>'+clk()+'</time><span class="tag '+cls+'">'+tag+'</span><span>'+msg+'</span>';log.insertBefore(r,log.firstChild);while(log.children.length>6)log.removeChild(log.lastChild)}
+    push('OK','tag-ok','Sistema iniciado · 3 sensores activos');
+    spk('scTL','scTA',tD);spk('scVL','scVA',vD);spk('scCL','scCA',cD);
+    el('scThr').addEventListener('input',()=>{el('scThrV').textContent=el('scThr').value});
+    setInterval(()=>{
+        tb+=(Math.random()-.5)*2.4;if(Math.random()<.07)tb+=7;tb+=(66-tb)*.05;tb=Math.max(58,Math.min(94,tb));
+        vb+=(Math.random()-.5)*.5;if(Math.random()<.05)vb+=1.3;vb+=(2.3-vb)*.08;vb=Math.max(1,Math.min(6,vb));
+        cb+=(Math.random()-.5)*1.4;cb+=(14-cb)*.06;cb=Math.max(9,Math.min(20,cb));
+        const t=tb+(Math.random()-.5)*1.2,v=vb,c=cb,thr=+el('scThr').value;
+        tD.shift();tD.push(t);vD.shift();vD.push(v);cD.shift();cD.push(c);
+        spk('scTL','scTA',tD);spk('scVL','scVA',vD);spk('scCL','scCA',cD);
+        el('scTv').innerHTML=Math.round(t)+'<span class="u">°C</span>';
+        el('scVv').innerHTML=v.toFixed(1)+'<span class="u">mm/s</span>';
+        el('scCv').innerHTML=c.toFixed(1)+'<span class="u">kW</span>';
+        if(t>thr&&!alarmed){alarmed=true;cardT.classList.add('alarm');st.classList.add('alarm');st.innerHTML='<div class="d"></div><span>ALARMA</span>';push('ALARM','tag-alarm','Temp '+Math.round(t)+' °C supera umbral '+thr+' °C')}
+        else if(t<thr-3&&alarmed){alarmed=false;cardT.classList.remove('alarm');st.classList.remove('alarm');st.innerHTML='<div class="d"></div><span>EN MARCHA</span>';push('OK','tag-ok','Temperatura normalizada · '+Math.round(t)+' °C')}
+        if(v>3.8&&!warned){warned=true;cardV.classList.add('warn');push('WARN','tag-warn','Vibración elevada · '+v.toFixed(1)+' mm/s')}
+        else if(v<3.2&&warned){warned=false;cardV.classList.remove('warn')}
+    },1300);
+})();
+
+/* ===== C · Línea de producción / OEE ===== */
+(function(){
+    const el=id=>document.getElementById(id),fmt=n=>Math.round(n).toLocaleString('es-ES');
+    const sp=el('lnSp'),rj=el('lnRj'),NOM=2000;
+    const stages=[el('lnSt1'),el('lnSt2'),el('lnSt3')];
+    const turnos=['Mañana','Tarde','Noche'];let ti=0,running=true,paradas=0,ok=0;
+    function belt(){const on=running&&+sp.value>0,dur=Math.max(.3,1.6-(+sp.value/NOM)*1.3)+'s';stages.forEach(s=>{s.classList.toggle('run',on);const b=s.querySelector('.line-belt');if(b)b.style.animationDuration=dur})}
+    function calc(){const v=+sp.value,rch=+rj.value,disp=Math.max(40,100-paradas*6),rend=Math.min(100,v/NOM*100),cal=100-rch;return{oee:disp*rend*cal/10000,good:v*(cal/100)*(running?1:0)}}
+    function render(){const c=calc();el('lnOee').textContent=c.oee.toFixed(1)+'%';el('lnUh').textContent=fmt(c.good);el('lnOk').textContent=fmt(ok);el('lnPar').textContent=paradas}
+    sp.addEventListener('input',()=>{el('lnSpV').textContent=(+sp.value).toLocaleString('es-ES');belt();render()});
+    rj.addEventListener('input',()=>{el('lnRjV').textContent=(+rj.value).toFixed(1);render()});
+    el('lnStop').addEventListener('click',()=>{running=!running;el('lnStop').classList.toggle('active',!running);el('lnStop').textContent=running?'⏸ PARO EMERGENCIA':'▶ REANUDAR';if(!running)paradas++;belt();render()});
+    el('lnReset').addEventListener('click',()=>{ok=0;paradas=0;render()});
+    el('lnTurno').addEventListener('click',()=>{ti=(ti+1)%3;el('lnTurnoL').textContent=turnos[ti];ok=0;render()});
+    setInterval(()=>{if(running)ok+=calc().good/60;render()},1000);
+    belt();render();
+})();
+
+/* ===== B · Configurador de solución IoT ===== */
+(function(){
+    const el=id=>document.getElementById(id);
+    let maquina='Inyectora',aviso='Email';const medir=new Set(['Temperatura','Vibración']);
+    function single(box,set){document.querySelectorAll('#'+box+' .chip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('#'+box+' .chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');set(c.dataset.v);upd()}))}
+    single('cfgMaq',v=>maquina=v);single('cfgAvi',v=>aviso=v);
+    document.querySelectorAll('#cfgMed .chip').forEach(c=>c.addEventListener('click',()=>{const v=c.dataset.v;if(medir.has(v))medir.delete(v);else medir.add(v);c.classList.toggle('on',medir.has(v));upd()}));
+    function upd(){
+        const m=[...medir],n=m.length;
+        el('archSens').textContent=n?m.join(', '):'—';
+        el('archAvi').textContent=aviso;
+        el('archSum').innerHTML='<b>'+maquina+'</b> · <b>'+n+'</b> '+(n===1?'sensor':'sensores')+' · gateway 4G/MQTT · panel web + aviso por <b>'+aviso+'</b>';
+        const to=['juanlu','plazasys.com'].join('@');
+        const subj='Propuesta IoT — '+maquina;
+        const body='Configuración solicitada desde plazasys.com:\n\n• Máquina: '+maquina+'\n• Medir: '+(m.join(', ')||'(sin selección)')+'\n• Avisos: '+aviso+'\n\nMe gustaría recibir una propuesta para esta configuración.';
+        el('cfgCta').href='mailto:'+to+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+    }
+    upd();
+})();
 </script>
 </body>
 </html>
