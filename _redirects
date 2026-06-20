@@ -1,2 +1,3 @@
-# Netlify redirects
-/*    /index.html    200
+# Redirecciones (compatible con Cloudflare Pages y Netlify)
+# Cualquier ruta que no exista muestra la página 404 con el código correcto.
+/*    /404.html    404
