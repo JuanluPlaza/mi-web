@@ -745,7 +745,7 @@
     <div class="s-top reveal"><div class="s-label">Contacto</div><h2 class="s-title">Hablemos</h2><p class="s-desc">¿Tienes un problema en planta o un proyecto en mente? Cuéntanoslo.</p></div>
     <div class="contact-grid">
         <div class="cc reveal"><div class="cc-l">TELÉFONO</div><div class="cc-v"><a href="tel:+34683355759">+34 683 355 759</a></div><div class="cc-n">L–V, 8:00 – 18:00</div></div>
-        <div class="cc reveal"><div class="cc-l">EMAIL</div><div class="cc-v"><a href="/cdn-cgi/l/email-protection#fa93949c95ba8a969b809b898389d4999597"><span class="__cf_email__" data-cfemail="c3aaada5ac83b3afa2b9a2b0bab0eda0acae">[email&#160;protected]</span></a></div><div class="cc-n">Respondemos en &lt;24h</div></div>
+        <div class="cc reveal"><div class="cc-l">EMAIL</div><div class="cc-v"><a href="/cdn-cgi/l/email-protection#fa93949c95ba8a969b809b898389d4999597" id="ccEmail"><span class="__cf_email__" data-cfemail="c3aaada5ac83b3afa2b9a2b0bab0eda0acae">[email&#160;protected]</span></a></div><div class="cc-n">Respondemos en &lt;24h</div></div>
         <div class="cc reveal"><div class="cc-l">UBICACIÓN</div><div class="cc-v">Ontinyent, Valencia</div><div class="cc-n">España</div></div>
     </div>
     <form class="cform reveal" id="cForm" novalidate>
@@ -1016,6 +1016,13 @@ let dt=1200;const tb=document.getElementById('term');TL.forEach(l=>{setTimeout((
     render();
     setInterval(cargarDatos,60000);   // refresco suave cada ~60 s
 })();
+
+/* Tarjeta de email → enfoca el formulario en vez de abrir la app de correo */
+document.getElementById('ccEmail').addEventListener('click',e=>{
+    e.preventDefault();
+    document.getElementById('cForm').scrollIntoView({behavior:'smooth',block:'center'});
+    setTimeout(()=>{const n=document.getElementById('fmNombre');if(n)n.focus({preventScroll:true})},700);
+});
 
 /* CTA "Solicitar presupuesto" → lleva al formulario con el mensaje preparado */
 document.getElementById('ctaPresu').addEventListener('click',()=>{
