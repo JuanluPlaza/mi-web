@@ -767,7 +767,7 @@
 <div class="cta reveal"><div class="cta-box">
     <div class="s-label">Empecemos</div><h2 class="s-title">¿Tienes un reto industrial?</h2>
     <p class="s-desc">Cuéntanos el problema y te proponemos la solución. Sin compromiso.</p>
-    <a href="/cdn-cgi/l/email-protection#630a0d050c23130f021902101a104d000c0e" class="btn btn-f">Solicitar presupuesto →</a>
+    <a href="#contacto" class="btn btn-f" id="ctaPresu">Solicitar presupuesto →</a>
 </div></div>
 
 <footer class="footer"><div class="footer-in">
@@ -1016,6 +1016,13 @@ let dt=1200;const tb=document.getElementById('term');TL.forEach(l=>{setTimeout((
     render();
     setInterval(cargarDatos,60000);   // refresco suave cada ~60 s
 })();
+
+/* CTA "Solicitar presupuesto" → lleva al formulario con el mensaje preparado */
+document.getElementById('ctaPresu').addEventListener('click',()=>{
+    const m=document.getElementById('fmMsg');
+    if(m&&!m.value)m.value='Hola, me gustaría solicitar un presupuesto para ';
+    setTimeout(()=>{const n=document.getElementById('fmNombre');if(n)n.focus({preventScroll:true})},700);
+});
 
 /* ===== Formulario de contacto · verificación Turnstile ===== */
 (function(){
