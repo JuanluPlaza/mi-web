@@ -18,16 +18,20 @@
     <meta property="og:title" content="PlazaSys — Automatización, Ingeniería y Soluciones Industriales">
     <meta property="og:description" content="Automatización industrial, IoT, ingeniería mecánica y prototipado de máquinas. Resolvemos problemas industriales en Ontinyent, Valencia.">
     <meta property="og:url" content="https://plazasys.com/">
-    <meta property="og:image" content="https://plazasys.com/plazasys-logo.svg">
+    <meta property="og:image" content="https://plazasys.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PlazaSys — Automatización, Ingeniería y Soluciones Industriales">
     <meta name="twitter:description" content="Automatización industrial, IoT, ingeniería mecánica y prototipado de máquinas. Resolvemos problemas industriales en Ontinyent, Valencia.">
-    <meta name="twitter:image" content="https://plazasys.com/plazasys-logo.svg">
+    <meta name="twitter:image" content="https://plazasys.com/og-image.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <style>
         :root{
             --white:#FAFAF7;--pure:#FFF;--cream:#F4F4F0;--sand:#EAEAE5;
@@ -191,6 +195,18 @@
         .cc-l{font-family:var(--mono);font-size:.62rem;font-weight:500;color:var(--ink4);letter-spacing:.5px;margin-bottom:6px}
         .cc-v{font-size:1rem;font-weight:600}.cc-v a:hover{color:var(--ink2)}
         .cc-n{font-size:.78rem;color:var(--ink4);margin-top:3px}
+
+        /* Formulario de contacto */
+        .cform{margin-top:14px;background:var(--pure);border:1px solid var(--line);border-radius:var(--r);padding:1.8rem}
+        .fm-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+        .fm-field{margin-bottom:14px;display:flex;flex-direction:column;gap:6px}
+        .fm-l{font-family:var(--mono);font-size:.62rem;font-weight:500;color:var(--ink4);letter-spacing:.5px;text-transform:uppercase}
+        .fm-in{font-family:var(--font);font-size:.92rem;color:var(--ink);background:var(--white);border:1px solid var(--line2);border-radius:8px;padding:10px 12px;outline:none;transition:border-color .2s}
+        .fm-in:focus{border-color:var(--charcoal)}
+        textarea.fm-in{resize:vertical;min-height:110px}
+        .fm-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:6px}
+        .fm-status{font-family:var(--mono);font-size:.68rem;color:var(--ink3)}
+        .fm-status.ok{color:var(--green-d)}.fm-status.err{color:var(--red)}
 
         /* CTA */
         .cta{max-width:var(--max-w);margin:0 auto;padding:0 2rem 6rem}
@@ -363,6 +379,7 @@
             .pz-metrics,.pz-wells,.pz-how-body{grid-template-columns:1fr}.pz-chart{height:120px}
             .pz-metrics.m4{grid-template-columns:1fr}
             .au-flow{flex-direction:column}.au-arrow{transform:rotate(90deg)}.au-drv-n{min-width:0;width:100%}
+            .fm-row{grid-template-columns:1fr}
             .cta-box{padding:3rem 1.5rem}
             .footer-in{flex-direction:column;gap:12px;text-align:center}
         }
@@ -378,7 +395,7 @@
       "description": "Automatización industrial, IoT, ingeniería mecánica y prototipado de máquinas a medida.",
       "url": "https://plazasys.com/",
       "telephone": "+34683355759",
-      "image": "https://plazasys.com/plazasys-logo.svg",
+      "image": "https://plazasys.com/og-image.png",
       "areaServed": "ES",
       "address": {
         "@type": "PostalAddress",
@@ -731,6 +748,19 @@
         <div class="cc reveal"><div class="cc-l">EMAIL</div><div class="cc-v"><a href="/cdn-cgi/l/email-protection#fa93949c95ba8a969b809b898389d4999597"><span class="__cf_email__" data-cfemail="c3aaada5ac83b3afa2b9a2b0bab0eda0acae">[email&#160;protected]</span></a></div><div class="cc-n">Respondemos en &lt;24h</div></div>
         <div class="cc reveal"><div class="cc-l">UBICACIÓN</div><div class="cc-v">Ontinyent, Valencia</div><div class="cc-n">España</div></div>
     </div>
+    <form class="cform reveal" id="cForm" novalidate>
+        <div class="fm-row">
+            <div class="fm-field"><label class="fm-l" for="fmNombre">Nombre *</label><input class="fm-in" id="fmNombre" name="nombre" type="text" required autocomplete="name"></div>
+            <div class="fm-field"><label class="fm-l" for="fmEmpresa">Empresa</label><input class="fm-in" id="fmEmpresa" name="empresa" type="text" autocomplete="organization"></div>
+        </div>
+        <div class="fm-field"><label class="fm-l" for="fmEmail">Email *</label><input class="fm-in" id="fmEmail" name="email" type="email" required autocomplete="email"></div>
+        <div class="fm-field"><label class="fm-l" for="fmMsg">Mensaje *</label><textarea class="fm-in" id="fmMsg" name="mensaje" rows="5" required></textarea></div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAD0izLhC4k6RQMma" data-action="turnstile-spin-v1"></div>
+        <div class="fm-actions">
+            <button type="submit" class="btn btn-y">Enviar mensaje →</button>
+            <span class="fm-status" id="fmStatus" role="status"></span>
+        </div>
+    </form>
 </section>
 
 <!-- CTA -->
@@ -985,6 +1015,30 @@ let dt=1200;const tb=document.getElementById('term');TL.forEach(l=>{setTimeout((
     }
     render();
     setInterval(cargarDatos,60000);   // refresco suave cada ~60 s
+})();
+
+/* ===== Formulario de contacto · verificación Turnstile ===== */
+(function(){
+    const form=document.getElementById('cForm');if(!form)return;
+    const WORKER_URL='https://plazasys-contacto.juanlu.workers.dev';
+    const st=document.getElementById('fmStatus');
+    function msg(t,c){st.textContent=t;st.className='fm-status'+(c?' '+c:'')}
+    form.addEventListener('submit',async e=>{
+        e.preventDefault();
+        if(!form.reportValidity())return;
+        const token=(form.querySelector('[name="cf-turnstile-response"]')||{}).value;
+        if(!token){msg('Completa la verificación anti-robots','err');return}
+        msg('Enviando…','');
+        try{
+            const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token,nombre:form.nombre.value,empresa:form.empresa.value,email:form.email.value,mensaje:form.mensaje.value})});
+            const d=await r.json();
+            if(!d.success){msg('No se ha podido verificar el envío. Recarga la página e inténtalo de nuevo.','err');if(window.turnstile)turnstile.reset();return}
+            form.reset();if(window.turnstile)turnstile.reset();
+            msg('Mensaje enviado. Te respondemos en menos de 24 h.','ok');
+        }catch(err){
+            msg('Error de conexión. Escríbenos a info@plazasys.com','err');
+        }
+    });
 })();
 
 /* ===== Botonera · panel de mando (rama / stenter) ===== */
