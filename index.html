@@ -897,6 +897,17 @@
 /* Preferencia del sistema: movimiento reducido (WCAG 2.2.2) */
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 
+/* Devuelve una función que dice si un elemento está a la vista. Los widgets de demostración la
+   usan para no recalcular ni repintar cuando su sección está fuera de pantalla: gastaban CPU y
+   batería de fondo mientras la pestaña estuviera abierta, aunque nadie hubiera bajado hasta ahí.
+   Sin IntersectionObserver devuelve siempre true, o sea el comportamiento de antes. */
+function visor(elemento){
+    if(!elemento||!('IntersectionObserver'in window))return()=>true;
+    let dentro=true;
+    new IntersectionObserver(es=>{dentro=es[es.length-1].isIntersecting},{threshold:0}).observe(elemento);
+    return()=>dentro;
+}
+
 const burg=document.getElementById('burg'),navL=document.getElementById('navL');
 burg.addEventListener('click',()=>burg.setAttribute('aria-expanded',navL.classList.toggle('open')));
 document.querySelectorAll('.nav-l a').forEach(a=>a.addEventListener('click',()=>{navL.classList.remove('open');burg.setAttribute('aria-expanded','false')}));
@@ -905,6 +916,9 @@ let scrollTick=false;
 window.addEventListener('scroll',()=>{if(scrollTick)return;scrollTick=true;requestAnimationFrame(()=>{scrollTick=false;const y=window.scrollY+120;secs.forEach(s=>{if(y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight)navA.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+s.id))})})},{passive:true});
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.06});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* Gauges y sparklines del hero: comparten visor porque viven en la misma rejilla de tarjetas */
+const heroVisible=visor(document.querySelector('.widgets'));
 
 /* Gauges */
 const ARC=84;
@@ -918,7 +932,7 @@ if(reduce){
 }else{
     setTimeout(()=>{sg('gT',58,0);sg('gR',72,200);sv(document.getElementById('vT'),42,'°C',0,1600);sv(document.getElementById('vR'),1450,' rpm',200,1800)},800);
     setInterval(()=>{
-        if(document.hidden)return;
+        if(document.hidden||!heroVisible())return;
         const t=42+Math.round((Math.random()-.5)*4),r=1450+Math.round((Math.random()-.5)*40);
         document.getElementById('vT').innerHTML=t+'<span class="u">°C</span>';
         document.getElementById('vR').innerHTML=r+'<span class="u"> rpm</span>';
@@ -931,7 +945,7 @@ if(reduce){
 function gd(b,v,n){const d=[];for(let i=0;i<n;i++)d.push(b+(Math.random()-.5)*v*2);return d}
 function ds(li,ai,data){const w=200,h=40,n=data.length,mn=Math.min(...data),mx=Math.max(...data),rg=mx-mn||1;let p=data.map((v,i)=>`${(i/(n-1))*w},${h-((v-mn)/rg)*h*.82-3}`);document.getElementById(li).setAttribute('d','M'+p.join('L'));document.getElementById(ai).setAttribute('d','M'+p.join('L')+`L${w},${h}L0,${h}Z`)}
 let tD=gd(42,3,30),rD=gd(1450,30,30);ds('spTL','spTA',tD);ds('spRL','spRA',rD);
-if(!reduce)setInterval(()=>{if(document.hidden)return;tD.shift();tD.push(42+(Math.random()-.5)*6);rD.shift();rD.push(1450+(Math.random()-.5)*60);ds('spTL','spTA',tD);ds('spRL','spRA',rD);document.getElementById('spTV').textContent=Math.round(tD[tD.length-1])+'°C';document.getElementById('spRV').textContent=Math.round(rD[rD.length-1])},2000);
+if(!reduce)setInterval(()=>{if(document.hidden||!heroVisible())return;tD.shift();tD.push(42+(Math.random()-.5)*6);rD.shift();rD.push(1450+(Math.random()-.5)*60);ds('spTL','spTA',tD);ds('spRL','spRA',rD);document.getElementById('spTV').textContent=Math.round(tD[tD.length-1])+'°C';document.getElementById('spRV').textContent=Math.round(rD[rD.length-1])},2000);
 
 /* Terminal */
 const TL=[{t:'<span class="t-y">$</span> <span class="t-w">plazasys status</span>',d:500},{t:'<span class="t-d">─────────────────────────</span>',d:180},{t:'<span class="t-g">✓</span> Sistemas ......... <span class="t-g">online</span>',d:280},{t:'<span class="t-g">✓</span> MQTT broker ...... <span class="t-g">conectado</span>',d:280},{t:'<span class="t-g">✓</span> Sensores ......... <span class="t-g">2 activos</span>',d:280},{t:'<span class="t-b">→</span> Última lectura: hace 2s',d:280},{t:'',d:200},{t:'<span class="t-y">$</span> <span class="t-d">_</span><span class="cur"></span>',d:0}];
@@ -1002,7 +1016,8 @@ document.querySelectorAll('[role="tablist"]').forEach(tl=>tl.addEventListener('k
         render();
     }
     const panel=el('enLines').closest('.ej-panel');
-    const activo=()=>!document.hidden&&(!panel||panel.classList.contains('active'));
+    const aLaVista=visor(panel);
+    const activo=()=>!document.hidden&&aLaVista()&&(!panel||panel.classList.contains('active'));
     render();if(!reduce)setInterval(()=>{if(!activo())return;cargarDatos()},4000);
 })();
 
@@ -1047,7 +1062,8 @@ document.querySelectorAll('[role="tablist"]').forEach(tl=>tl.addEventListener('k
         prev=now;
     }
     const panel=el('seCards').closest('.ej-panel');
-    const activo=()=>!document.hidden&&(!panel||panel.classList.contains('active'));
+    const aLaVista=visor(panel);
+    const activo=()=>!document.hidden&&aLaVista()&&(!panel||panel.classList.contains('active'));
     pintar();if(!reduce)setInterval(()=>{if(!activo())return;cargarDatos()},3500);
 })();
 
@@ -1094,7 +1110,8 @@ document.querySelectorAll('[role="tablist"]').forEach(tl=>tl.addEventListener('k
     el('auReset').addEventListener('click',()=>{alarma=false;render()});
     document.querySelectorAll('.au-subtab').forEach(s=>s.addEventListener('click',()=>{document.querySelectorAll('.au-subtab').forEach(x=>{const on=x===s;x.classList.toggle('active',on);x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1});document.querySelectorAll('.au-subpanel').forEach(p=>p.classList.toggle('active',p.id===s.dataset.sub))}));
     const panel=el('auFlow').closest('.ej-panel');
-    const activo=()=>!document.hidden&&(!panel||panel.classList.contains('active'));
+    const aLaVista=visor(panel);
+    const activo=()=>!document.hidden&&aLaVista()&&(!panel||panel.classList.contains('active'));
     if(!reduce)setInterval(()=>{if(!activo())return;if(running&&modo==='auto'&&!alarma){activa=(activa+1)%4;if(activa===0)piezas++}render()},1200);
     render();
 })();
@@ -1113,7 +1130,8 @@ document.querySelectorAll('[role="tablist"]').forEach(tl=>tl.addEventListener('k
     el('lnStop').addEventListener('click',()=>{running=!running;el('lnStop').classList.toggle('active',!running);el('lnStop').textContent=running?'⏸ PARO EMERGENCIA':'▶ REANUDAR';if(!running)paradas++;setBelt();render()});
     el('lnReset').addEventListener('click',()=>{ok=0;paradas=0;render()});
     el('lnTurno').addEventListener('click',()=>{ti=(ti+1)%3;el('lnTurnoL').textContent=turnos[ti];ok=0;render()});
-    if(!reduce)setInterval(()=>{if(document.hidden)return;if(running)ok+=calc().good/60;render()},1000);
+    const aLaVista=visor(el('lnOee').closest('.sim'));
+    if(!reduce)setInterval(()=>{if(document.hidden||!aLaVista())return;if(running)ok+=calc().good/60;render()},1000);
     /* Movimiento reducido: el contador no acumula, así que sembramos un valor coherente
        con las unidades/hora (≈36 min de turno) en vez de mostrar 0 piezas OK. */
     else ok=calc().good*0.6;
@@ -1172,7 +1190,8 @@ document.querySelectorAll('[role="tablist"]').forEach(tl=>tl.addEventListener('k
         render();
     }
     const panel=el('pzWells').closest('.ej-panel');
-    const activo=()=>!document.hidden&&(!panel||panel.classList.contains('active'));
+    const aLaVista=visor(panel);
+    const activo=()=>!document.hidden&&aLaVista()&&(!panel||panel.classList.contains('active'));
     render();
     if(!reduce)setInterval(()=>{if(!activo())return;cargarDatos()},60000);   // refresco suave cada ~60 s
 })();
