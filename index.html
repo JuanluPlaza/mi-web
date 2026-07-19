@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlazaSys — Automatización, Ingeniería y Soluciones Industriales</title>
-    <meta name="description" content="PlazaSys — Automatización industrial, IoT, ingeniería mecánica y prototipado de máquinas. Resolvemos problemas industriales en Ontinyent, Valencia.">
+    <meta name="description" content="PlazaSys — Automatización industrial, desarrollo de maquinaria, IoT e Industria 4.0, control de producción y software industrial a medida. Ontinyent, Valencia.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#F9D815">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -16,7 +16,7 @@
     <meta property="og:locale" content="es_ES">
     <meta property="og:site_name" content="PlazaSys">
     <meta property="og:title" content="PlazaSys — Automatización, Ingeniería y Soluciones Industriales">
-    <meta property="og:description" content="Automatización industrial, IoT, ingeniería mecánica y prototipado de máquinas. Resolvemos problemas industriales en Ontinyent, Valencia.">
+    <meta property="og:description" content="Automatización industrial, desarrollo de maquinaria, IoT e Industria 4.0, control de producción y software industrial a medida. Ontinyent, Valencia.">
     <meta property="og:url" content="https://plazasys.com/">
     <meta property="og:image" content="https://plazasys.com/og-image.png">
     <meta property="og:image:width" content="1200">
@@ -25,23 +25,23 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PlazaSys — Automatización, Ingeniería y Soluciones Industriales">
-    <meta name="twitter:description" content="Automatización industrial, IoT, ingeniería mecánica y prototipado de máquinas. Resolvemos problemas industriales en Ontinyent, Valencia.">
+    <meta name="twitter:description" content="Automatización industrial, desarrollo de maquinaria, IoT e Industria 4.0, control de producción y software industrial a medida. Ontinyent, Valencia.">
     <meta name="twitter:image" content="https://plazasys.com/og-image.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer onerror="window.__tsFailed=true"></script>
     <style>
         :root{
             --white:#FAFAF7;--pure:#FFF;--cream:#F4F4F0;--sand:#EAEAE5;
-            --yellow:#F9D815;--yellow-h:#E8C910;--yellow-s:rgba(249,216,21,.10);--yellow-b:rgba(249,216,21,.30);--yellow-strong:rgba(249,216,21,.85);
+            --yellow:#F9D815;--yellow-h:#E8C910;--yellow-s:rgba(249,216,21,.10);--yellow-b:rgba(249,216,21,.30);
             --charcoal:#3E3E3D;--dark:#333332;--dark-b:rgba(255,255,255,.07);
-            --ink:#1C1C1A;--ink2:#4A4A48;--ink3:#7D7D7A;--ink4:#ACACAA;
+            --ink:#1C1C1A;--ink2:#4A4A48;--ink3:#6D6D6A;--ink4:#8C8C8A;
             --line:rgba(28,28,26,.07);--line2:rgba(28,28,26,.14);
-            --green:#4ADE80;--green-d:#16A34A;--green-s:rgba(74,222,128,.12);
-            --blue:#60A5FA;--blue-s:rgba(96,165,250,.12);
-            --red:#EF4444;--orange:#F59E0B;
+            --green:#4ADE80;--green-d:#16A34A;--green-s:rgba(74,222,128,.12);--green-tx:#15803D;
+            --blue:#60A5FA;
+            --red:#EF4444;--orange:#F59E0B;--red-tx:#B91C1C;
             --font:'Instrument Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',monospace;
             --ease:cubic-bezier(.16,1,.3,1);--max-w:1120px;--r:12px;
         }
@@ -49,7 +49,12 @@
         html{scroll-behavior:smooth;scroll-padding-top:72px}
         body{font-family:var(--font);background:var(--white);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
         a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+        abbr[title]{text-decoration:none;border-bottom:1px dotted currentColor;cursor:help}
         body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;background:var(--yellow);z-index:200}
+        /* Skip link: oculto hasta recibir foco de teclado */
+        .skip-link{position:fixed;left:-9999px;top:0;z-index:300;background:var(--yellow);color:var(--ink);font-family:var(--font);font-size:.85rem;font-weight:600;padding:10px 18px;border-radius:0 0 8px 0}
+        .skip-link:focus{left:0}
+        #main:focus{outline:none}
 
         /* NAV */
         .nav{position:fixed;top:3px;left:0;right:0;z-index:100;background:rgba(250,250,247,.90);backdrop-filter:blur(24px) saturate(1.6);border-bottom:1px solid var(--line)}
@@ -58,7 +63,7 @@
         .nav-l{display:flex;align-items:center;gap:4px;list-style:none}
         .nav-l a{font-size:.95rem;font-weight:500;color:var(--ink3);padding:6px 14px;border-radius:6px;transition:.2s var(--ease);position:relative}
         .nav-l a:hover{color:var(--ink)}.nav-l a.active{color:var(--ink);background:var(--cream)}.nav-l a::after{content:'';position:absolute;left:14px;right:14px;bottom:4px;height:2px;background:var(--yellow);transform:scaleX(0);transform-origin:left;border-radius:2px;transition:transform .22s var(--ease)}.nav-l a:hover::after,.nav-l a.active::after{transform:scaleX(1)}
-        .nav-r{display:flex;align-items:center;gap:6px;font-size:.72rem;font-weight:500;color:var(--ink4)}
+        .nav-r{display:flex;align-items:center;gap:6px;font-size:.72rem;font-weight:500;color:var(--ink3)}
         .dot-on{width:6px;height:6px;background:var(--yellow);border-radius:50%;animation:pulse 2.5s ease-in-out infinite}
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
         .burger{display:none;background:none;border:none;cursor:pointer;padding:6px}
@@ -79,6 +84,7 @@
         .btn-f{background:var(--charcoal);color:var(--pure)}.btn-f:hover{background:var(--ink);transform:translateY(-1px);box-shadow:0 4px 16px rgba(28,28,26,.15)}
         .btn-o{background:transparent;color:var(--ink2);border:1px solid var(--line2)}.btn-o:hover{color:var(--ink);border-color:var(--charcoal)}
         .btn-y{background:var(--yellow);color:var(--ink);font-weight:600}.btn-y:hover{background:var(--yellow-h);transform:translateY(-1px);box-shadow:0 4px 16px rgba(249,216,21,.3)}
+        .btn:disabled,.fm-in:disabled,.line-btn:disabled,.au-btn:disabled{opacity:.5;cursor:not-allowed;pointer-events:none}
 
         /* WIDGET GRID */
         .widgets{display:grid;grid-template-columns:1fr 1fr;gap:12px;animation:fu .7s var(--ease) .25s both}
@@ -86,8 +92,8 @@
         .w-card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;transition:.25s var(--ease);box-shadow:0 8px 24px rgba(28,28,26,.06)}
         .w-card:hover{border-color:var(--line2);box-shadow:0 14px 36px rgba(28,28,26,.10);transform:translateY(-2px)}
         .w-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-        .w-label{font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.8px;color:var(--ink4);text-transform:uppercase}
-        .w-badge{font-family:var(--mono);font-size:.6rem;letter-spacing:.5px;padding:2px 8px;border-radius:100px}
+        .w-label{font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.7px;color:var(--ink3);text-transform:uppercase}
+        .w-badge{font-family:var(--mono);font-size:.6rem;letter-spacing:.4px;padding:3px 9px;border-radius:100px}
         .w-gauge{display:flex;align-items:center;gap:14px}
         .w-gauge-svg{width:64px;height:38px;flex-shrink:0}
         .w-gauge-track{fill:none;stroke:var(--sand);stroke-width:5;stroke-linecap:round}
@@ -104,8 +110,8 @@
         .w-terminal{background:var(--dark);border:none;border-radius:var(--r);grid-column:1/-1;overflow:hidden}
         .w-term-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--dark-b)}
         .w-term-dot{width:8px;height:8px;border-radius:50%;opacity:.6}
-        .w-term-title{margin-left:auto;font-family:var(--mono);font-size:.62rem;color:rgba(255,255,255,.22);letter-spacing:.5px;text-transform:uppercase}
-        .w-term-body{padding:12px 14px;font-family:var(--mono);font-size:.7rem;line-height:1.85;color:rgba(255,255,255,.4)}
+        .w-term-title{margin-left:auto;font-family:var(--mono);font-size:.62rem;color:rgba(255,255,255,.45);letter-spacing:.5px;text-transform:uppercase}
+        .w-term-body{padding:12px 14px;font-family:var(--mono);font-size:.7rem;line-height:1.85;color:rgba(255,255,255,.6)}
         .t-y{color:var(--yellow)}.t-w{color:rgba(255,255,255,.85)}.t-g{color:var(--green)}.t-b{color:var(--blue)}.t-d{color:rgba(255,255,255,.1)}
         .t-line{opacity:0;animation:ti .35s var(--ease) forwards}
         @keyframes ti{from{opacity:0;transform:translateX(-4px)}to{opacity:1;transform:translateX(0)}}
@@ -114,15 +120,17 @@
 
         /* SECTIONS */
         .section{max-width:var(--max-w);margin:0 auto;padding:6rem 2rem}
-        .s-label{font-family:var(--mono);font-size:.68rem;font-weight:500;color:var(--ink4);letter-spacing:.5px;margin-bottom:.4rem}
+        .s-label{font-family:var(--mono);font-size:.68rem;font-weight:500;color:var(--ink3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:.4rem}
         .s-title{font-size:1.8rem;font-weight:700;letter-spacing:-.3px;margin-bottom:.4rem}
         .s-desc{color:var(--ink2);max-width:480px}
         .s-top{margin-bottom:2.5rem}
         .sep{max-width:var(--max-w);margin:0 auto;padding:0 2rem}.sep-l{height:1px;background:var(--line)}
 
-        /* SERVICES — 4 cols */
-        .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-        .svc{background:linear-gradient(180deg,rgba(255,255,255,.95),#fff);border:1px solid var(--line);border-radius:var(--r);padding:1.8rem 1.5rem;transition:.3s var(--ease);position:relative;overflow:hidden}
+        /* SERVICES — 3 cols (9 tarjetas = rejilla 3x3 exacta; la cascada baja a 2 y a 1) */
+        .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+        /* Columna flex para que el enlace de pie se alinee a la misma altura en toda la fila,
+           aunque los textos midan de 130 a 270 caracteres */
+        .svc{background:linear-gradient(180deg,rgba(255,255,255,.95),#fff);border:1px solid var(--line);border-radius:var(--r);padding:1.8rem 1.5rem;transition:.3s var(--ease);position:relative;overflow:hidden;display:flex;flex-direction:column}
         .svc:hover{border-color:var(--yellow-b);box-shadow:0 10px 28px rgba(249,216,21,.12);transform:translateY(-3px)}
         .svc-bar{position:absolute;top:0;left:20px;right:20px;height:2px;background:var(--yellow);border-radius:0 0 2px 2px;transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
         .svc:hover .svc-bar{transform:scaleX(1)}
@@ -134,16 +142,17 @@
         .sim{background:linear-gradient(145deg,#383837,#30302f);border:none;border-radius:16px;overflow:hidden;margin-top:2.5rem}
         .sim-bar{padding:11px 18px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--dark-b);display:flex;align-items:center;gap:7px}
         .sim-dot{width:8px;height:8px;border-radius:50%;opacity:.7}
-        .sim-bar-t{margin-left:auto;font-family:var(--mono);font-size:.62rem;color:rgba(255,255,255,.45);letter-spacing:.5px;text-transform:uppercase}
-        .sim-body{padding:24px 22px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+        .sim-bar-t{margin-left:auto;font-family:var(--mono);font-size:.62rem;font-weight:400;color:rgba(255,255,255,.45);letter-spacing:.5px;text-transform:uppercase}
 
-        .sim-ctrls{display:flex;flex-direction:column;gap:18px}
         .sim-cl{font-family:var(--mono);font-size:.64rem;color:rgba(255,255,255,.50);letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px}
         .sim-slider{-webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:3px;background:rgba(255,255,255,.15);outline:none;cursor:pointer}
         .sim-slider::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--yellow);cursor:pointer;box-shadow:0 2px 8px rgba(249,216,21,.35)}
         .sim-slider::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--yellow);cursor:pointer;border:none}
+        .sim-slider:focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
+        .sim-slider:focus-visible::-webkit-slider-thumb{box-shadow:0 2px 8px rgba(249,216,21,.35),0 0 0 4px rgba(249,216,21,.3)}
+        .sim-slider:focus-visible::-moz-range-thumb{box-shadow:0 0 0 4px rgba(249,216,21,.3)}
         .sim-vd{font-family:var(--mono);font-size:1rem;color:#FFF;margin-top:4px}
-        .sim-vd .u{font-size:.62rem;color:rgba(255,255,255,.45)}
+        .sim-vd .u{font-size:.62rem;color:rgba(255,255,255,.6)}
         .sim-tog{display:flex;align-items:center;gap:12px}
         .sim-sw{width:46px;height:24px;background:rgba(255,255,255,.15);border-radius:12px;cursor:pointer;position:relative;transition:.3s var(--ease);border:none;padding:0}
         .sim-sw::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;background:rgba(255,255,255,.6);border-radius:50%;transition:.3s var(--ease);box-shadow:0 1px 3px rgba(0,0,0,.15)}
@@ -166,19 +175,19 @@
         .bt-lamp.on.white .b{background:#fff;box-shadow:0 0 10px rgba(255,255,255,.6)}
         .bt-lamp.blink .b{animation:pulse 1s ease-in-out infinite}
         .bt-controls{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-        .bt-push{width:82px;height:82px;border-radius:50%;border:3px solid rgba(0,0,0,.35);font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.5px;color:#fff;cursor:pointer;transition:transform .1s,box-shadow .1s;box-shadow:0 4px 0 rgba(0,0,0,.35)}
+        .bt-push{width:82px;height:82px;border-radius:50%;border:3px solid rgba(0,0,0,.35);font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.5px;color:#fff;cursor:pointer;transition:transform .1s var(--ease),box-shadow .1s var(--ease);box-shadow:0 4px 0 rgba(0,0,0,.35)}
         .bt-push:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.35)}
         .bt-push.green{background:radial-gradient(circle at 38% 32%,#5ee08f,#16A34A)}
         .bt-push.red{background:radial-gradient(circle at 38% 32%,#f87171,#b91c1c)}
-        .bt-seta{width:90px;height:90px;border-radius:50%;border:6px solid #facc15;background:radial-gradient(circle at 40% 34%,#ef4444,#991b1b);color:#fff;font-family:var(--mono);font-size:.56rem;font-weight:600;line-height:1.25;letter-spacing:.5px;cursor:pointer;box-shadow:0 5px 0 rgba(0,0,0,.4);transition:transform .1s,box-shadow .1s}
+        .bt-seta{width:90px;height:90px;border-radius:50%;border:6px solid #facc15;background:radial-gradient(circle at 40% 34%,#ef4444,#991b1b);color:#fff;font-family:var(--mono);font-size:.56rem;font-weight:600;line-height:1.25;letter-spacing:.5px;cursor:pointer;box-shadow:0 5px 0 rgba(0,0,0,.4);transition:transform .1s var(--ease),box-shadow .1s var(--ease)}
         .bt-seta:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.4)}
         .bt-seta.armed{animation:pulse 1s ease-in-out infinite}
         .bt-toggles{display:flex;flex-direction:column;gap:12px;margin-left:auto}
         .bt-sliders{display:grid;grid-template-columns:1fr 1fr;gap:24px}
         .bt-reads{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
         .bt-read{background:rgba(255,255,255,.06);border:1px solid var(--dark-b);border-radius:8px;padding:12px;text-align:center}
-        .bt-read-l{font-family:var(--mono);font-size:.58rem;color:rgba(255,255,255,.35);letter-spacing:.5px;text-transform:uppercase;margin-bottom:3px}
-        .bt-read-v{font-family:var(--mono);font-size:1.1rem;color:#fff}
+        .bt-read-l{font-family:var(--mono);font-size:.58rem;color:rgba(255,255,255,.55);letter-spacing:.5px;text-transform:uppercase;margin-bottom:3px}
+        .bt-read-v{font-family:var(--mono);font-size:1.1rem;font-weight:600;letter-spacing:-.3px;color:#fff}
         .bt-estado{font-family:var(--mono);font-size:.62rem;letter-spacing:.5px;display:flex;align-items:center;gap:7px;color:rgba(255,255,255,.55)}
         .bt-estado .d{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3)}
 
@@ -190,34 +199,50 @@
 
         /* Contact */
         .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-        .cc{background:var(--pure);border:1px solid var(--line);border-radius:var(--r);padding:1.8rem;transition:border-color .25s}
+        .cc{background:var(--pure);border:1px solid var(--line);border-radius:var(--r);padding:1.8rem;box-shadow:0 8px 24px rgba(28,28,26,.06);transition:border-color .25s var(--ease)}
         .cc:hover{border-color:var(--line2)}
-        .cc-l{font-family:var(--mono);font-size:.62rem;font-weight:500;color:var(--ink4);letter-spacing:.5px;margin-bottom:6px}
+        .cc-l{font-family:var(--mono);font-size:.62rem;font-weight:500;color:var(--ink3);letter-spacing:.5px;margin-bottom:6px}
         .cc-v{font-size:1rem;font-weight:600}.cc-v a:hover{color:var(--ink2)}
-        .cc-n{font-size:.78rem;color:var(--ink4);margin-top:3px}
+        .cc-n{font-size:.78rem;color:var(--ink3);margin-top:3px}
 
         /* Formulario de contacto */
         .cform{margin-top:14px;background:var(--pure);border:1px solid var(--line);border-radius:var(--r);padding:1.8rem}
         .fm-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
         .fm-field{margin-bottom:14px;display:flex;flex-direction:column;gap:6px}
-        .fm-l{font-family:var(--mono);font-size:.62rem;font-weight:500;color:var(--ink4);letter-spacing:.5px;text-transform:uppercase}
-        .fm-in{font-family:var(--font);font-size:.92rem;color:var(--ink);background:var(--white);border:1px solid var(--line2);border-radius:8px;padding:10px 12px;outline:none;transition:border-color .2s}
+        .fm-l{font-family:var(--mono);font-size:.62rem;font-weight:500;color:var(--ink3);letter-spacing:.5px;text-transform:uppercase}
+        .fm-in{font-family:var(--font);font-size:.92rem;color:var(--ink);background:var(--white);border:1px solid var(--line2);border-radius:8px;padding:10px 12px;outline:none;transition:border-color .2s var(--ease)}
         .fm-in:focus{border-color:var(--charcoal)}
+        .fm-in:focus-visible{outline:2px solid var(--charcoal);outline-offset:2px}
+        .fm-in.err{border-color:var(--red)}
         textarea.fm-in{resize:vertical;min-height:110px}
+        .fm-consent{margin-top:2px}
+        .fm-check{display:flex;align-items:flex-start;gap:9px;font-size:.86rem;line-height:1.55;color:var(--ink2);cursor:pointer}
+        .fm-check input{flex:0 0 auto;width:16px;height:16px;margin-top:3px;accent-color:var(--charcoal);cursor:pointer}
+        .fm-check input:focus-visible{outline:2px solid var(--charcoal);outline-offset:2px}
+        .fm-check input.err{outline:2px solid var(--red);outline-offset:2px}
+        .fm-check a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+        .sect-note{max-width:760px;margin:2.2rem auto 0;text-align:center;font-size:.92rem;color:var(--ink2)}
+        .sect-note-l{display:block;font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.7px;text-transform:uppercase;color:var(--ink3);margin-bottom:.4rem}
         .fm-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:6px}
         .fm-status{font-family:var(--mono);font-size:.68rem;color:var(--ink3)}
-        .fm-status.ok{color:var(--green-d)}.fm-status.err{color:var(--red)}
+        .fm-status.ok{color:var(--green-tx)}.fm-status.err{color:var(--red-tx)}
+        /* El widget de Turnstile tiene un ancho mínimo propio (~300px): en pantallas muy estrechas se desplaza dentro de su caja en vez de desbordar la página.
+           El max-width frena el modo "flexible", que en escritorio se estiraba a todo el formulario (~1000px) y lo cruzaba como una barra gigante. */
+        .cf-turnstile{width:100%;max-width:340px;overflow-x:auto}
+        .fm-alt{font-size:.82rem;line-height:1.5;color:var(--ink2);background:var(--cream);border:1px solid var(--line2);border-radius:8px;padding:12px 14px}
+        .fm-alt a{font-weight:600;text-decoration:underline}
+        .fm-alt[hidden]{display:none}
 
         /* CTA */
         .cta{max-width:var(--max-w);margin:0 auto;padding:0 2rem 6rem}
         .cta-box{background:linear-gradient(130deg,#f9d815 0%,#f2cf14 60%,#eec90f 100%);border-radius:16px;padding:4rem 3rem;text-align:center;position:relative;overflow:hidden}
         .cta-box::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:80px;height:3px;background:var(--charcoal);border-radius:0 0 3px 3px}
-        .cta-box .s-label{color:var(--ink3)}.cta-box .s-title{color:var(--ink);margin-bottom:.6rem}.cta-box .s-desc{color:var(--ink2);margin:0 auto 2rem}
+        .cta-box .s-label{color:var(--ink2)}.cta-box .s-title{color:var(--ink);margin-bottom:.6rem}.cta-box .s-desc{color:var(--ink2);margin:0 auto 2rem}
 
         .footer{border-top:1px solid var(--line)}
         .footer-in{max-width:var(--max-w);margin:0 auto;padding:2rem;display:flex;justify-content:space-between;align-items:center}
-        .footer-c{font-size:.78rem;color:var(--ink4)}
-        .footer-l{display:flex;gap:18px}.footer-l a{font-size:.8rem;color:var(--ink3);transition:color .2s}.footer-l a:hover{color:var(--ink)}
+        .footer-c{font-size:.78rem;color:var(--ink3)}
+        .footer-l{display:flex;gap:18px}.footer-l a{font-size:.8rem;color:var(--ink3);transition:color .2s var(--ease)}.footer-l a:hover{color:var(--ink)}
 
         .reveal{opacity:0;transform:translateY(16px);transition:opacity .65s var(--ease),transform .65s var(--ease)}.reveal.visible{opacity:1;transform:translateY(0)}
 
@@ -238,13 +263,13 @@
         .line-io b{color:#fff}.lf-ok b{color:var(--green)}.lf-rej b{color:var(--red)}.lf-ar{color:rgba(255,255,255,.3)}
         @keyframes belt{from{background-position:0 0}to{background-position:-30px 0}}
         .line-btns{display:flex;gap:8px;flex-wrap:wrap}
-        .line-btn{font-family:var(--mono);font-size:.66rem;letter-spacing:.3px;padding:9px 12px;border-radius:7px;border:1px solid var(--dark-b);background:rgba(255,255,255,.06);color:rgba(255,255,255,.72);cursor:pointer;transition:.2s var(--ease)}
+        .line-btn{font-family:var(--mono);font-size:.66rem;letter-spacing:.3px;padding:9px 12px;border-radius:8px;border:1px solid var(--dark-b);background:rgba(255,255,255,.06);color:rgba(255,255,255,.72);cursor:pointer;transition:.2s var(--ease)}
         .line-btn:hover{background:rgba(255,255,255,.12);color:#fff}
         .line-btn.stop{border-color:rgba(239,68,68,.4);color:#fca5a5}
         .line-btn.stop.active{background:var(--red);color:#fff;border-color:var(--red)}
         .line-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
         .kpi{background:rgba(255,255,255,.06);border:1px solid var(--dark-b);border-radius:10px;padding:14px;text-align:center}
-        .kpi-l{font-family:var(--mono);font-size:.6rem;letter-spacing:.6px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px}
+        .kpi-l{font-family:var(--mono);font-size:.62rem;letter-spacing:.7px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px}
         .kpi-v{font-family:var(--mono);font-size:1.45rem;font-weight:600;color:#fff;line-height:1;letter-spacing:-.5px}
         .kpi-v.oee{color:var(--yellow)}
 
@@ -262,22 +287,22 @@
         .pz-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.2rem}
         .pz-m{border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
         .pz-m.hl{background:var(--yellow);border-color:var(--yellow)}
-        .pz-m-l{font-family:var(--mono);font-size:.62rem;letter-spacing:.7px;text-transform:uppercase;color:var(--ink4);margin-bottom:7px}
-        .pz-m.hl .pz-m-l{color:rgba(28,28,26,.55)}
+        .pz-m-l{font-family:var(--mono);font-size:.62rem;letter-spacing:.7px;text-transform:uppercase;color:var(--ink3);margin-bottom:7px}
+        .pz-m.hl .pz-m-l{color:rgba(28,28,26,.75)}
         .pz-m-v{font-family:var(--mono);font-size:1.85rem;font-weight:700;color:var(--ink);line-height:1;letter-spacing:-1px}
         .pz-m-v .u{font-size:.68rem;font-weight:400;color:var(--ink4);margin-left:4px}
-        .pz-m.hl .pz-m-v .u{color:rgba(28,28,26,.5)}
+        .pz-m.hl .pz-m-v .u{color:rgba(28,28,26,.75)}
         .pz-m-v.ok{color:var(--green-d)}
         .pz-wells{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:1.4rem}
-        .pz-w{border:1px solid var(--line);border-radius:var(--r);padding:15px 16px;transition:border-color .25s,box-shadow .25s}
+        .pz-w{border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;transition:border-color .25s,box-shadow .25s}
         .pz-w:hover{border-color:var(--line2);box-shadow:0 8px 20px rgba(28,28,26,.07)}
         .pz-w-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:11px}
         .pz-w-n{font-size:.92rem;font-weight:600}
         .pz-w-net{font-family:var(--mono);font-size:.6rem;letter-spacing:.4px;padding:3px 9px;border-radius:100px;background:var(--cream);color:var(--ink3);white-space:nowrap}
         .pz-w-v{font-family:var(--mono);font-size:1.35rem;font-weight:600;color:var(--ink);letter-spacing:-.5px;line-height:1}
         .pz-w-v .u{font-size:.66rem;font-weight:400;color:var(--ink4);margin-left:3px}
-        .pz-w-f{font-family:var(--mono);font-size:.64rem;color:var(--ink4);margin-top:9px}
-        .pz-chart-l{font-family:var(--mono);font-size:.64rem;letter-spacing:.7px;text-transform:uppercase;color:var(--ink4);margin-bottom:12px}
+        .pz-w-f{font-family:var(--mono);font-size:.64rem;color:var(--ink3);margin-top:9px}
+        .pz-chart-l{font-family:var(--mono);font-size:.64rem;letter-spacing:.7px;text-transform:uppercase;color:var(--ink3);margin-bottom:12px}
         .pz-chart{display:flex;align-items:flex-end;gap:3px;height:150px}
         .pz-bar{flex:1;background:var(--yellow);border-radius:3px 3px 0 0;min-height:3px;transition:height .8s var(--ease)}
         .pz-axis{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.62rem;color:var(--ink4);margin-top:8px}
@@ -292,9 +317,12 @@
         .pz-how-body{padding:0 16px 16px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
         .pz-step{font-size:.78rem;color:var(--ink2);line-height:1.5}
         .pz-step b{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.5px;text-transform:uppercase;color:var(--ink);margin-bottom:5px;padding-left:8px;border-left:2px solid var(--yellow)}
-        .pz-foot{text-align:center;font-family:var(--mono);font-size:.64rem;color:var(--ink4);margin-top:1.4rem}
+        .pz-foot{text-align:center;font-family:var(--mono);font-size:.64rem;color:var(--ink3);margin-top:1.4rem}
         .pz-metrics.m4{grid-template-columns:repeat(4,1fr)}
-        .svc-link{display:inline-block;margin-top:.9rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.3px;color:var(--ink);border-bottom:1px solid var(--yellow);padding-bottom:1px}
+        /* margin-top:auto empuja el pie al fondo de la tarjeta; el padding-top garantiza la
+           separación cuando la tarjeta es la más alta de la fila y no queda hueco que repartir.
+           align-self:flex-start evita que el subrayado se estire a todo el ancho. */
+        .svc-link{display:inline-block;margin-top:auto;align-self:flex-start;padding-top:.9rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.3px;color:var(--ink);border-bottom:1px solid var(--yellow);padding-bottom:1px}
         .svc-link:hover{border-bottom-color:var(--charcoal)}
 
         /* ===== EJEMPLOS — galería con pestañas (tema claro) ===== */
@@ -320,20 +348,20 @@
 
         /* ===== AUTOMATIZACIÓN — célula HMI + autómata (tema claro) ===== */
         .au-sub{display:flex;gap:8px;margin-bottom:1.3rem}
-        .au-subtab{font-family:var(--mono);font-size:.65rem;padding:7px 14px;border-radius:7px;border:1px solid var(--line2);background:var(--pure);color:var(--ink3);cursor:pointer;transition:.2s var(--ease)}
+        .au-subtab{font-family:var(--mono);font-size:.65rem;padding:7px 14px;border-radius:8px;border:1px solid var(--line2);background:var(--pure);color:var(--ink3);cursor:pointer;transition:.2s var(--ease)}
         .au-subtab.active{background:var(--yellow);color:var(--ink);border-color:var(--yellow);font-weight:600}
         .au-subpanel{display:none}.au-subpanel.active{display:block;animation:fu .4s var(--ease) both}
         .au-modebar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:1.3rem}
         .au-cpu{font-family:var(--mono);font-size:.64rem;color:var(--ink3)}.au-cpu b{color:var(--ink)}
         .au-modes{display:flex;gap:6px}
-        .au-mode{font-family:var(--mono);font-size:.62rem;padding:7px 13px;border-radius:7px;border:1px solid var(--line2);background:var(--pure);color:var(--ink3);cursor:pointer;transition:.2s var(--ease)}
+        .au-mode{font-family:var(--mono);font-size:.62rem;padding:7px 13px;border-radius:8px;border:1px solid var(--line2);background:var(--pure);color:var(--ink3);cursor:pointer;transition:.2s var(--ease)}
         .au-mode.active{background:var(--charcoal);color:var(--pure);border-color:var(--charcoal)}
         .au-flow{display:flex;align-items:center;gap:6px;margin-bottom:1.3rem}
         .au-st{flex:1;border:1px solid var(--line2);border-radius:10px;padding:14px 8px;text-align:center;background:var(--pure);transition:.3s var(--ease)}
         .au-st.on{border-color:var(--yellow);background:var(--yellow-s);box-shadow:0 0 0 2px var(--yellow-b)}
         .au-st-n{font-family:var(--mono);font-size:.64rem;letter-spacing:.4px;text-transform:uppercase;color:var(--ink2);display:block}
         .au-st.on .au-st-n{color:var(--ink);font-weight:600}
-        .au-st-s{font-family:var(--mono);font-size:.6rem;color:var(--ink4);margin-top:4px;display:block}
+        .au-st-s{font-family:var(--mono);font-size:.6rem;color:var(--ink3);margin-top:4px;display:block}
         .au-arrow{color:var(--ink4);font-family:var(--mono);font-size:.8rem;flex-shrink:0}
         .au-drives{display:flex;flex-direction:column;gap:8px;margin-bottom:1.3rem}
         .au-drv{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:8px;padding:11px 14px;flex-wrap:wrap}
@@ -344,7 +372,7 @@
         .au-drv-st .d{width:6px;height:6px;border-radius:50%;background:currentColor}
         .au-drv.alarm .au-drv-st{color:var(--red)}
         .au-io{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:1.3rem}
-        .au-sig{font-family:var(--mono);font-size:.64rem;display:flex;align-items:center;gap:6px;padding:6px 11px;border:1px solid var(--line);border-radius:100px;color:var(--ink4);background:var(--pure)}
+        .au-sig{font-family:var(--mono);font-size:.64rem;display:flex;align-items:center;gap:6px;padding:6px 11px;border:1px solid var(--line);border-radius:100px;color:var(--ink3);background:var(--pure)}
         .au-sig .d{width:7px;height:7px;border-radius:50%;background:var(--sand);transition:.2s}
         .au-sig.on{color:var(--ink);border-color:var(--line2)}.au-sig.on .d{background:var(--green-d)}
         .au-stats{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:.66rem;color:var(--ink3);margin-bottom:1rem}
@@ -357,21 +385,37 @@
         .au-btn.primary{background:var(--yellow);border-color:var(--yellow);color:var(--ink);font-weight:600}
         .au-netstats{font-family:var(--mono);font-size:.66rem;color:var(--ink3);margin-bottom:1.3rem}.au-netstats b{color:var(--ink)}
         .au-pn{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:14px;border:1px solid var(--line);border-radius:10px;margin-bottom:1.3rem;background:var(--white)}
-        .au-pn-lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.5px;color:var(--ink4);margin-right:4px}
-        .au-node{font-family:var(--mono);font-size:.64rem;display:flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid var(--line2);border-radius:7px;color:var(--ink2);background:var(--pure)}
+        .au-pn-lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.5px;color:var(--ink3);margin-right:4px}
+        .au-node{font-family:var(--mono);font-size:.64rem;display:flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid var(--line2);border-radius:8px;color:var(--ink2);background:var(--pure)}
         .au-node .d{width:7px;height:7px;border-radius:50%;background:var(--green-d);animation:pulse 2.5s ease-in-out infinite}
         .au-iotable{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:1rem}
-        .au-iocol h4{font-family:var(--mono);font-size:.62rem;letter-spacing:.6px;text-transform:uppercase;color:var(--ink4);margin-bottom:8px}
+        .au-iocol h4{font-family:var(--mono);font-size:.62rem;letter-spacing:.6px;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
         .au-ioline{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.62rem;color:var(--ink2);padding:5px 0;border-bottom:1px solid var(--line)}
         .au-ioline .d{width:8px;height:8px;border-radius:2px;background:var(--sand);flex-shrink:0}
         .au-ioline.on .d{background:var(--green-d)}
-        .au-ioline .addr{color:var(--ink4);min-width:46px}
+        .au-ioline .addr{color:var(--ink3);min-width:46px}
 
-        @media(max-width:1024px){.hero-in{grid-template-columns:1fr;gap:2rem}.svc-grid{grid-template-columns:1fr 1fr}.contact-grid{grid-template-columns:1fr 1fr}.sim-body,.line-body{grid-template-columns:1fr}.pz-wells,.pz-how-body{grid-template-columns:1fr 1fr}.pz-metrics.m4{grid-template-columns:repeat(2,1fr)}.au-iotable{grid-template-columns:1fr}}
-        @media(max-width:768px){
+        /* Foco visible por teclado: cada control usa el color que contrasta con SU fondo.
+           El amarillo sobre .btn-y (o sobre cualquier fondo claro) daba un contraste de 1:1
+           y hacía desaparecer el foco justo en el botón de envío. */
+        .btn:focus-visible,.ej-tab:focus-visible,.au-mode:focus-visible,.au-subtab:focus-visible,.au-btn:focus-visible,.svc-link:focus-visible{outline:2px solid var(--charcoal);outline-offset:3px}
+        .nav-l a:focus-visible,.footer-l a:focus-visible{outline:2px solid var(--charcoal);outline-offset:2px}
+        .skip-link:focus{outline:2px solid var(--charcoal);outline-offset:-5px}
+        /* Sobre fondos oscuros (panel de línea y simulador) el amarillo sí contrasta */
+        .line-btn:focus-visible,.sim-sw:focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
+
+        /* Los 8 enlaces del pie (6 de sección + aviso legal + privacidad) con 18px de separación
+           dejan de caber junto al copyright bastante antes de 768px: la envoltura entra ya a 1024px */
+        @media(max-width:1024px){.hero-in{grid-template-columns:1fr;gap:2rem}.svc-grid{grid-template-columns:1fr 1fr}.contact-grid{grid-template-columns:1fr 1fr}.line-body{grid-template-columns:1fr}.pz-wells,.pz-how-body{grid-template-columns:1fr 1fr}.pz-metrics.m4{grid-template-columns:repeat(2,1fr)}.au-iotable{grid-template-columns:1fr}.footer-l{flex-wrap:wrap;justify-content:center;gap:8px 16px}}
+        /* La nav de escritorio deja de caber por debajo de ~850px (logo 157 + 6 enlaces 536 + "Online" 45 + 64 de padding = 802 de colisión): el burger entra a 840px, justo por encima de esa colisión */
+        @media(max-width:840px){
             .nav-l,.nav-r{display:none}
-            .nav-l.open{display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:rgba(250,250,247,.97);backdrop-filter:blur(24px);padding:12px 2rem 18px;border-bottom:1px solid var(--line);gap:2px}
-            .burger{display:block}
+            .nav-l.open{display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:var(--white);padding:12px 2rem 18px;border-bottom:1px solid var(--line);gap:2px}
+            /* El padding va aquí, en la MISMA consulta en la que el burger se hace visible: si estuviera
+               en la de 768px, entre 769 y 840px el botón se vería con solo 34x34px de área táctil */
+            .burger{display:block;padding:11px}
+        }
+        @media(max-width:768px){
             .hero{padding:5rem 1.5rem 2rem}.hero h1{font-size:1.9rem}
             .section{padding:4.5rem 1.5rem}
             .svc-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
@@ -379,11 +423,41 @@
             .pz-metrics,.pz-wells,.pz-how-body{grid-template-columns:1fr}.pz-chart{height:120px}
             .pz-metrics.m4{grid-template-columns:1fr}
             .au-flow{flex-direction:column}.au-arrow{transform:rotate(90deg)}.au-drv-n{min-width:0;width:100%}
+            .pz-head-t{min-width:0}
             .fm-row{grid-template-columns:1fr}
+            /* Menos padding lateral en la caja del formulario: el widget de Turnstile necesita ~300px de hueco */
+            .cform{padding:1.4rem 1rem}
             .cta-box{padding:3rem 1.5rem}
             .footer-in{flex-direction:column;gap:12px;text-align:center}
+            /* Áreas táctiles de ~44px (WCAG 2.5.5) sin tocar el ancho ni la tipografía */
+            .ej-tab,.au-subtab,.line-btn{padding-top:14px;padding-bottom:14px}
+            .au-mode,.au-btn{padding-top:15px;padding-bottom:15px}
+            .bt-selector button{padding-top:16px;padding-bottom:16px}
+            .cc-v a{display:inline-block;padding:6px 0}
+            .footer-l a{padding:4px 0}
+            .sim-slider::-webkit-slider-thumb{width:26px;height:26px}
+            .sim-slider::-moz-range-thumb{width:26px;height:26px}
         }
-        @media(max-width:480px){.hero-actions{flex-direction:column}.btn{width:100%;justify-content:center}}
+        @media(max-width:480px){
+            .hero-actions{flex-direction:column}.btn{width:100%;justify-content:center}
+            .bt-sliders,.line-kpis{grid-template-columns:1fr}
+            .bt-reads{grid-template-columns:1fr 1fr}
+        }
+        /* Móviles estrechos (360px y menos): se recorta el padding lateral para que el widget de Turnstile quepa sin desbordar */
+        @media(max-width:420px){
+            .section{padding-left:1rem;padding-right:1rem}
+            .hero{padding-left:1rem;padding-right:1rem}
+        }
+
+        /* Movimiento reducido (WCAG 2.2.2): el diseño queda pintado, pero quieto.
+           - scroll-behavior:auto anula el desplazamiento suave, que es el movimiento de mayor
+             superficie de la página (la pantalla entera al pulsar cualquier enlace del menú).
+           - animation-delay negativo: las animaciones 'fu' del hero arrancan con retardo y
+             'fill-mode:both', así que solo con acortar la duración el contenido se quedaba
+             invisible durante el retardo; con el retardo negativo nacen ya terminadas. */
+        @media(prefers-reduced-motion:reduce){
+            *,*::before,*::after{animation-duration:.01ms!important;animation-delay:-1ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0ms!important;scroll-behavior:auto!important}
+        }
     </style>
 
     <!-- Datos estructurados de negocio local (ayuda a Google a mostrarte en búsquedas locales) -->
@@ -392,13 +466,18 @@
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "name": "PlazaSys — Plaza Automated Systems S.L.",
-      "description": "Automatización industrial, IoT, ingeniería mecánica y prototipado de máquinas a medida.",
+      "description": "Automatización industrial, desarrollo de maquinaria, IoT e Industria 4.0, control de producción y software industrial a medida.",
+      "foundingDate": "2025-02",
+      "legalName": "Plaza Automated Systems S.L.",
+      "vatID": "B75935510",
       "url": "https://plazasys.com/",
       "telephone": "+34683355759",
       "image": "https://plazasys.com/og-image.png",
       "areaServed": "ES",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Calle Músico Vert, 22",
+        "postalCode": "46870",
         "addressLocality": "Ontinyent",
         "addressRegion": "Valencia",
         "addressCountry": "ES"
@@ -414,17 +493,21 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
 <nav class="nav"><div class="nav-in">
-    <a href="#inicio"><img src="plazasys-logo.svg" alt="PlazaSys" class="logo-img"></a>
+    <a href="#inicio"><img src="plazasys-logo.svg" alt="PlazaSys" class="logo-img" width="4662" height="1428"></a>
     <ul class="nav-l" id="navL"><li><a href="#inicio" class="active">Inicio</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#ejemplos">Ejemplos</a></li><li><a href="#pruebalo">Pruébalo</a></li><li><a href="#nosotros">Nosotros</a></li><li><a href="#contacto">Contacto</a></li></ul>
     <div class="nav-r"><div class="dot-on"></div>Online</div>
-    <button class="burger" id="burg" aria-label="Menú"><svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button>
+    <button class="burger" id="burg" aria-label="Menú" aria-expanded="false" aria-controls="navL"><svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button>
 </div></nav>
+
+<main id="main" tabindex="-1">
 
 <!-- HERO -->
 <section class="hero" id="inicio"><div class="hero-in">
     <div>
-        <h1>Automatización, ingeniería y <span class="acc">soluciones</span> industriales</h1>
+        <h1><span class="acc">Automatización</span>, ingeniería y soluciones industriales</h1>
         <p class="hero-desc">Resolvemos problemas de producción. Automatizamos procesos, diseñamos soluciones mecánicas y prototipamos las máquinas que tu industria necesita.</p>
         <div class="hero-actions"><a href="#contacto" class="btn btn-f">Contactar →</a><a href="#servicios" class="btn btn-o">Ver servicios</a></div>
     </div>
@@ -432,31 +515,31 @@
         <div class="w-card">
             <div class="w-head"><span class="w-label">Temperatura</span><span class="w-badge" style="background:var(--yellow-s);color:var(--charcoal)">Normal</span></div>
             <div class="w-gauge">
-                <svg class="w-gauge-svg" viewBox="0 0 64 38"><path d="M 5 34 A 28 28 0 0 1 59 34" class="w-gauge-track"/><path d="M 5 34 A 28 28 0 0 1 59 34" class="w-gauge-fill" id="gT" stroke="var(--yellow)" style="stroke-dasharray:84;stroke-dashoffset:84"/></svg>
+                <svg class="w-gauge-svg" viewBox="0 0 64 38" aria-hidden="true"><path d="M 5 34 A 28 28 0 0 1 59 34" class="w-gauge-track"/><path d="M 5 34 A 28 28 0 0 1 59 34" class="w-gauge-fill" id="gT" stroke="var(--yellow)" style="stroke-dasharray:84;stroke-dashoffset:84"/></svg>
                 <div><div class="w-val" id="vT">--<span class="u">°C</span></div><div class="w-status"><div class="d" style="background:var(--yellow)"></div><span style="color:var(--ink3)">Estable</span></div></div>
             </div>
         </div>
         <div class="w-card">
             <div class="w-head"><span class="w-label">RPM Motor</span><span class="w-badge" style="background:var(--yellow-s);color:var(--charcoal)">Activo</span></div>
             <div class="w-gauge">
-                <svg class="w-gauge-svg" viewBox="0 0 64 38"><path d="M 5 34 A 28 28 0 0 1 59 34" class="w-gauge-track"/><path d="M 5 34 A 28 28 0 0 1 59 34" class="w-gauge-fill" id="gR" stroke="var(--charcoal)" style="stroke-dasharray:84;stroke-dashoffset:84"/></svg>
+                <svg class="w-gauge-svg" viewBox="0 0 64 38" aria-hidden="true"><path d="M 5 34 A 28 28 0 0 1 59 34" class="w-gauge-track"/><path d="M 5 34 A 28 28 0 0 1 59 34" class="w-gauge-fill" id="gR" stroke="var(--charcoal)" style="stroke-dasharray:84;stroke-dashoffset:84"/></svg>
                 <div><div class="w-val" id="vR">--<span class="u">rpm</span></div><div class="w-status"><div class="d" style="background:var(--charcoal)"></div><span style="color:var(--ink3)">Nominal</span></div></div>
             </div>
         </div>
         <div class="w-card">
             <div class="w-head"><span class="w-label">Temp. 1h</span><span class="w-spark-val" id="spTV">42°C</span></div>
-            <svg class="w-spark-svg" viewBox="0 0 200 40" preserveAspectRatio="none"><path class="w-spark-area" id="spTA" fill="var(--yellow)"/><path class="w-spark-line" id="spTL" stroke="var(--yellow-h)"/></svg>
+            <svg class="w-spark-svg" viewBox="0 0 200 40" preserveAspectRatio="none" aria-hidden="true"><path class="w-spark-area" id="spTA" fill="var(--yellow)"/><path class="w-spark-line" id="spTL" stroke="var(--yellow-h)" d="M0,20L200,20"/></svg>
         </div>
         <div class="w-card">
             <div class="w-head"><span class="w-label">RPM 1h</span><span class="w-spark-val" id="spRV">1450</span></div>
-            <svg class="w-spark-svg" viewBox="0 0 200 40" preserveAspectRatio="none"><path class="w-spark-area" id="spRA" fill="var(--charcoal)"/><path class="w-spark-line" id="spRL" stroke="var(--charcoal)"/></svg>
+            <svg class="w-spark-svg" viewBox="0 0 200 40" preserveAspectRatio="none" aria-hidden="true"><path class="w-spark-area" id="spRA" fill="var(--charcoal)"/><path class="w-spark-line" id="spRL" stroke="var(--charcoal)" d="M0,20L200,20"/></svg>
         </div>
         <div class="w-terminal">
             <div class="w-term-bar">
                 <div class="w-term-dot" style="background:#FF6159"></div><div class="w-term-dot" style="background:#FFBF2E"></div><div class="w-term-dot" style="background:#28CA42"></div>
                 <span class="w-term-title">PlazaSys Monitor</span>
             </div>
-            <div class="w-term-body" id="term"></div>
+            <div class="w-term-body" id="term"><div class="t-line"><span class="t-y">$</span> <span class="t-w">plazasys status</span></div></div>
         </div>
     </div>
 </div></section>
@@ -465,13 +548,19 @@
 
 <!-- SERVICIOS -->
 <section class="section" id="servicios">
-    <div class="s-top reveal"><div class="s-label">Servicios</div><h2 class="s-title">Lo que hacemos</h2></div>
+    <div class="s-top reveal"><div class="s-label">Servicios</div><h2 class="s-title">Lo que hacemos</h2><p class="s-desc">Automatizamos, desarrollamos y mantenemos la maquinaria de plantas industriales, y conectamos la producción con los sistemas de la empresa. Reformamos la máquina que ya tienes y fabricamos la que no existe; y hacemos que ambas den datos útiles.</p></div>
     <div class="svc-grid">
-        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon">⚡</div><div class="svc-name">Automatización industrial</div><p class="svc-text">Programamos PLCs, diseñamos cuadros eléctricos y ponemos en marcha líneas de producción completas.</p><a href="#ejemplos" data-tab="ejAuto" class="svc-link">Ver ejemplo en vivo →</a></div>
-        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon">📡</div><div class="svc-name">IoT & monitorización</div><p class="svc-text">Conectamos tus equipos a la nube para que veas qué pasa en planta desde cualquier sitio, en tiempo real.</p><a href="#ejemplos" data-tab="ejAgua" class="svc-link">Ver ejemplo en vivo →</a></div>
-        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon">🔩</div><div class="svc-name">Ingeniería mecánica</div><p class="svc-text">Analizamos y resolvemos problemas mecánicos de producción. Si algo no funciona, encontramos cómo arreglarlo.</p></div>
-        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon">🛠️</div><div class="svc-name">Prototipado de máquinas</div><p class="svc-text">Si la máquina que necesitas no existe, la diseñamos y la fabricamos a medida para tu proceso.</p></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">⚡</div><h3 class="svc-name">Automatización industrial</h3><p class="svc-text">Programamos PLC y HMI, diseñamos y montamos el cuadro eléctrico y ponemos la máquina en marcha. Desde un lazo de temperatura hasta la gestión de recetas de una línea completa.</p><a href="#ejemplos" data-tab="ejAuto" class="svc-link">Ver ejemplo en vivo →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">🏭</div><h3 class="svc-name">Desarrollo de maquinaria</h3><p class="svc-text">Diseñamos y fabricamos máquinas y elementos a medida para tu proceso: desbobinadoras, empaquetadoras, cintas transportadoras, útiles, soportes y protecciones.</p><a href="#contacto" class="svc-link">Hablemos de tu caso →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">🔧</div><h3 class="svc-name">Reforma y retrofit de maquinaria</h3><p class="svc-text">Modernizamos máquinas en producción —onduladoras, rames, cortadoras, enrolladoras— renovando control y mecánica para devolverlas a la línea con años de vida por delante.</p><a href="#contacto" class="svc-link">Hablemos de tu caso →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">📡</div><h3 class="svc-name">IoT e Industria 4.0</h3><p class="svc-text">Sensorizamos equipos e instalaciones y llevamos el dato a la nube por redes IoT de bajo consumo: agua, energía y estado de máquina, con paneles accesibles desde cualquier sitio y avisos automáticos.</p><a href="#ejemplos" data-tab="ejAgua" class="svc-link">Ver ejemplo en vivo →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">📊</div><h3 class="svc-name">Control de producción</h3><p class="svc-text">Sistemas de control de producción que registran lo que de verdad pasa en planta: unidades, paradas, rechazos, tiempos y rendimiento por máquina y turno, conectando las máquinas por OPC UA, MQTT y buses industriales.</p><a href="#pruebalo" class="svc-link">Ver ejemplo en vivo →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">💻</div><h3 class="svc-name">Software industrial a medida</h3><p class="svc-text">Desarrollamos las aplicaciones que faltan entre la máquina y la oficina: paneles de planta, partes de trabajo digitales, trazabilidad, informes e integración con tu ERP.</p><a href="#contacto" class="svc-link">Hablemos de tu caso →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">🛡️</div><h3 class="svc-name">Seguridad industrial</h3><p class="svc-text">Barreras y relés de seguridad, protecciones y adecuación de máquina, con su informe técnico.</p><a href="#contacto" class="svc-link">Hablemos de tu caso →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">🚨</div><h3 class="svc-name">Averías y asistencia técnica</h3><p class="svc-text">Atendemos paradas de producción con diagnóstico en planta o conexión remota segura al equipo, para resolver sin esperar al desplazamiento.</p><a href="#contacto" class="svc-link">Hablemos de tu caso →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">🏗️</div><h3 class="svc-name">Instalación y traslado de líneas</h3><p class="svc-text">Desinstalación, traslado, montaje y nueva puesta en marcha de líneas completas de producción.</p><a href="#contacto" class="svc-link">Hablemos de tu caso →</a></div>
     </div>
+    <div class="sect-note reveal"><span class="sect-note-l">Sectores</span> Textil y tejido no tejido · Limpieza e higiene · Artes gráficas · Agua · Energía</div>
     <div style="text-align:center;margin-top:2.5rem"><a href="#ejemplos" class="btn btn-o">Ver ejemplos en vivo ↓</a></div>
 </section>
 
@@ -492,11 +581,11 @@
     <div class="ej-panel active" id="ejAgua" role="tabpanel" aria-labelledby="tabAgua">
         <div class="pozos">
             <div class="pz-head">
-                <img src="plazasys-logo.svg" alt="PlazaSys">
+                <img src="plazasys-logo.svg" alt="PlazaSys" width="4662" height="1428">
                 <div class="pz-div"></div>
                 <div class="pz-head-t">
                     <h3>Red de pozos · monitorización en vivo</h3>
-                    <p>Telelectura de contadores · LoRaWAN + Cat-M / NB-IoT → CHJ</p>
+                    <p>Telelectura de contadores · LoRaWAN + Cat-M / NB-IoT → <abbr title="Confederación Hidrográfica del Júcar">CHJ</abbr></p>
                 </div>
                 <div class="pz-on"><span class="d"></span>4/4 EN LÍNEA</div>
             </div>
@@ -511,7 +600,7 @@
             <div class="pz-chart" id="pzChart" role="img" aria-label="Gráfico de consumo de la red por hora durante las últimas 24 horas"></div>
             <div class="pz-axis"><span>0h</span><span>6h</span><span>12h</span><span>18h</span><span>23h</span></div>
             <div class="pz-arch">
-                <span>Pozo · contador</span><span class="ar">→</span><span>MQTT / TLS</span><span class="ar">→</span><span>Broker · VPS</span><span class="ar">→</span><span>API CHJ</span>
+                <span>Pozo · contador</span><span class="ar" aria-hidden="true">→</span><span>MQTT / TLS</span><span class="ar" aria-hidden="true">→</span><span>Broker · VPS</span><span class="ar" aria-hidden="true">→</span><span>API CHJ</span>
             </div>
             <details class="pz-how">
                 <summary>Cómo funciona</summary>
@@ -530,7 +619,7 @@
     <div class="ej-panel" id="ejEnergia" role="tabpanel" aria-labelledby="tabEnergia">
         <div class="pozos">
             <div class="pz-head">
-                <img src="plazasys-logo.svg" alt="PlazaSys">
+                <img src="plazasys-logo.svg" alt="PlazaSys" width="4662" height="1428">
                 <div class="pz-div"></div>
                 <div class="pz-head-t">
                     <h3>Monitorización de energía · planta en vivo</h3>
@@ -557,7 +646,7 @@
     <div class="ej-panel" id="ejSensores" role="tabpanel" aria-labelledby="tabSensores">
         <div class="pozos">
             <div class="pz-head">
-                <img src="plazasys-logo.svg" alt="PlazaSys">
+                <img src="plazasys-logo.svg" alt="PlazaSys" width="4662" height="1428">
                 <div class="pz-div"></div>
                 <div class="pz-head-t">
                     <h3>Sensores · mantenimiento predictivo</h3>
@@ -582,7 +671,7 @@
     <div class="ej-panel" id="ejAuto" role="tabpanel" aria-labelledby="tabAuto">
         <div class="pozos">
             <div class="pz-head">
-                <img src="plazasys-logo.svg" alt="PlazaSys">
+                <img src="plazasys-logo.svg" alt="PlazaSys" width="4662" height="1428">
                 <div class="pz-div"></div>
                 <div class="pz-head-t">
                     <h3>Célula automatizada · panel HMI</h3>
@@ -665,12 +754,12 @@
 
     <!-- C · LÍNEA / OEE -->
     <div class="sim reveal">
-        <div class="sim-bar"><div class="sim-dot" style="background:#FB7185"></div><div class="sim-dot" style="background:#FBBF24"></div><div class="sim-dot" style="background:#4ADE80"></div><span class="sim-bar-t">Simulador de línea · OEE en vivo</span></div>
+        <div class="sim-bar"><div class="sim-dot" style="background:#FB7185"></div><div class="sim-dot" style="background:#FBBF24"></div><div class="sim-dot" style="background:#4ADE80"></div><h3 class="sim-bar-t">Simulador de línea · OEE en vivo</h3></div>
         <div class="line-body">
             <div class="line-left">
                 <div class="line-flow2"><div class="line-belt2" id="lnBelt"><span class="line-belt"></span></div><div class="line-io"><span>Entran <b id="lnIn">—</b> u/h</span><span class="lf-ar">→</span><span class="lf-ok">Salen OK <b id="lnOut">—</b> u/h</span><span class="lf-ar">↘</span><span class="lf-rej">Rechazo <b id="lnRej">—</b> u/h</span></div></div>
                 <div><div class="sim-cl">Velocidad de línea</div><input type="range" class="sim-slider" id="lnSp" min="200" max="2000" value="1200" step="50"><div class="sim-vd"><span id="lnSpV">1.200</span> <span class="u">u/h</span></div></div>
-                <div><div class="sim-cl">Tasa de rechazo</div><input type="range" class="sim-slider" id="lnRj" min="0" max="10" value="3.2" step="0.1"><div class="sim-vd"><span id="lnRjV">3.2</span> <span class="u">%</span></div></div>
+                <div><div class="sim-cl">Tasa de rechazo</div><input type="range" class="sim-slider" id="lnRj" min="0" max="10" value="3.2" step="0.1"><div class="sim-vd"><span id="lnRjV">3,2</span> <span class="u">%</span></div></div>
                 <div class="line-btns"><button class="line-btn stop" id="lnStop">⏸ PARO EMERGENCIA</button><button class="line-btn" id="lnReset">↻ RESET</button><button class="line-btn" id="lnTurno">⇄ TURNO: <span id="lnTurnoL">Mañana</span></button></div>
             </div>
             <div class="line-kpis">
@@ -685,7 +774,7 @@
 
     <!-- BOTONERA · panel de mando (rama / stenter) -->
     <div class="sim reveal">
-        <div class="sim-bar"><div class="sim-dot" style="background:#FB7185"></div><div class="sim-dot" style="background:#FBBF24"></div><div class="sim-dot" style="background:#4ADE80"></div><span class="sim-bar-t">Panel de mando · Rama (stenter)</span></div>
+        <div class="sim-bar"><div class="sim-dot" style="background:#FB7185"></div><div class="sim-dot" style="background:#FBBF24"></div><div class="sim-dot" style="background:#4ADE80"></div><h3 class="sim-bar-t">Panel de mando · Rama (stenter)</h3></div>
         <div class="bt-body">
             <div class="bt-top">
                 <div>
@@ -731,10 +820,10 @@
 
 <!-- NOSOTROS -->
 <section class="section" id="nosotros">
-    <div class="s-top reveal"><div class="s-label">Nosotros</div><h2 class="s-title">Plaza Automated Systems</h2></div>
+    <div class="s-top reveal"><div class="s-label">Nosotros</div><h2 class="s-title">Plaza Automated Systems</h2><p class="s-desc">PlazaSys nace en 2025, respaldada por 24 años de experiencia en automatización y maquinaria industrial.</p></div>
     <div class="about-grid">
-        <div class="about-card reveal"><h3>Quiénes somos</h3><p>Somos un equipo de ingenieros especializados en automatización, IoT y diseño mecánico industrial. Nos gusta resolver problemas complejos con soluciones prácticas que funcionen desde el primer día.</p></div>
-        <div class="about-card reveal"><h3>Cómo trabajamos</h3><p>Analizamos tu proceso, identificamos el problema y proponemos la solución más eficiente. Desde el diseño hasta la puesta en marcha, nos encargamos de todo.</p></div>
+        <div class="about-card reveal"><h3>Quiénes somos</h3><p>Un equipo especializado en automatización, desarrollo de maquinaria, IoT e Industria 4.0, control de producción y software industrial a medida. Somos cuatro personas y trabajamos con una red de profesionales especializados y talleres de fabricación mecánica, lo que nos permite asumir proyectos completos sin perder el trato directo.</p></div>
+        <div class="about-card reveal"><h3>Cómo trabajamos</h3><p>Analizamos tu proceso, identificamos el problema y proponemos la solución más eficiente. Del diseño a la puesta en marcha, nos encargamos de todo. Trabajamos en la Comunidad Valenciana, Cataluña y Madrid.</p></div>
     </div>
 </section>
 
@@ -742,10 +831,10 @@
 
 <!-- CONTACTO -->
 <section class="section" id="contacto">
-    <div class="s-top reveal"><div class="s-label">Contacto</div><h2 class="s-title">Hablemos</h2><p class="s-desc">¿Tienes un problema en planta o un proyecto en mente? Cuéntanoslo.</p></div>
+    <div class="s-top reveal"><div class="s-label">Contacto</div><h2 class="s-title">Hablemos</h2><p class="s-desc">¿Tienes un problema en planta o un proyecto en mente? Escríbenos.</p></div>
     <div class="contact-grid">
         <div class="cc reveal"><div class="cc-l">TELÉFONO</div><div class="cc-v"><a href="tel:+34683355759">+34 683 355 759</a></div><div class="cc-n">L–V, 8:00 – 18:00</div></div>
-        <div class="cc reveal"><div class="cc-l">EMAIL</div><div class="cc-v"><a href="/cdn-cgi/l/email-protection#fa93949c95ba8a969b809b898389d4999597" id="ccEmail"><span class="__cf_email__" data-cfemail="c3aaada5ac83b3afa2b9a2b0bab0eda0acae">[email&#160;protected]</span></a></div><div class="cc-n">Respondemos en &lt;24h</div></div>
+        <div class="cc reveal"><div class="cc-l">EMAIL</div><div class="cc-v"><a href="/cdn-cgi/l/email-protection#fa93949c95ba8a969b809b898389d4999597" id="ccEmail"><span class="__cf_email__" data-cfemail="c3aaada5ac83b3afa2b9a2b0bab0eda0acae">[email&#160;protected]</span></a></div><div class="cc-n">Respondemos en &lt;24 h</div></div>
         <div class="cc reveal"><div class="cc-l">UBICACIÓN</div><div class="cc-v">Ontinyent, Valencia</div><div class="cc-n">España</div></div>
     </div>
     <form class="cform reveal" id="cForm" novalidate>
@@ -755,7 +844,12 @@
         </div>
         <div class="fm-field"><label class="fm-l" for="fmEmail">Email *</label><input class="fm-in" id="fmEmail" name="email" type="email" required autocomplete="email"></div>
         <div class="fm-field"><label class="fm-l" for="fmMsg">Mensaje *</label><textarea class="fm-in" id="fmMsg" name="mensaje" rows="5" required></textarea></div>
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAAD0izLhC4k6RQMma" data-action="turnstile-spin-v1"></div>
+        <div class="fm-field fm-consent">
+            <label class="fm-check" for="fmRgpd"><input type="checkbox" id="fmRgpd" name="rgpd" required><span>He leído y acepto la <a href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y el tratamiento de mis datos para responder a esta consulta. *</span></label>
+        </div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAD0izLhC4k6RQMma" data-action="turnstile-spin-v1" data-size="flexible" data-callback="tsOk" data-error-callback="tsError" data-expired-callback="tsExpirado" data-timeout-callback="tsExpirado" data-unsupported-callback="tsError"></div>
+        <!-- Vía de escape: el teléfono va PRIMERO porque los enlaces tel: no los toca la ofuscación de email de Cloudflare (quien ve este aviso suele tener un bloqueador que también tumba el script de desofuscación) -->
+        <p class="fm-alt" id="fmAlt" role="status" hidden>No se ha podido cargar la verificación anti-robots (puede deberse a un bloqueador de anuncios). Llámanos al <a href="tel:+34683355759">+34 683 355 759</a> (L–V, 8:00–18:00) o escríbenos a <a href="mailto:info@plazasys.com">info@plazasys.com</a>.</p>
         <div class="fm-actions">
             <button type="submit" class="btn btn-y">Enviar mensaje →</button>
             <span class="fm-status" id="fmStatus" role="status"></span>
@@ -770,41 +864,61 @@
     <a href="#contacto" class="btn btn-f" id="ctaPresu">Solicitar presupuesto →</a>
 </div></div>
 
+</main>
+
 <footer class="footer"><div class="footer-in">
     <span class="footer-c">© 2026 PlazaSys — Plaza Automated Systems S.L. · Ontinyent, Valencia</span>
-    <div class="footer-l"><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#ejemplos">Ejemplos</a><a href="#pruebalo">Pruébalo</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></div>
+    <div class="footer-l"><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#ejemplos">Ejemplos</a><a href="#pruebalo">Pruébalo</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a><a href="/legal.html">Aviso legal</a><a href="/privacidad.html">Privacidad</a></div>
 </div></footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-document.getElementById('burg').addEventListener('click',()=>document.getElementById('navL').classList.toggle('open'));
-document.querySelectorAll('.nav-l a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navL').classList.remove('open')));
+/* Preferencia del sistema: movimiento reducido (WCAG 2.2.2) */
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+const burg=document.getElementById('burg'),navL=document.getElementById('navL');
+burg.addEventListener('click',()=>burg.setAttribute('aria-expanded',navL.classList.toggle('open')));
+document.querySelectorAll('.nav-l a').forEach(a=>a.addEventListener('click',()=>{navL.classList.remove('open');burg.setAttribute('aria-expanded','false')}));
 const secs=document.querySelectorAll('section[id]'),navA=document.querySelectorAll('.nav-l a');
-window.addEventListener('scroll',()=>{const y=window.scrollY+120;secs.forEach(s=>{if(y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight)navA.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+s.id))})},{passive:true});
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.06});
+let scrollTick=false;
+window.addEventListener('scroll',()=>{if(scrollTick)return;scrollTick=true;requestAnimationFrame(()=>{scrollTick=false;const y=window.scrollY+120;secs.forEach(s=>{if(y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight)navA.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+s.id))})})},{passive:true});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.06});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
 /* Gauges */
 const ARC=84;
 function sg(id,p,d){setTimeout(()=>{document.getElementById(id).style.strokeDashoffset=ARC*(1-p/100)},d)}
 function sv(el,e,s,d,dur){setTimeout(()=>{const t=performance.now();(function f(n){const p=Math.min((n-t)/dur,1);el.innerHTML=Math.round((1-Math.pow(1-p,3))*e)+'<span class="u">'+s+'</span>';if(p<1)requestAnimationFrame(f)})(t)},d)}
-setTimeout(()=>{sg('gT',58,0);sg('gR',72,200);sv(document.getElementById('vT'),42,'°C',0,1600);sv(document.getElementById('vR'),1450,' rpm',200,1800)},800);
-setInterval(()=>{
-    const t=42+Math.round((Math.random()-.5)*4),r=1450+Math.round((Math.random()-.5)*40);
-    document.getElementById('vT').innerHTML=t+'<span class="u">°C</span>';
-    document.getElementById('vR').innerHTML=r+'<span class="u"> rpm</span>';
-    document.getElementById('gT').style.strokeDashoffset=ARC*(1-t/72);
-    document.getElementById('gR').style.strokeDashoffset=ARC*(1-r/2000);
-},3000);
+if(reduce){
+    /* Movimiento reducido: mismo diseño, pintado de una vez y sin refresco */
+    sg('gT',58,0);sg('gR',72,0);
+    document.getElementById('vT').innerHTML='42<span class="u">°C</span>';
+    document.getElementById('vR').innerHTML='1450<span class="u"> rpm</span>';
+}else{
+    setTimeout(()=>{sg('gT',58,0);sg('gR',72,200);sv(document.getElementById('vT'),42,'°C',0,1600);sv(document.getElementById('vR'),1450,' rpm',200,1800)},800);
+    setInterval(()=>{
+        if(document.hidden)return;
+        const t=42+Math.round((Math.random()-.5)*4),r=1450+Math.round((Math.random()-.5)*40);
+        document.getElementById('vT').innerHTML=t+'<span class="u">°C</span>';
+        document.getElementById('vR').innerHTML=r+'<span class="u"> rpm</span>';
+        document.getElementById('gT').style.strokeDashoffset=ARC*(1-t/72);
+        document.getElementById('gR').style.strokeDashoffset=ARC*(1-r/2000);
+    },3000);
+}
 
 /* Sparklines */
 function gd(b,v,n){const d=[];for(let i=0;i<n;i++)d.push(b+(Math.random()-.5)*v*2);return d}
 function ds(li,ai,data){const w=200,h=40,n=data.length,mn=Math.min(...data),mx=Math.max(...data),rg=mx-mn||1;let p=data.map((v,i)=>`${(i/(n-1))*w},${h-((v-mn)/rg)*h*.82-3}`);document.getElementById(li).setAttribute('d','M'+p.join('L'));document.getElementById(ai).setAttribute('d','M'+p.join('L')+`L${w},${h}L0,${h}Z`)}
 let tD=gd(42,3,30),rD=gd(1450,30,30);ds('spTL','spTA',tD);ds('spRL','spRA',rD);
-setInterval(()=>{tD.shift();tD.push(42+(Math.random()-.5)*6);rD.shift();rD.push(1450+(Math.random()-.5)*60);ds('spTL','spTA',tD);ds('spRL','spRA',rD);document.getElementById('spTV').textContent=Math.round(tD[tD.length-1])+'°C';document.getElementById('spRV').textContent=Math.round(rD[rD.length-1])},2000);
+if(!reduce)setInterval(()=>{if(document.hidden)return;tD.shift();tD.push(42+(Math.random()-.5)*6);rD.shift();rD.push(1450+(Math.random()-.5)*60);ds('spTL','spTA',tD);ds('spRL','spRA',rD);document.getElementById('spTV').textContent=Math.round(tD[tD.length-1])+'°C';document.getElementById('spRV').textContent=Math.round(rD[rD.length-1])},2000);
 
 /* Terminal */
 const TL=[{t:'<span class="t-y">$</span> <span class="t-w">plazasys status</span>',d:500},{t:'<span class="t-d">─────────────────────────</span>',d:180},{t:'<span class="t-g">✓</span> Sistemas ......... <span class="t-g">online</span>',d:280},{t:'<span class="t-g">✓</span> MQTT broker ...... <span class="t-g">conectado</span>',d:280},{t:'<span class="t-g">✓</span> Sensores ......... <span class="t-g">2 activos</span>',d:280},{t:'<span class="t-b">→</span> Última lectura: hace 2s',d:280},{t:'',d:200},{t:'<span class="t-y">$</span> <span class="t-d">_</span><span class="cur"></span>',d:0}];
-let dt=1200;const tb=document.getElementById('term');TL.forEach(l=>{setTimeout(()=>{const d=document.createElement('div');d.className='t-line';d.innerHTML=l.t;tb.appendChild(d)},dt);dt+=l.d});
+const tb=document.getElementById('term');
+function termLine(l){const d=document.createElement('div');d.className='t-line';d.innerHTML=l.t;tb.appendChild(d)}
+/* La primera línea ya viene pintada en el HTML (evita el flash del terminal vacío);
+   aquí se salta, pero su retardo se sigue contando para no alterar el ritmo original. */
+if(reduce)TL.slice(1).forEach(termLine);
+else{let dt=1200;TL.forEach((l,i)=>{if(i)setTimeout(()=>termLine(l),dt);dt+=l.d})}
 
 
 /* ===== EJEMPLOS · pestañas + enlaces desde tarjetas de servicio ===== */
@@ -865,7 +979,9 @@ document.querySelectorAll('[role="tablist"]').forEach(tl=>tl.addEventListener('k
         horas=horas.map(v=>Math.max(8,Math.round(v*(1+(Math.random()-.5)*0.05))));
         render();
     }
-    render();setInterval(cargarDatos,4000);
+    const panel=el('enLines').closest('.ej-panel');
+    const activo=()=>!document.hidden&&(!panel||panel.classList.contains('active'));
+    render();if(!reduce)setInterval(()=>{if(!activo())return;cargarDatos()},4000);
 })();
 
 /* ===== Sensores · mantenimiento predictivo (datos de demostración) ===== */
@@ -908,7 +1024,9 @@ document.querySelectorAll('[role="tablist"]').forEach(tl=>tl.addEventListener('k
         }});
         prev=now;
     }
-    pintar();setInterval(cargarDatos,3500);
+    const panel=el('seCards').closest('.ej-panel');
+    const activo=()=>!document.hidden&&(!panel||panel.classList.contains('active'));
+    pintar();if(!reduce)setInterval(()=>{if(!activo())return;cargarDatos()},3500);
 })();
 
 /* ===== Automatización · célula HMI + autómata (datos de demostración) ===== */
@@ -923,7 +1041,7 @@ document.querySelectorAll('[role="tablist"]').forEach(tl=>tl.addEventListener('k
     const señales=['S1','S2','FC1','FC2','Marcha','Seta'];
     let modo='auto',running=true,activa=0,piezas=1284,alarma=false;
     const f1=v=>v.toFixed(1).replace('.',',');
-    el('auFlow').innerHTML=estaciones.map((n,i)=>(i>0?'<span class="au-arrow">→</span>':'')+'<div class="au-st" id="auSt'+i+'"><span class="au-st-n">'+n+'</span><span class="au-st-s" id="auSt'+i+'s">en espera</span></div>').join('');
+    el('auFlow').innerHTML=estaciones.map((n,i)=>(i>0?'<span class="au-arrow" aria-hidden="true">→</span>':'')+'<div class="au-st" id="auSt'+i+'"><span class="au-st-n">'+n+'</span><span class="au-st-s" id="auSt'+i+'s">en espera</span></div>').join('');
     function pintarDrives(){
         el('auDrives').innerHTML=ejes.map((e,i)=>{
             const al=alarma&&i===1,on=running&&modo==='auto'&&!al;
@@ -953,7 +1071,9 @@ document.querySelectorAll('[role="tablist"]').forEach(tl=>tl.addEventListener('k
     el('auAlarmBtn').addEventListener('click',()=>{alarma=true;running=false;render()});
     el('auReset').addEventListener('click',()=>{alarma=false;render()});
     document.querySelectorAll('.au-subtab').forEach(s=>s.addEventListener('click',()=>{document.querySelectorAll('.au-subtab').forEach(x=>{const on=x===s;x.classList.toggle('active',on);x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1});document.querySelectorAll('.au-subpanel').forEach(p=>p.classList.toggle('active',p.id===s.dataset.sub))}));
-    setInterval(()=>{if(running&&modo==='auto'&&!alarma){activa=(activa+1)%4;if(activa===0)piezas++}render()},1200);
+    const panel=el('auFlow').closest('.ej-panel');
+    const activo=()=>!document.hidden&&(!panel||panel.classList.contains('active'));
+    if(!reduce)setInterval(()=>{if(!activo())return;if(running&&modo==='auto'&&!alarma){activa=(activa+1)%4;if(activa===0)piezas++}render()},1200);
     render();
 })();
 
@@ -961,16 +1081,20 @@ document.querySelectorAll('[role="tablist"]').forEach(tl=>tl.addEventListener('k
 (function(){
     const el=id=>document.getElementById(id),fmt=n=>Math.round(n).toLocaleString('es-ES');
     const sp=el('lnSp'),rj=el('lnRj'),NOM=2000,belt=el('lnBelt');
+    if(!sp||!rj)return;
     const turnos=['Mañana','Tarde','Noche'];let ti=0,running=true,paradas=0,ok=0;
     function setBelt(){const on=running&&+sp.value>0;belt.classList.toggle('run',on);const b=belt.querySelector('.line-belt');if(b)b.style.animationDuration=Math.max(.3,1.6-(+sp.value/NOM)*1.3)+'s'}
     function calc(){const v=+sp.value,rch=+rj.value,disp=Math.max(40,100-paradas*6),rend=Math.min(100,v/NOM*100),cal=100-rch,f=running?1:0;return{oee:disp*rend*cal/10000,good:v*(cal/100)*f,rej:v*(rch/100)*f,inn:v*f}}
     function render(){const c=calc();el('lnOee').textContent=c.oee.toFixed(1)+'%';el('lnUh').textContent=fmt(c.good);el('lnOk').textContent=fmt(ok);el('lnPar').textContent=paradas;el('lnIn').textContent=fmt(c.inn);el('lnOut').textContent=fmt(c.good);el('lnRej').textContent=fmt(c.rej)}
     sp.addEventListener('input',()=>{el('lnSpV').textContent=(+sp.value).toLocaleString('es-ES');setBelt();render()});
-    rj.addEventListener('input',()=>{el('lnRjV').textContent=(+rj.value).toFixed(1);render()});
+    rj.addEventListener('input',()=>{el('lnRjV').textContent=(+rj.value).toFixed(1).replace('.',',');render()});
     el('lnStop').addEventListener('click',()=>{running=!running;el('lnStop').classList.toggle('active',!running);el('lnStop').textContent=running?'⏸ PARO EMERGENCIA':'▶ REANUDAR';if(!running)paradas++;setBelt();render()});
     el('lnReset').addEventListener('click',()=>{ok=0;paradas=0;render()});
     el('lnTurno').addEventListener('click',()=>{ti=(ti+1)%3;el('lnTurnoL').textContent=turnos[ti];ok=0;render()});
-    setInterval(()=>{if(running)ok+=calc().good/60;render()},1000);
+    if(!reduce)setInterval(()=>{if(document.hidden)return;if(running)ok+=calc().good/60;render()},1000);
+    /* Movimiento reducido: el contador no acumula, así que sembramos un valor coherente
+       con las unidades/hora (≈36 min de turno) en vez de mostrar 0 piezas OK. */
+    else ok=calc().good*0.6;
     setBelt();render();
 })();
 
@@ -1025,21 +1149,27 @@ document.querySelectorAll('[role="tablist"]').forEach(tl=>tl.addEventListener('k
         horas=horas.map(v=>Math.max(2,+(v*(1+(Math.random()-.5)*0.06)).toFixed(1)));
         render();
     }
+    const panel=el('pzWells').closest('.ej-panel');
+    const activo=()=>!document.hidden&&(!panel||panel.classList.contains('active'));
     render();
-    setInterval(cargarDatos,60000);   // refresco suave cada ~60 s
+    if(!reduce)setInterval(()=>{if(!activo())return;cargarDatos()},60000);   // refresco suave cada ~60 s
 })();
 
 /* Tarjeta de email → enfoca el formulario en vez de abrir la app de correo */
 document.getElementById('ccEmail').addEventListener('click',e=>{
     e.preventDefault();
-    document.getElementById('cForm').scrollIntoView({behavior:'smooth',block:'center'});
+    /* Con movimiento reducido el salto es instantáneo: el CSS no puede desactivar un
+       comportamiento pedido por JavaScript, hay que decidirlo aquí */
+    document.getElementById('cForm').scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
     setTimeout(()=>{const n=document.getElementById('fmNombre');if(n)n.focus({preventScroll:true})},700);
 });
 
 /* CTA "Solicitar presupuesto" → lleva al formulario con el mensaje preparado */
 document.getElementById('ctaPresu').addEventListener('click',()=>{
     const m=document.getElementById('fmMsg');
-    if(m&&!m.value)m.value='Hola, me gustaría solicitar un presupuesto para ';
+    /* Rellenar por código no dispara 'input', que es lo único que quita la marca de error:
+       hay que retirarla a mano o queda un borde rojo sobre un campo ya relleno */
+    if(m){if(!m.value)m.value='Hola, me gustaría solicitar un presupuesto para ';m.classList.remove('err')}
     setTimeout(()=>{const n=document.getElementById('fmNombre');if(n)n.focus({preventScroll:true})},700);
 });
 
@@ -1047,22 +1177,91 @@ document.getElementById('ctaPresu').addEventListener('click',()=>{
 (function(){
     const form=document.getElementById('cForm');if(!form)return;
     const WORKER_URL='https://plazasys-contacto.juanlu.workers.dev';
+    const TEL='+34 683 355 759';
+    const TIMEOUT_MS=15000;
     const st=document.getElementById('fmStatus');
+    const btn=form.querySelector('button[type=submit]');
+    const btnTxt=btn?btn.textContent:'';
+    const alt=document.getElementById('fmAlt');
+    const tsBox=form.querySelector('.cf-turnstile');
     function msg(t,c){st.textContent=t;st.className='fm-status'+(c?' '+c:'')}
+
+    /* ---- Estado REAL de Turnstile: lo dicen sus propios callbacks, no lo deducimos ----
+       Antes bastaba con que existiera window.turnstile, así que un widget que cargaba el
+       script pero fallaba al pintar (sitekey no autorizada, error 300xxx, iframe bloqueado)
+       dejaba al usuario atrapado sin aviso y sin token posible. */
+    let tsToken='';                    // token entregado por el widget
+    let tsErr=!!window.__tsFailed;     // fallo notificado (script caído o error-callback)
+    let tsVivo=false;                  // el widget ha llegado a dibujarse
+    let tsGracia=false;                // agotado el margen de carga
+    const tsCaido=()=>tsErr||(tsGracia&&!tsVivo);
+    function pintarAlt(){if(alt)alt.hidden=!tsCaido()}
+    function resetTs(){tsToken='';if(window.turnstile&&window.turnstile.reset){try{window.turnstile.reset()}catch(e){}}}
+    window.tsOk=function(t){tsToken=t||'';tsErr=false;tsVivo=true;pintarAlt()};
+    window.tsError=function(){tsToken='';tsErr=true;pintarAlt()};
+    window.tsExpirado=function(){tsToken='';pintarAlt()};
+    /* Respaldo para el caso en que ningún callback llega a dispararse: comprueba si el
+       widget se ha dibujado de verdad. Retira el aviso también si Turnstile aparece tarde. */
+    let tsTicks=0;
+    const tsSonda=setInterval(function(){
+        const f=tsBox?tsBox.querySelector('iframe'):null;
+        if(f&&(f.offsetHeight>20||tsBox.offsetHeight>20))tsVivo=true;
+        if(++tsTicks>=4)tsGracia=true;                        // ~8 s de margen de carga
+        pintarAlt();
+        if((tsVivo&&tsGracia)||tsTicks>=60)clearInterval(tsSonda);
+    },2000);
+    pintarAlt();
+
+    /* Timeout duro del envío: sin él, un Worker dormido o una red que traga la petición
+       dejan la promesa sin resolver, el finally sin ejecutar y el botón bloqueado para siempre. */
+    function crearSenal(){
+        try{
+            if(typeof AbortSignal!=='undefined'&&AbortSignal.timeout)return{signal:AbortSignal.timeout(TIMEOUT_MS),fin:function(){}};
+            const c=new AbortController(),t=setTimeout(function(){c.abort()},TIMEOUT_MS);
+            return{signal:c.signal,fin:function(){clearTimeout(t)}};   // navegadores sin AbortSignal.timeout
+        }catch(e){return{signal:undefined,fin:function(){}}}           // pase lo que pase, nunca revienta antes del try
+    }
+
+    /* Validación con marca propia: el campo que falla se resalta y se limpia al escribir */
+    form.addEventListener('invalid',e=>{if(e.target.classList)e.target.classList.add('err')},true);
+    form.addEventListener('input',e=>{if(e.target.classList)e.target.classList.remove('err')});
+    let enviando=false;
     form.addEventListener('submit',async e=>{
         e.preventDefault();
+        if(enviando)return;                                   // segundo clic o Enter mientras se envía
         if(!form.reportValidity())return;
-        const token=(form.querySelector('[name="cf-turnstile-response"]')||{}).value;
-        if(!token){msg('Completa la verificación anti-robots','err');return}
+        const token=(form.querySelector('[name="cf-turnstile-response"]')||{}).value||tsToken;
+        if(!token){
+            pintarAlt();
+            msg(tsCaido()
+                ?'La verificación anti-robots no está disponible. Llámanos al '+TEL+' y te atendemos igual.'
+                :'Completa la verificación anti-robots para poder enviar el mensaje.','err');
+            return;
+        }
+        enviando=true;
         msg('Enviando…','');
+        if(btn){btn.disabled=true;btn.textContent='Enviando…'}
+        const ctl=crearSenal();
         try{
-            const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token,nombre:form.nombre.value,empresa:form.empresa.value,email:form.email.value,mensaje:form.mensaje.value})});
-            const d=await r.json();
-            if(!d.success){msg('No se ha podido verificar el envío. Recarga la página e inténtalo de nuevo.','err');if(window.turnstile)turnstile.reset();return}
-            form.reset();if(window.turnstile)turnstile.reset();
+            const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token,nombre:form.nombre.value,empresa:form.empresa.value,email:form.email.value,mensaje:form.mensaje.value,rgpd:form.rgpd.checked}),signal:ctl.signal});
+            /* Un 500 con cuerpo HTML rompía el .json() y se anunciaba como fallo de red */
+            if(!r.ok){msg('El servidor ha devuelto un error ('+r.status+'). Tu mensaje sigue escrito: inténtalo otra vez en unos minutos o llámanos al '+TEL+'.','err');resetTs();return}
+            const d=await r.json().catch(()=>null);
+            /* 200 con cuerpo vacío o no-JSON: no sabemos si ha llegado, así que no invitamos a reenviar */
+            if(!d){msg('Enviado, pero el servidor no ha confirmado la recepción. Para no duplicar el mensaje, espera nuestra respuesta o llámanos al '+TEL+'.','err');resetTs();return}
+            if(!d.success){msg('No se ha podido verificar el envío. Repite la verificación anti-robots e inténtalo de nuevo; tu mensaje sigue escrito. Si vuelve a fallar, llámanos al '+TEL+'.','err');resetTs();return}
+            form.reset();form.querySelectorAll('.err').forEach(n=>n.classList.remove('err'));resetTs();
             msg('Mensaje enviado. Te respondemos en menos de 24 h.','ok');
         }catch(err){
-            msg('Error de conexión. Escríbenos a info@plazasys.com','err');
+            const caducado=!!err&&(err.name==='TimeoutError'||err.name==='AbortError');
+            msg(caducado
+                ?'El servidor tarda demasiado en responder. Tu mensaje sigue escrito: vuelve a pulsar «Enviar mensaje». Si sigue sin salir, llámanos al '+TEL+'.'
+                :'No hemos podido conectar. Comprueba tu conexión y vuelve a intentarlo; tu mensaje sigue escrito. También puedes llamarnos al '+TEL+'.','err');
+            resetTs();
+        }finally{
+            ctl.fin();
+            enviando=false;
+            if(btn){btn.disabled=false;btn.textContent=btnTxt}
         }
     });
 })();
@@ -1075,28 +1274,32 @@ document.getElementById('ctaPresu').addEventListener('click',()=>{
     // selector de modo (MAN / 0 / AUTO)
     el('btModo').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
         el('btModo').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
-        modo=b.dataset.m;if(modo==='off')running=false;aviso='';
+        modo=b.dataset.m;if(modo==='off')running=false;aviso='';rep();
     }));
     // conmutadores
-    function tog(btn,set){btn.addEventListener('click',()=>{const on=!btn.classList.contains('on');btn.classList.toggle('on',on);set(on)})}
+    function tog(btn,set){btn.addEventListener('click',()=>{const on=!btn.classList.contains('on');btn.classList.toggle('on',on);set(on);rep()})}
     tog(el('btVent'),v=>vent=v);tog(el('btQuem'),v=>quem=v);
     // deslizadores
-    vel.addEventListener('input',()=>el('btVelV').textContent=vel.value);
-    temp.addEventListener('input',()=>el('btTempV').textContent=temp.value);
+    vel.addEventListener('input',()=>{el('btVelV').textContent=vel.value;rep()});
+    temp.addEventListener('input',()=>{el('btTempV').textContent=temp.value;rep()});
     // pulsadores (con enclavamientos como en planta)
     el('btStart').addEventListener('click',()=>{
-        if(emerg){aviso='Rearme la seta de emergencia';return}
-        if(modo==='off'){aviso='Seleccione MAN o AUTO';return}
-        if(!vent||!quem){aviso='Encienda ventiladores y quemador';return}
-        aviso='';running=true;
+        if(emerg){aviso='Rearme la seta de emergencia';rep();return}
+        if(modo==='off'){aviso='Seleccione MAN o AUTO';rep();return}
+        if(!vent||!quem){aviso='Encienda ventiladores y quemador';rep();return}
+        aviso='';running=true;rep();
     });
-    el('btStop').addEventListener('click',()=>{running=false;aviso=''});
-    el('btSeta').addEventListener('click',()=>{emerg=!emerg;el('btSeta').classList.toggle('armed',emerg);if(emerg)running=false});
-    // bucle de simulación
+    el('btStop').addEventListener('click',()=>{running=false;aviso='';rep()});
+    el('btSeta').addEventListener('click',()=>{emerg=!emerg;el('btSeta').classList.toggle('armed',emerg);if(emerg)running=false;rep()});
+    // bucle de simulación (solo corre en pantalla y con la pestaña visible)
     function lamp(id,on,blink){const l=el(id);l.classList.toggle('on',on);l.classList.toggle('blink',!!(on&&blink))}
-    function loop(){
-        const objVel=running?+vel.value:0;velR+=(objVel-velR)*0.06;if(Math.abs(objVel-velR)<0.3)velR=objVel;
-        const objTemp=(running&&quem)?+temp.value:(quem?40:22);tempR+=(objTemp-tempR)*0.03;
+    let enVista=true,raf=0;
+    /* pintar() = un fotograma del panel. Separado de la programación del rAF para poder
+       repintar bajo demanda (movimiento reducido: sin animación, pero sí respuesta a cada pulsación). */
+    function pintar(){
+        const kV=reduce?1:0.06,kT=reduce?1:0.03;   // con movimiento reducido no hay rampa: el valor salta al destino
+        const objVel=running?+vel.value:0;velR+=(objVel-velR)*kV;if(Math.abs(objVel-velR)<0.3)velR=objVel;
+        const objTemp=(running&&quem)?+temp.value:(quem?40:22);tempR+=(objTemp-tempR)*kT;
         if(running)metros+=velR/300;
         const lista=running&&tempR>=+temp.value-3,calent=running&&!lista;
         el('btVelR').textContent=Math.round(velR)+' m/min';
@@ -1110,8 +1313,15 @@ document.getElementById('ctaPresu').addEventListener('click',()=>{
         else if(calent){txt='CALENTANDO…';col='var(--orange)'}
         else{txt='EN MARCHA · LISTA';col='var(--green)'}
         el('btEstado').innerHTML='<span class="d" style="background:'+col+'"></span>'+txt;
-        requestAnimationFrame(loop);
     }
+    /* Repintado bajo demanda tras una acción del usuario. En modo normal no hace falta
+       (el bucle rAF ya está repintando) y así la simulación no cambia ni un fotograma. */
+    function rep(){if(reduce)pintar()}
+    function loop(){pintar();if(!reduce&&enVista&&!document.hidden)raf=requestAnimationFrame(loop);else raf=0}
+    function arrancar(){if(reduce){pintar();return}if(!raf&&enVista&&!document.hidden)raf=requestAnimationFrame(loop)}
+    const cont=el('btModo').closest('.sim');
+    if(cont&&'IntersectionObserver'in window)new IntersectionObserver(es=>{enVista=es[es.length-1].isIntersecting;arrancar()},{threshold:0}).observe(cont);
+    document.addEventListener('visibilitychange',arrancar);
     loop();
 })();
 </script>

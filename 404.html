@@ -13,30 +13,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root{
-            --white:#FAFAF7;--cream:#F4F4F0;--yellow:#F9D815;--yellow-h:#E8C910;
-            --charcoal:#3E3E3D;--ink:#1C1C1A;--ink2:#4A4A48;--ink3:#7D7D7A;--ink4:#ACACAA;
-            --line2:rgba(28,28,26,.14);--font:'Instrument Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',monospace;
+            --white:#FAFAF7;--yellow:#F9D815;
+            --charcoal:#3E3E3D;--ink:#1C1C1A;--ink2:#4A4A48;--ink3:#6D6D6A;
+            --font:'Instrument Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',monospace;
             --ease:cubic-bezier(.16,1,.3,1);
         }
         *{margin:0;padding:0;box-sizing:border-box}
         body{
-            font-family:var(--font);background:var(--white);color:var(--ink);
+            font-family:var(--font);color:var(--ink);
             min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;
-            background:radial-gradient(900px 320px at 50% 0%,rgba(249,216,21,.13),transparent 62%);
+            /* Una sola declaración: el degradado y el color de fondo juntos. Separados, este
+               'background' reseteaba a transparente el 'background:var(--white)' anterior y la
+               página se pintaba sobre blanco puro en vez de sobre el crema del resto del sitio. */
+            background:radial-gradient(900px 320px at 50% 0%,rgba(249,216,21,.13),transparent 62%) var(--white);
             -webkit-font-smoothing:antialiased;
         }
-        body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;background:var(--yellow)}
+        body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;background:var(--yellow);z-index:200}
         .box{max-width:520px}
-        .code{font-family:var(--mono);font-size:.7rem;letter-spacing:1px;color:var(--ink4);text-transform:uppercase;margin-bottom:1rem}
+        .code{font-family:var(--mono);font-size:.7rem;letter-spacing:1px;color:var(--ink3);text-transform:uppercase;margin-bottom:1rem}
         h1{font-size:clamp(4rem,12vw,7rem);font-weight:700;letter-spacing:-2px;line-height:1;position:relative;display:inline-block}
         h1::after{content:'';position:absolute;left:-4px;right:-4px;bottom:8px;height:14px;background:var(--yellow);opacity:.45;z-index:-1;border-radius:2px}
         p{color:var(--ink2);font-size:1.05rem;line-height:1.7;margin:1.2rem 0 2rem}
         .btn{
-            display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:.9rem;
-            padding:12px 24px;border-radius:8px;background:var(--charcoal);color:#fff;text-decoration:none;
+            display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:.88rem;
+            padding:12px 22px;border-radius:8px;background:var(--charcoal);color:#fff;text-decoration:none;
             transition:.25s var(--ease);
         }
-        .btn:hover{background:var(--ink);transform:translateY(-1px);box-shadow:0 4px 16px rgba(28,28,26,.18)}
+        .btn:hover{background:var(--ink);transform:translateY(-1px);box-shadow:0 4px 16px rgba(28,28,26,.15)}
+
+        /* Foco visible por teclado */
+        .btn:focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
+
+        /* Movimiento reducido (WCAG 2.2.2): el diseño queda pintado, pero quieto */
+        @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
     </style>
 </head>
 <body>
