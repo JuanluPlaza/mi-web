@@ -210,7 +210,7 @@
         .fm-in{font-family:var(--font);font-size:.92rem;color:var(--ink);background:var(--white);border:1px solid var(--line2);border-radius:8px;padding:10px 12px;outline:none;transition:border-color .2s var(--ease)}
         .fm-in:focus{border-color:var(--charcoal)}
         .fm-in:focus-visible{outline:2px solid var(--charcoal);outline-offset:2px}
-        .fm-in.err{border-color:var(--red-tx)}
+        .fm-in.err{border-color:var(--red)}
         textarea.fm-in{resize:vertical;min-height:110px}
         .fm-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:6px}
         .fm-status{font-family:var(--mono);font-size:.68rem;color:var(--ink3)}
@@ -1128,8 +1128,10 @@ document.getElementById('ctaPresu').addEventListener('click',()=>{
     /* Turnstile caído o bloqueado: el usuario nunca debe quedarse sin vía de contacto */
     const alt=document.getElementById('fmAlt');
     const tsDown=()=>!!window.__tsFailed||!window.turnstile;
-    function checkTs(){if(alt&&tsDown())alt.hidden=false}
-    setTimeout(checkTs,5000);
+    function checkTs(){if(alt)alt.hidden=!tsDown()}
+    /* Sondeo: refleja el estado real en ambos sentidos y deja de mirar cuando Turnstile carga */
+    let tsIntentos=0;
+    setTimeout(function sondaTs(){checkTs();if(!tsDown()||++tsIntentos>=15)return;setTimeout(sondaTs,1000)},5000);
     /* Validación con marca propia: el campo que falla se resalta y se limpia al escribir */
     form.addEventListener('invalid',e=>{if(e.target.classList)e.target.classList.add('err')},true);
     form.addEventListener('input',e=>{if(e.target.classList)e.target.classList.remove('err')});
@@ -1144,7 +1146,7 @@ document.getElementById('ctaPresu').addEventListener('click',()=>{
             const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token,nombre:form.nombre.value,empresa:form.empresa.value,email:form.email.value,mensaje:form.mensaje.value})});
             const d=await r.json();
             if(!d.success){msg('No se ha podido verificar el envío. Recarga la página e inténtalo de nuevo.','err');if(window.turnstile)turnstile.reset();return}
-            form.reset();if(window.turnstile)turnstile.reset();
+            form.reset();form.querySelectorAll('.err').forEach(n=>n.classList.remove('err'));if(window.turnstile)turnstile.reset();
             msg('Mensaje enviado. Te respondemos en menos de 24 h.','ok');
         }catch(err){
             msg('Error de conexión. Escríbenos a info@plazasys.com','err');
