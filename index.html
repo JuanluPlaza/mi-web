@@ -389,9 +389,14 @@
         .au-ioline.on .d{background:var(--green-d)}
         .au-ioline .addr{color:var(--ink3);min-width:46px}
 
-        /* Foco visible por teclado */
-        .btn:focus-visible,.ej-tab:focus-visible,.au-mode:focus-visible,.au-subtab:focus-visible,.line-btn:focus-visible,.au-btn:focus-visible,.svc-link:focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
+        /* Foco visible por teclado: cada control usa el color que contrasta con SU fondo.
+           El amarillo sobre .btn-y (o sobre cualquier fondo claro) daba un contraste de 1:1
+           y hacía desaparecer el foco justo en el botón de envío. */
+        .btn:focus-visible,.ej-tab:focus-visible,.au-mode:focus-visible,.au-subtab:focus-visible,.au-btn:focus-visible,.svc-link:focus-visible{outline:2px solid var(--charcoal);outline-offset:3px}
         .nav-l a:focus-visible,.footer-l a:focus-visible{outline:2px solid var(--charcoal);outline-offset:2px}
+        .skip-link:focus{outline:2px solid var(--charcoal);outline-offset:-5px}
+        /* Sobre fondos oscuros (panel de línea y simulador) el amarillo sí contrasta */
+        .line-btn:focus-visible,.sim-sw:focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
 
         @media(max-width:1024px){.hero-in{grid-template-columns:1fr;gap:2rem}.svc-grid{grid-template-columns:1fr 1fr}.contact-grid{grid-template-columns:1fr 1fr}.line-body{grid-template-columns:1fr}.pz-wells,.pz-how-body{grid-template-columns:1fr 1fr}.pz-metrics.m4{grid-template-columns:repeat(2,1fr)}.au-iotable{grid-template-columns:1fr}}
         /* La nav de escritorio deja de caber por debajo de ~850px (logo 157 + 6 enlaces 536 + "Online" 45 + 64 de padding = 802 de colisión): el burger se adelanta a 900px */
@@ -827,8 +832,9 @@
         <div class="fm-field fm-consent">
             <label class="fm-check" for="fmRgpd"><input type="checkbox" id="fmRgpd" name="rgpd" required><span>He leído y acepto la <a href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y el tratamiento de mis datos para responder a esta consulta. *</span></label>
         </div>
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAAD0izLhC4k6RQMma" data-action="turnstile-spin-v1" data-size="flexible"></div>
-        <p class="fm-alt" id="fmAlt" hidden>No se ha podido cargar la verificación anti-robots (puede deberse a un bloqueador de anuncios). Escríbenos directamente a <a href="mailto:info@plazasys.com">info@plazasys.com</a> o llámanos al <a href="tel:+34683355759">+34 683 355 759</a>.</p>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAD0izLhC4k6RQMma" data-action="turnstile-spin-v1" data-size="flexible" data-callback="tsOk" data-error-callback="tsError" data-expired-callback="tsExpirado" data-timeout-callback="tsExpirado" data-unsupported-callback="tsError"></div>
+        <!-- Vía de escape: el teléfono va PRIMERO porque los enlaces tel: no los toca la ofuscación de email de Cloudflare (quien ve este aviso suele tener un bloqueador que también tumba el script de desofuscación) -->
+        <p class="fm-alt" id="fmAlt" role="status" hidden>No se ha podido cargar la verificación anti-robots (puede deberse a un bloqueador de anuncios). Llámanos al <a href="tel:+34683355759">+34 683 355 759</a> (L–V, 8:00–18:00) o escríbenos a <a href="mailto:info@plazasys.com">info@plazasys.com</a>.</p>
         <div class="fm-actions">
             <button type="submit" class="btn btn-y">Enviar mensaje →</button>
             <span class="fm-status" id="fmStatus" role="status"></span>
@@ -1144,7 +1150,9 @@ document.getElementById('ccEmail').addEventListener('click',e=>{
 /* CTA "Solicitar presupuesto" → lleva al formulario con el mensaje preparado */
 document.getElementById('ctaPresu').addEventListener('click',()=>{
     const m=document.getElementById('fmMsg');
-    if(m&&!m.value)m.value='Hola, me gustaría solicitar un presupuesto para ';
+    /* Rellenar por código no dispara 'input', que es lo único que quita la marca de error:
+       hay que retirarla a mano o queda un borde rojo sobre un campo ya relleno */
+    if(m){if(!m.value)m.value='Hola, me gustaría solicitar un presupuesto para ';m.classList.remove('err')}
     setTimeout(()=>{const n=document.getElementById('fmNombre');if(n)n.focus({preventScroll:true})},700);
 });
 
@@ -1152,37 +1160,90 @@ document.getElementById('ctaPresu').addEventListener('click',()=>{
 (function(){
     const form=document.getElementById('cForm');if(!form)return;
     const WORKER_URL='https://plazasys-contacto.juanlu.workers.dev';
+    const TEL='+34 683 355 759';
+    const TIMEOUT_MS=15000;
     const st=document.getElementById('fmStatus');
     const btn=form.querySelector('button[type=submit]');
     const btnTxt=btn?btn.textContent:'';
-    function msg(t,c){st.textContent=t;st.className='fm-status'+(c?' '+c:'')}
-    /* Turnstile caído o bloqueado: el usuario nunca debe quedarse sin vía de contacto */
     const alt=document.getElementById('fmAlt');
-    const tsDown=()=>!!window.__tsFailed||!window.turnstile;
-    function checkTs(){if(alt)alt.hidden=!tsDown()}
-    /* Sondeo: refleja el estado real en ambos sentidos y deja de mirar cuando Turnstile carga */
-    let tsIntentos=0;
-    setTimeout(function sondaTs(){checkTs();if(!tsDown()||++tsIntentos>=15)return;setTimeout(sondaTs,1000)},5000);
+    const tsBox=form.querySelector('.cf-turnstile');
+    function msg(t,c){st.textContent=t;st.className='fm-status'+(c?' '+c:'')}
+
+    /* ---- Estado REAL de Turnstile: lo dicen sus propios callbacks, no lo deducimos ----
+       Antes bastaba con que existiera window.turnstile, así que un widget que cargaba el
+       script pero fallaba al pintar (sitekey no autorizada, error 300xxx, iframe bloqueado)
+       dejaba al usuario atrapado sin aviso y sin token posible. */
+    let tsToken='';                    // token entregado por el widget
+    let tsErr=!!window.__tsFailed;     // fallo notificado (script caído o error-callback)
+    let tsVivo=false;                  // el widget ha llegado a dibujarse
+    let tsGracia=false;                // agotado el margen de carga
+    const tsCaido=()=>tsErr||(tsGracia&&!tsVivo);
+    function pintarAlt(){if(alt)alt.hidden=!tsCaido()}
+    function resetTs(){tsToken='';if(window.turnstile&&window.turnstile.reset){try{window.turnstile.reset()}catch(e){}}}
+    window.tsOk=function(t){tsToken=t||'';tsErr=false;tsVivo=true;pintarAlt()};
+    window.tsError=function(){tsToken='';tsErr=true;pintarAlt()};
+    window.tsExpirado=function(){tsToken='';pintarAlt()};
+    /* Respaldo para el caso en que ningún callback llega a dispararse: comprueba si el
+       widget se ha dibujado de verdad. Retira el aviso también si Turnstile aparece tarde. */
+    let tsTicks=0;
+    const tsSonda=setInterval(function(){
+        const f=tsBox?tsBox.querySelector('iframe'):null;
+        if(f&&(f.offsetHeight>20||tsBox.offsetHeight>20))tsVivo=true;
+        if(++tsTicks>=4)tsGracia=true;                        // ~8 s de margen de carga
+        pintarAlt();
+        if((tsVivo&&tsGracia)||tsTicks>=60)clearInterval(tsSonda);
+    },2000);
+    pintarAlt();
+
+    /* Timeout duro del envío: sin él, un Worker dormido o una red que traga la petición
+       dejan la promesa sin resolver, el finally sin ejecutar y el botón bloqueado para siempre. */
+    function crearSenal(){
+        try{
+            if(typeof AbortSignal!=='undefined'&&AbortSignal.timeout)return{signal:AbortSignal.timeout(TIMEOUT_MS),fin:function(){}};
+            const c=new AbortController(),t=setTimeout(function(){c.abort()},TIMEOUT_MS);
+            return{signal:c.signal,fin:function(){clearTimeout(t)}};   // navegadores sin AbortSignal.timeout
+        }catch(e){return{signal:undefined,fin:function(){}}}           // pase lo que pase, nunca revienta antes del try
+    }
+
     /* Validación con marca propia: el campo que falla se resalta y se limpia al escribir */
     form.addEventListener('invalid',e=>{if(e.target.classList)e.target.classList.add('err')},true);
     form.addEventListener('input',e=>{if(e.target.classList)e.target.classList.remove('err')});
+    let enviando=false;
     form.addEventListener('submit',async e=>{
         e.preventDefault();
+        if(enviando)return;                                   // segundo clic o Enter mientras se envía
         if(!form.reportValidity())return;
-        const token=(form.querySelector('[name="cf-turnstile-response"]')||{}).value;
-        if(!token){checkTs();msg(tsDown()?'La verificación anti-robots no está disponible. Usa el email o el teléfono de aquí arriba.':'Completa la verificación anti-robots','err');return}
+        const token=(form.querySelector('[name="cf-turnstile-response"]')||{}).value||tsToken;
+        if(!token){
+            pintarAlt();
+            msg(tsCaido()
+                ?'La verificación anti-robots no está disponible. Llámanos al '+TEL+' y te atendemos igual.'
+                :'Completa la verificación anti-robots para poder enviar el mensaje.','err');
+            return;
+        }
+        enviando=true;
         msg('Enviando…','');
         if(btn){btn.disabled=true;btn.textContent='Enviando…'}
+        const ctl=crearSenal();
         try{
-            const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token,nombre:form.nombre.value,empresa:form.empresa.value,email:form.email.value,mensaje:form.mensaje.value,rgpd:form.rgpd.checked})});
-            const d=await r.json();
-            if(!d.success){msg('No se ha podido verificar el envío. Recarga la página e inténtalo de nuevo.','err');if(window.turnstile)turnstile.reset();return}
-            form.reset();form.querySelectorAll('.err').forEach(n=>n.classList.remove('err'));if(window.turnstile)turnstile.reset();
+            const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token,nombre:form.nombre.value,empresa:form.empresa.value,email:form.email.value,mensaje:form.mensaje.value,rgpd:form.rgpd.checked}),signal:ctl.signal});
+            /* Un 500 con cuerpo HTML rompía el .json() y se anunciaba como fallo de red */
+            if(!r.ok){msg('El servidor ha devuelto un error ('+r.status+'). Tu mensaje sigue escrito: inténtalo otra vez en unos minutos o llámanos al '+TEL+'.','err');resetTs();return}
+            const d=await r.json().catch(()=>null);
+            /* 200 con cuerpo vacío o no-JSON: no sabemos si ha llegado, así que no invitamos a reenviar */
+            if(!d){msg('Enviado, pero el servidor no ha confirmado la recepción. Para no duplicar el mensaje, espera nuestra respuesta o llámanos al '+TEL+'.','err');resetTs();return}
+            if(!d.success){msg('No se ha podido verificar el envío. Repite la verificación anti-robots e inténtalo de nuevo; tu mensaje sigue escrito. Si vuelve a fallar, llámanos al '+TEL+'.','err');resetTs();return}
+            form.reset();form.querySelectorAll('.err').forEach(n=>n.classList.remove('err'));resetTs();
             msg('Mensaje enviado. Te respondemos en menos de 24 h.','ok');
         }catch(err){
-            msg('Error de conexión. Escríbenos a info@plazasys.com','err');
-            if(window.turnstile)turnstile.reset();
+            const caducado=!!err&&(err.name==='TimeoutError'||err.name==='AbortError');
+            msg(caducado
+                ?'El servidor tarda demasiado en responder. Tu mensaje sigue escrito: vuelve a pulsar «Enviar mensaje». Si sigue sin salir, llámanos al '+TEL+'.'
+                :'No hemos podido conectar. Comprueba tu conexión y vuelve a intentarlo; tu mensaje sigue escrito. También puedes llamarnos al '+TEL+'.','err');
+            resetTs();
         }finally{
+            ctl.fin();
+            enviando=false;
             if(btn){btn.disabled=false;btn.textContent=btnTxt}
         }
     });
