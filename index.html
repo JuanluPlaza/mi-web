@@ -62,7 +62,7 @@
         .nav-l{display:flex;align-items:center;gap:4px;list-style:none}
         .nav-l a{font-size:.95rem;font-weight:500;color:var(--ink3);padding:6px 14px;border-radius:6px;transition:.2s var(--ease);position:relative}
         .nav-l a:hover{color:var(--ink)}.nav-l a.active{color:var(--ink);background:var(--cream)}.nav-l a::after{content:'';position:absolute;left:14px;right:14px;bottom:4px;height:2px;background:var(--yellow);transform:scaleX(0);transform-origin:left;border-radius:2px;transition:transform .22s var(--ease)}.nav-l a:hover::after,.nav-l a.active::after{transform:scaleX(1)}
-        .nav-r{display:flex;align-items:center;gap:6px;font-size:.72rem;font-weight:500;color:var(--ink4)}
+        .nav-r{display:flex;align-items:center;gap:6px;font-size:.72rem;font-weight:500;color:var(--ink3)}
         .dot-on{width:6px;height:6px;background:var(--yellow);border-radius:50%;animation:pulse 2.5s ease-in-out infinite}
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
         .burger{display:none;background:none;border:none;cursor:pointer;padding:6px}
@@ -91,7 +91,7 @@
         .w-card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;transition:.25s var(--ease);box-shadow:0 8px 24px rgba(28,28,26,.06)}
         .w-card:hover{border-color:var(--line2);box-shadow:0 14px 36px rgba(28,28,26,.10);transform:translateY(-2px)}
         .w-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-        .w-label{font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.7px;color:var(--ink4);text-transform:uppercase}
+        .w-label{font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.7px;color:var(--ink3);text-transform:uppercase}
         .w-badge{font-family:var(--mono);font-size:.6rem;letter-spacing:.4px;padding:3px 9px;border-radius:100px}
         .w-gauge{display:flex;align-items:center;gap:14px}
         .w-gauge-svg{width:64px;height:38px;flex-shrink:0}
@@ -119,7 +119,7 @@
 
         /* SECTIONS */
         .section{max-width:var(--max-w);margin:0 auto;padding:6rem 2rem}
-        .s-label{font-family:var(--mono);font-size:.68rem;font-weight:500;color:var(--ink4);text-transform:uppercase;letter-spacing:.6px;margin-bottom:.4rem}
+        .s-label{font-family:var(--mono);font-size:.68rem;font-weight:500;color:var(--ink3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:.4rem}
         .s-title{font-size:1.8rem;font-weight:700;letter-spacing:-.3px;margin-bottom:.4rem}
         .s-desc{color:var(--ink2);max-width:480px}
         .s-top{margin-bottom:2.5rem}
@@ -198,7 +198,7 @@
         .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
         .cc{background:var(--pure);border:1px solid var(--line);border-radius:var(--r);padding:1.8rem;box-shadow:0 8px 24px rgba(28,28,26,.06);transition:border-color .25s var(--ease)}
         .cc:hover{border-color:var(--line2)}
-        .cc-l{font-family:var(--mono);font-size:.62rem;font-weight:500;color:var(--ink4);letter-spacing:.5px;margin-bottom:6px}
+        .cc-l{font-family:var(--mono);font-size:.62rem;font-weight:500;color:var(--ink3);letter-spacing:.5px;margin-bottom:6px}
         .cc-v{font-size:1rem;font-weight:600}.cc-v a:hover{color:var(--ink2)}
         .cc-n{font-size:.78rem;color:var(--ink3);margin-top:3px}
 
@@ -206,7 +206,7 @@
         .cform{margin-top:14px;background:var(--pure);border:1px solid var(--line);border-radius:var(--r);padding:1.8rem}
         .fm-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
         .fm-field{margin-bottom:14px;display:flex;flex-direction:column;gap:6px}
-        .fm-l{font-family:var(--mono);font-size:.62rem;font-weight:500;color:var(--ink4);letter-spacing:.5px;text-transform:uppercase}
+        .fm-l{font-family:var(--mono);font-size:.62rem;font-weight:500;color:var(--ink3);letter-spacing:.5px;text-transform:uppercase}
         .fm-in{font-family:var(--font);font-size:.92rem;color:var(--ink);background:var(--white);border:1px solid var(--line2);border-radius:8px;padding:10px 12px;outline:none;transition:border-color .2s var(--ease)}
         .fm-in:focus{border-color:var(--charcoal)}
         .fm-in:focus-visible{outline:2px solid var(--charcoal);outline-offset:2px}
@@ -219,11 +219,12 @@
         .fm-check input.err{outline:2px solid var(--red);outline-offset:2px}
         .fm-check a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
         .sect-note{max-width:760px;margin:2.2rem auto 0;text-align:center;font-size:.92rem;color:var(--ink2)}
-        .sect-note-l{display:block;font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.7px;text-transform:uppercase;color:var(--ink4);margin-bottom:.4rem}
+        .sect-note-l{display:block;font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.7px;text-transform:uppercase;color:var(--ink3);margin-bottom:.4rem}
         .fm-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:6px}
         .fm-status{font-family:var(--mono);font-size:.68rem;color:var(--ink3)}
         .fm-status.ok{color:var(--green-tx)}.fm-status.err{color:var(--red-tx)}
-        .cf-turnstile{width:100%}
+        /* El widget de Turnstile tiene un ancho mínimo propio (~300px): en pantallas muy estrechas se desplaza dentro de su caja en vez de desbordar la página */
+        .cf-turnstile{width:100%;overflow-x:auto}
         .fm-alt{font-size:.82rem;line-height:1.5;color:var(--ink2);background:var(--cream);border:1px solid var(--line2);border-radius:8px;padding:12px 14px}
         .fm-alt a{font-weight:600;text-decoration:underline}
         .fm-alt[hidden]{display:none}
@@ -282,7 +283,7 @@
         .pz-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.2rem}
         .pz-m{border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
         .pz-m.hl{background:var(--yellow);border-color:var(--yellow)}
-        .pz-m-l{font-family:var(--mono);font-size:.62rem;letter-spacing:.7px;text-transform:uppercase;color:var(--ink4);margin-bottom:7px}
+        .pz-m-l{font-family:var(--mono);font-size:.62rem;letter-spacing:.7px;text-transform:uppercase;color:var(--ink3);margin-bottom:7px}
         .pz-m.hl .pz-m-l{color:rgba(28,28,26,.75)}
         .pz-m-v{font-family:var(--mono);font-size:1.85rem;font-weight:700;color:var(--ink);line-height:1;letter-spacing:-1px}
         .pz-m-v .u{font-size:.68rem;font-weight:400;color:var(--ink4);margin-left:4px}
@@ -297,7 +298,7 @@
         .pz-w-v{font-family:var(--mono);font-size:1.35rem;font-weight:600;color:var(--ink);letter-spacing:-.5px;line-height:1}
         .pz-w-v .u{font-size:.66rem;font-weight:400;color:var(--ink4);margin-left:3px}
         .pz-w-f{font-family:var(--mono);font-size:.64rem;color:var(--ink3);margin-top:9px}
-        .pz-chart-l{font-family:var(--mono);font-size:.64rem;letter-spacing:.7px;text-transform:uppercase;color:var(--ink4);margin-bottom:12px}
+        .pz-chart-l{font-family:var(--mono);font-size:.64rem;letter-spacing:.7px;text-transform:uppercase;color:var(--ink3);margin-bottom:12px}
         .pz-chart{display:flex;align-items:flex-end;gap:3px;height:150px}
         .pz-bar{flex:1;background:var(--yellow);border-radius:3px 3px 0 0;min-height:3px;transition:height .8s var(--ease)}
         .pz-axis{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.62rem;color:var(--ink4);margin-top:8px}
@@ -312,7 +313,7 @@
         .pz-how-body{padding:0 16px 16px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
         .pz-step{font-size:.78rem;color:var(--ink2);line-height:1.5}
         .pz-step b{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.5px;text-transform:uppercase;color:var(--ink);margin-bottom:5px;padding-left:8px;border-left:2px solid var(--yellow)}
-        .pz-foot{text-align:center;font-family:var(--mono);font-size:.64rem;color:var(--ink4);margin-top:1.4rem}
+        .pz-foot{text-align:center;font-family:var(--mono);font-size:.64rem;color:var(--ink3);margin-top:1.4rem}
         .pz-metrics.m4{grid-template-columns:repeat(4,1fr)}
         .svc-link{display:inline-block;margin-top:.9rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.3px;color:var(--ink);border-bottom:1px solid var(--yellow);padding-bottom:1px}
         .svc-link:hover{border-bottom-color:var(--charcoal)}
@@ -353,7 +354,7 @@
         .au-st.on{border-color:var(--yellow);background:var(--yellow-s);box-shadow:0 0 0 2px var(--yellow-b)}
         .au-st-n{font-family:var(--mono);font-size:.64rem;letter-spacing:.4px;text-transform:uppercase;color:var(--ink2);display:block}
         .au-st.on .au-st-n{color:var(--ink);font-weight:600}
-        .au-st-s{font-family:var(--mono);font-size:.6rem;color:var(--ink4);margin-top:4px;display:block}
+        .au-st-s{font-family:var(--mono);font-size:.6rem;color:var(--ink3);margin-top:4px;display:block}
         .au-arrow{color:var(--ink4);font-family:var(--mono);font-size:.8rem;flex-shrink:0}
         .au-drives{display:flex;flex-direction:column;gap:8px;margin-bottom:1.3rem}
         .au-drv{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:8px;padding:11px 14px;flex-wrap:wrap}
@@ -364,7 +365,7 @@
         .au-drv-st .d{width:6px;height:6px;border-radius:50%;background:currentColor}
         .au-drv.alarm .au-drv-st{color:var(--red)}
         .au-io{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:1.3rem}
-        .au-sig{font-family:var(--mono);font-size:.64rem;display:flex;align-items:center;gap:6px;padding:6px 11px;border:1px solid var(--line);border-radius:100px;color:var(--ink4);background:var(--pure)}
+        .au-sig{font-family:var(--mono);font-size:.64rem;display:flex;align-items:center;gap:6px;padding:6px 11px;border:1px solid var(--line);border-radius:100px;color:var(--ink3);background:var(--pure)}
         .au-sig .d{width:7px;height:7px;border-radius:50%;background:var(--sand);transition:.2s}
         .au-sig.on{color:var(--ink);border-color:var(--line2)}.au-sig.on .d{background:var(--green-d)}
         .au-stats{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:.66rem;color:var(--ink3);margin-bottom:1rem}
@@ -377,11 +378,11 @@
         .au-btn.primary{background:var(--yellow);border-color:var(--yellow);color:var(--ink);font-weight:600}
         .au-netstats{font-family:var(--mono);font-size:.66rem;color:var(--ink3);margin-bottom:1.3rem}.au-netstats b{color:var(--ink)}
         .au-pn{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:14px;border:1px solid var(--line);border-radius:10px;margin-bottom:1.3rem;background:var(--white)}
-        .au-pn-lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.5px;color:var(--ink4);margin-right:4px}
+        .au-pn-lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.5px;color:var(--ink3);margin-right:4px}
         .au-node{font-family:var(--mono);font-size:.64rem;display:flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid var(--line2);border-radius:8px;color:var(--ink2);background:var(--pure)}
         .au-node .d{width:7px;height:7px;border-radius:50%;background:var(--green-d);animation:pulse 2.5s ease-in-out infinite}
         .au-iotable{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:1rem}
-        .au-iocol h4{font-family:var(--mono);font-size:.62rem;letter-spacing:.6px;text-transform:uppercase;color:var(--ink4);margin-bottom:8px}
+        .au-iocol h4{font-family:var(--mono);font-size:.62rem;letter-spacing:.6px;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
         .au-ioline{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.62rem;color:var(--ink2);padding:5px 0;border-bottom:1px solid var(--line)}
         .au-ioline .d{width:8px;height:8px;border-radius:2px;background:var(--sand);flex-shrink:0}
         .au-ioline.on .d{background:var(--green-d)}
@@ -395,8 +396,9 @@
         /* La nav de escritorio deja de caber por debajo de ~850px (logo 157 + 6 enlaces 536 + "Online" 45 + 64 de padding = 802 de colisión): el burger se adelanta a 900px */
         @media(max-width:900px){
             .nav-l,.nav-r{display:none}
-            .nav-l.open{display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:#FAFAF7;backdrop-filter:blur(24px);padding:12px 2rem 18px;border-bottom:1px solid var(--line);gap:2px}
-            .burger{display:block}
+            .nav-l.open{display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:var(--white);padding:12px 2rem 18px;border-bottom:1px solid var(--line);gap:2px}
+            /* El padding del burger va aquí, no en la consulta de 768px: si no, entre 769 y 900px el botón se queda en 34x34px */
+            .burger{display:block;padding:11px}
         }
         @media(max-width:768px){
             .hero{padding:5rem 1.5rem 2rem}.hero h1{font-size:1.9rem}
@@ -408,6 +410,8 @@
             .au-flow{flex-direction:column}.au-arrow{transform:rotate(90deg)}.au-drv-n{min-width:0;width:100%}
             .pz-head-t{min-width:0}
             .fm-row{grid-template-columns:1fr}
+            /* Menos padding lateral en la caja del formulario: el widget de Turnstile necesita ~300px de hueco */
+            .cform{padding:1.4rem 1rem}
             .cta-box{padding:3rem 1.5rem}
             .footer-in{flex-direction:column;gap:12px;text-align:center}
             .footer-l{flex-wrap:wrap;justify-content:center;gap:8px 16px}
@@ -415,7 +419,6 @@
             .ej-tab,.au-subtab,.line-btn{padding-top:14px;padding-bottom:14px}
             .au-mode,.au-btn{padding-top:15px;padding-bottom:15px}
             .bt-selector button{padding-top:16px;padding-bottom:16px}
-            .burger{padding:11px}
             .cc-v a{display:inline-block;padding:6px 0}
             .footer-l a{padding:4px 0}
             .sim-slider::-webkit-slider-thumb{width:26px;height:26px}
@@ -425,6 +428,11 @@
             .hero-actions{flex-direction:column}.btn{width:100%;justify-content:center}
             .bt-sliders,.line-kpis{grid-template-columns:1fr}
             .bt-reads{grid-template-columns:1fr 1fr}
+        }
+        /* Móviles estrechos (360px y menos): se recorta el padding lateral para que el widget de Turnstile quepa sin desbordar */
+        @media(max-width:420px){
+            .section{padding-left:1rem;padding-right:1rem}
+            .hero{padding-left:1rem;padding-right:1rem}
         }
 
         /* Movimiento reducido (WCAG 2.2.2): el diseño queda pintado, pero quieto */
