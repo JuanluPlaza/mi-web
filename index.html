@@ -440,7 +440,12 @@
             .pz-log{max-height:none}
             .pz-metrics.m4{grid-template-columns:1fr}
             .au-flow{flex-direction:column}.au-arrow{transform:rotate(90deg)}.au-drv-n{min-width:0;width:100%}
-            .pz-head-t{min-width:0}
+            /* La cabecera del panel es un flex con wrap, pero la columna de texto es flex:1 1 0 y aquí
+               llevaba min-width:0: al poder encogerse sin límite nunca provocaba el salto de línea y se
+               quedaba con las sobras del logo y el distintivo (una palabra por línea en el móvil).
+               Con flex-basis:100% ocupa línea propia; el separador vertical ya no pinta nada apilado. */
+            .pz-head-t{min-width:0;flex-basis:100%}
+            .pz-div{display:none}
             .fm-row{grid-template-columns:1fr}
             /* Menos padding lateral en la caja del formulario: el widget de Turnstile necesita ~300px de hueco */
             .cform{padding:1.4rem 1rem}
