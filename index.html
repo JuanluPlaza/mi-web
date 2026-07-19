@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlazaSys — Automatización, Ingeniería y Soluciones Industriales</title>
-    <meta name="description" content="PlazaSys — Automatización industrial, IoT, ingeniería mecánica y prototipado de máquinas. Resolvemos problemas industriales en Ontinyent, Valencia.">
+    <meta name="description" content="PlazaSys — Automatización industrial, desarrollo de maquinaria, IoT e Industria 4.0, control de producción y software industrial a medida. Ontinyent, Valencia.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#F9D815">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -16,7 +16,7 @@
     <meta property="og:locale" content="es_ES">
     <meta property="og:site_name" content="PlazaSys">
     <meta property="og:title" content="PlazaSys — Automatización, Ingeniería y Soluciones Industriales">
-    <meta property="og:description" content="Automatización industrial, IoT, ingeniería mecánica y prototipado de máquinas. Resolvemos problemas industriales en Ontinyent, Valencia.">
+    <meta property="og:description" content="Automatización industrial, desarrollo de maquinaria, IoT e Industria 4.0, control de producción y software industrial a medida. Ontinyent, Valencia.">
     <meta property="og:url" content="https://plazasys.com/">
     <meta property="og:image" content="https://plazasys.com/og-image.png">
     <meta property="og:image:width" content="1200">
@@ -25,7 +25,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PlazaSys — Automatización, Ingeniería y Soluciones Industriales">
-    <meta name="twitter:description" content="Automatización industrial, IoT, ingeniería mecánica y prototipado de máquinas. Resolvemos problemas industriales en Ontinyent, Valencia.">
+    <meta name="twitter:description" content="Automatización industrial, desarrollo de maquinaria, IoT e Industria 4.0, control de producción y software industrial a medida. Ontinyent, Valencia.">
     <meta name="twitter:image" content="https://plazasys.com/og-image.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -212,6 +212,14 @@
         .fm-in:focus-visible{outline:2px solid var(--charcoal);outline-offset:2px}
         .fm-in.err{border-color:var(--red)}
         textarea.fm-in{resize:vertical;min-height:110px}
+        .fm-consent{margin-top:2px}
+        .fm-check{display:flex;align-items:flex-start;gap:9px;font-size:.86rem;line-height:1.55;color:var(--ink2);cursor:pointer}
+        .fm-check input{flex:0 0 auto;width:16px;height:16px;margin-top:3px;accent-color:var(--charcoal);cursor:pointer}
+        .fm-check input:focus-visible{outline:2px solid var(--charcoal);outline-offset:2px}
+        .fm-check input.err{outline:2px solid var(--red);outline-offset:2px}
+        .fm-check a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+        .sect-note{max-width:760px;margin:2.2rem auto 0;text-align:center;font-size:.92rem;color:var(--ink2)}
+        .sect-note-l{display:block;font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.7px;text-transform:uppercase;color:var(--ink4);margin-bottom:.4rem}
         .fm-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:6px}
         .fm-status{font-family:var(--mono);font-size:.68rem;color:var(--ink3)}
         .fm-status.ok{color:var(--green-tx)}.fm-status.err{color:var(--red-tx)}
@@ -429,13 +437,18 @@
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "name": "PlazaSys — Plaza Automated Systems S.L.",
-      "description": "Automatización industrial, IoT, ingeniería mecánica y prototipado de máquinas a medida.",
+      "description": "Automatización industrial, desarrollo de maquinaria, IoT e Industria 4.0, control de producción y software industrial a medida.",
+      "foundingDate": "2025-02",
+      "legalName": "Plaza Automated Systems S.L.",
+      "vatID": "B75935510",
       "url": "https://plazasys.com/",
       "telephone": "+34683355759",
       "image": "https://plazasys.com/og-image.png",
       "areaServed": "ES",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Calle Músico Vert, 22",
+        "postalCode": "46870",
         "addressLocality": "Ontinyent",
         "addressRegion": "Valencia",
         "addressCountry": "ES"
@@ -506,13 +519,19 @@
 
 <!-- SERVICIOS -->
 <section class="section" id="servicios">
-    <div class="s-top reveal"><div class="s-label">Servicios</div><h2 class="s-title">Lo que hacemos</h2></div>
+    <div class="s-top reveal"><div class="s-label">Servicios</div><h2 class="s-title">Lo que hacemos</h2><p class="s-desc">Automatizamos, desarrollamos y mantenemos la maquinaria de plantas industriales, y conectamos la producción con los sistemas de la empresa. Reformamos la máquina que ya tienes y fabricamos la que no existe; y hacemos que ambas den datos útiles.</p></div>
     <div class="svc-grid">
-        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">⚡</div><h3 class="svc-name">Automatización industrial</h3><p class="svc-text">Programamos PLCs, diseñamos cuadros eléctricos y ponemos en marcha líneas de producción completas.</p><a href="#ejemplos" data-tab="ejAuto" class="svc-link">Ver ejemplo en vivo →</a></div>
-        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">📡</div><h3 class="svc-name">IoT y monitorización</h3><p class="svc-text">Conectamos tus equipos a la nube para que veas qué pasa en planta desde cualquier sitio, en tiempo real.</p><a href="#ejemplos" data-tab="ejAgua" class="svc-link">Ver ejemplo en vivo →</a></div>
-        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">🔩</div><h3 class="svc-name">Ingeniería mecánica</h3><p class="svc-text">Analizamos y resolvemos problemas mecánicos de producción. Si algo no funciona, encontramos cómo arreglarlo.</p><a href="#contacto" class="svc-link">Cuéntanos tu caso →</a></div>
-        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">🛠️</div><h3 class="svc-name">Prototipado de máquinas</h3><p class="svc-text">Si la máquina que necesitas no existe, la diseñamos y la fabricamos a medida para tu proceso.</p><a href="#contacto" class="svc-link">Cuéntanos tu caso →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">⚡</div><h3 class="svc-name">Automatización industrial</h3><p class="svc-text">Programamos PLC y HMI, diseñamos y montamos el cuadro eléctrico y ponemos la máquina en marcha. Desde un lazo de temperatura hasta la gestión de recetas de una línea completa.</p><a href="#ejemplos" data-tab="ejAuto" class="svc-link">Ver ejemplo en vivo →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">🏭</div><h3 class="svc-name">Desarrollo de maquinaria</h3><p class="svc-text">Diseñamos y fabricamos máquinas y elementos a medida para tu proceso: desbobinadoras, empaquetadoras, cintas transportadoras, útiles, soportes y protecciones.</p><a href="#contacto" class="svc-link">Cuéntanos tu caso →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">🔧</div><h3 class="svc-name">Reforma y retrofit de maquinaria</h3><p class="svc-text">Modernizamos máquinas en producción —onduladoras, rames, cortadoras, enrolladoras— renovando control y mecánica para devolverlas a la línea con años de vida por delante.</p><a href="#contacto" class="svc-link">Cuéntanos tu caso →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">📡</div><h3 class="svc-name">IoT e Industria 4.0</h3><p class="svc-text">Sensorizamos equipos e instalaciones y llevamos el dato a la nube por redes IoT de bajo consumo: agua, energía y estado de máquina, con paneles accesibles desde cualquier sitio y avisos automáticos.</p><a href="#ejemplos" data-tab="ejAgua" class="svc-link">Ver ejemplo en vivo →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">📊</div><h3 class="svc-name">Control de producción</h3><p class="svc-text">Sistemas de control de producción que registran lo que de verdad pasa en planta: unidades, paradas, rechazos, tiempos y rendimiento por máquina y turno, conectando las máquinas por OPC UA, MQTT y buses industriales.</p><a href="#ejemplos" data-tab="ejSensores" class="svc-link">Ver ejemplo en vivo →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">💻</div><h3 class="svc-name">Software industrial a medida</h3><p class="svc-text">Desarrollamos las aplicaciones que faltan entre la máquina y la oficina: paneles de planta, partes de trabajo digitales, trazabilidad, informes e integración con tu ERP.</p><a href="#contacto" class="svc-link">Cuéntanos tu caso →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">🛡️</div><h3 class="svc-name">Seguridad industrial y ATEX</h3><p class="svc-text">Barreras y relés de seguridad, protecciones y adecuación de máquina, e instalaciones en zona ATEX, con su informe técnico.</p><a href="#contacto" class="svc-link">Cuéntanos tu caso →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">🚨</div><h3 class="svc-name">Averías y asistencia técnica</h3><p class="svc-text">Atendemos paradas de producción con diagnóstico en planta o conexión remota segura al equipo, para resolver sin esperar al desplazamiento.</p><a href="#contacto" class="svc-link">Cuéntanos tu caso →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">🏗️</div><h3 class="svc-name">Instalación y traslado de líneas</h3><p class="svc-text">Desinstalación, traslado, montaje y nueva puesta en marcha de líneas completas de producción.</p><a href="#contacto" class="svc-link">Cuéntanos tu caso →</a></div>
     </div>
+    <div class="sect-note reveal"><span class="sect-note-l">Sectores</span> Textil y tejido no tejido · Limpieza e higiene · Artes gráficas · Agua · Energía</div>
     <div style="text-align:center;margin-top:2.5rem"><a href="#ejemplos" class="btn btn-o">Ver ejemplos en vivo ↓</a></div>
 </section>
 
@@ -772,10 +791,10 @@
 
 <!-- NOSOTROS -->
 <section class="section" id="nosotros">
-    <div class="s-top reveal"><div class="s-label">Nosotros</div><h2 class="s-title">Plaza Automated Systems</h2></div>
+    <div class="s-top reveal"><div class="s-label">Nosotros</div><h2 class="s-title">Plaza Automated Systems</h2><p class="s-desc">PlazaSys nace en 2025, respaldada por 24 años de experiencia en automatización y maquinaria industrial.</p></div>
     <div class="about-grid">
-        <div class="about-card reveal"><h3>Quiénes somos</h3><p>Somos un equipo de ingenieros especializados en automatización, IoT y diseño mecánico industrial. Nos gusta resolver problemas complejos con soluciones prácticas que funcionen desde el primer día.</p></div>
-        <div class="about-card reveal"><h3>Cómo trabajamos</h3><p>Analizamos tu proceso, identificamos el problema y proponemos la solución más eficiente. Desde el diseño hasta la puesta en marcha, nos encargamos de todo.</p></div>
+        <div class="about-card reveal"><h3>Quiénes somos</h3><p>Un equipo especializado en automatización, desarrollo de maquinaria, IoT e Industria 4.0, control de producción y software industrial a medida. Somos cuatro personas y trabajamos con una red de profesionales especializados y talleres de fabricación mecánica, lo que nos permite asumir proyectos completos sin perder el trato directo.</p></div>
+        <div class="about-card reveal"><h3>Cómo trabajamos</h3><p>Analizamos tu proceso, identificamos el problema y proponemos la solución más eficiente. Del diseño a la puesta en marcha, nos encargamos de todo. Trabajamos en la Comunidad Valenciana, Cataluña y Madrid.</p></div>
     </div>
 </section>
 
@@ -796,6 +815,9 @@
         </div>
         <div class="fm-field"><label class="fm-l" for="fmEmail">Email *</label><input class="fm-in" id="fmEmail" name="email" type="email" required autocomplete="email"></div>
         <div class="fm-field"><label class="fm-l" for="fmMsg">Mensaje *</label><textarea class="fm-in" id="fmMsg" name="mensaje" rows="5" required></textarea></div>
+        <div class="fm-field fm-consent">
+            <label class="fm-check" for="fmRgpd"><input type="checkbox" id="fmRgpd" name="rgpd" required><span>He leído y acepto la <a href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y el tratamiento de mis datos para responder a esta consulta. *</span></label>
+        </div>
         <div class="cf-turnstile" data-sitekey="0x4AAAAAAD0izLhC4k6RQMma" data-action="turnstile-spin-v1" data-size="flexible"></div>
         <p class="fm-alt" id="fmAlt" hidden>No se ha podido cargar la verificación anti-robots (puede deberse a un bloqueador de anuncios). Escríbenos directamente a <a href="mailto:info@plazasys.com">info@plazasys.com</a> o llámanos al <a href="tel:+34683355759">+34 683 355 759</a>.</p>
         <div class="fm-actions">
@@ -816,7 +838,7 @@
 
 <footer class="footer"><div class="footer-in">
     <span class="footer-c">© 2026 PlazaSys — Plaza Automated Systems S.L. · Ontinyent, Valencia</span>
-    <div class="footer-l"><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#ejemplos">Ejemplos</a><a href="#pruebalo">Pruébalo</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></div>
+    <div class="footer-l"><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#ejemplos">Ejemplos</a><a href="#pruebalo">Pruébalo</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a><a href="/legal.html">Aviso legal</a><a href="/privacidad.html">Privacidad</a></div>
 </div></footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -1143,7 +1165,7 @@ document.getElementById('ctaPresu').addEventListener('click',()=>{
         msg('Enviando…','');
         if(btn){btn.disabled=true;btn.textContent='Enviando…'}
         try{
-            const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token,nombre:form.nombre.value,empresa:form.empresa.value,email:form.email.value,mensaje:form.mensaje.value})});
+            const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token,nombre:form.nombre.value,empresa:form.empresa.value,email:form.email.value,mensaje:form.mensaje.value,rgpd:form.rgpd.checked})});
             const d=await r.json();
             if(!d.success){msg('No se ha podido verificar el envío. Recarga la página e inténtalo de nuevo.','err');if(window.turnstile)turnstile.reset();return}
             form.reset();form.querySelectorAll('.err').forEach(n=>n.classList.remove('err'));if(window.turnstile)turnstile.reset();
