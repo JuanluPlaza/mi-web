@@ -126,9 +126,11 @@
         .s-top{margin-bottom:2.5rem}
         .sep{max-width:var(--max-w);margin:0 auto;padding:0 2rem}.sep-l{height:1px;background:var(--line)}
 
-        /* SERVICES — 4 cols */
-        .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-        .svc{background:linear-gradient(180deg,rgba(255,255,255,.95),#fff);border:1px solid var(--line);border-radius:var(--r);padding:1.8rem 1.5rem;transition:.3s var(--ease);position:relative;overflow:hidden}
+        /* SERVICES — 3 cols (9 tarjetas = rejilla 3x3 exacta; la cascada baja a 2 y a 1) */
+        .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+        /* Columna flex para que el enlace de pie se alinee a la misma altura en toda la fila,
+           aunque los textos midan de 130 a 270 caracteres */
+        .svc{background:linear-gradient(180deg,rgba(255,255,255,.95),#fff);border:1px solid var(--line);border-radius:var(--r);padding:1.8rem 1.5rem;transition:.3s var(--ease);position:relative;overflow:hidden;display:flex;flex-direction:column}
         .svc:hover{border-color:var(--yellow-b);box-shadow:0 10px 28px rgba(249,216,21,.12);transform:translateY(-3px)}
         .svc-bar{position:absolute;top:0;left:20px;right:20px;height:2px;background:var(--yellow);border-radius:0 0 2px 2px;transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
         .svc:hover .svc-bar{transform:scaleX(1)}
@@ -224,8 +226,9 @@
         .fm-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:6px}
         .fm-status{font-family:var(--mono);font-size:.68rem;color:var(--ink3)}
         .fm-status.ok{color:var(--green-tx)}.fm-status.err{color:var(--red-tx)}
-        /* El widget de Turnstile tiene un ancho mínimo propio (~300px): en pantallas muy estrechas se desplaza dentro de su caja en vez de desbordar la página */
-        .cf-turnstile{width:100%;overflow-x:auto}
+        /* El widget de Turnstile tiene un ancho mínimo propio (~300px): en pantallas muy estrechas se desplaza dentro de su caja en vez de desbordar la página.
+           El max-width frena el modo "flexible", que en escritorio se estiraba a todo el formulario (~1000px) y lo cruzaba como una barra gigante. */
+        .cf-turnstile{width:100%;max-width:340px;overflow-x:auto}
         .fm-alt{font-size:.82rem;line-height:1.5;color:var(--ink2);background:var(--cream);border:1px solid var(--line2);border-radius:8px;padding:12px 14px}
         .fm-alt a{font-weight:600;text-decoration:underline}
         .fm-alt[hidden]{display:none}
@@ -316,7 +319,10 @@
         .pz-step b{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.5px;text-transform:uppercase;color:var(--ink);margin-bottom:5px;padding-left:8px;border-left:2px solid var(--yellow)}
         .pz-foot{text-align:center;font-family:var(--mono);font-size:.64rem;color:var(--ink3);margin-top:1.4rem}
         .pz-metrics.m4{grid-template-columns:repeat(4,1fr)}
-        .svc-link{display:inline-block;margin-top:.9rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.3px;color:var(--ink);border-bottom:1px solid var(--yellow);padding-bottom:1px}
+        /* margin-top:auto empuja el pie al fondo de la tarjeta; el padding-top garantiza la
+           separación cuando la tarjeta es la más alta de la fila y no queda hueco que repartir.
+           align-self:flex-start evita que el subrayado se estire a todo el ancho. */
+        .svc-link{display:inline-block;margin-top:auto;align-self:flex-start;padding-top:.9rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.3px;color:var(--ink);border-bottom:1px solid var(--yellow);padding-bottom:1px}
         .svc-link:hover{border-bottom-color:var(--charcoal)}
 
         /* ===== EJEMPLOS — galería con pestañas (tema claro) ===== */
@@ -398,12 +404,15 @@
         /* Sobre fondos oscuros (panel de línea y simulador) el amarillo sí contrasta */
         .line-btn:focus-visible,.sim-sw:focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
 
-        @media(max-width:1024px){.hero-in{grid-template-columns:1fr;gap:2rem}.svc-grid{grid-template-columns:1fr 1fr}.contact-grid{grid-template-columns:1fr 1fr}.line-body{grid-template-columns:1fr}.pz-wells,.pz-how-body{grid-template-columns:1fr 1fr}.pz-metrics.m4{grid-template-columns:repeat(2,1fr)}.au-iotable{grid-template-columns:1fr}}
-        /* La nav de escritorio deja de caber por debajo de ~850px (logo 157 + 6 enlaces 536 + "Online" 45 + 64 de padding = 802 de colisión): el burger se adelanta a 900px */
-        @media(max-width:900px){
+        /* Los 8 enlaces del pie (6 de sección + aviso legal + privacidad) con 18px de separación
+           dejan de caber junto al copyright bastante antes de 768px: la envoltura entra ya a 1024px */
+        @media(max-width:1024px){.hero-in{grid-template-columns:1fr;gap:2rem}.svc-grid{grid-template-columns:1fr 1fr}.contact-grid{grid-template-columns:1fr 1fr}.line-body{grid-template-columns:1fr}.pz-wells,.pz-how-body{grid-template-columns:1fr 1fr}.pz-metrics.m4{grid-template-columns:repeat(2,1fr)}.au-iotable{grid-template-columns:1fr}.footer-l{flex-wrap:wrap;justify-content:center;gap:8px 16px}}
+        /* La nav de escritorio deja de caber por debajo de ~850px (logo 157 + 6 enlaces 536 + "Online" 45 + 64 de padding = 802 de colisión): el burger entra a 840px, justo por encima de esa colisión */
+        @media(max-width:840px){
             .nav-l,.nav-r{display:none}
             .nav-l.open{display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:var(--white);padding:12px 2rem 18px;border-bottom:1px solid var(--line);gap:2px}
-            /* El padding del burger va aquí, no en la consulta de 768px: si no, entre 769 y 900px el botón se queda en 34x34px */
+            /* El padding va aquí, en la MISMA consulta en la que el burger se hace visible: si estuviera
+               en la de 768px, entre 769 y 840px el botón se vería con solo 34x34px de área táctil */
             .burger{display:block;padding:11px}
         }
         @media(max-width:768px){
@@ -420,7 +429,6 @@
             .cform{padding:1.4rem 1rem}
             .cta-box{padding:3rem 1.5rem}
             .footer-in{flex-direction:column;gap:12px;text-align:center}
-            .footer-l{flex-wrap:wrap;justify-content:center;gap:8px 16px}
             /* Áreas táctiles de ~44px (WCAG 2.5.5) sin tocar el ancho ni la tipografía */
             .ej-tab,.au-subtab,.line-btn{padding-top:14px;padding-bottom:14px}
             .au-mode,.au-btn{padding-top:15px;padding-bottom:15px}
@@ -441,8 +449,15 @@
             .hero{padding-left:1rem;padding-right:1rem}
         }
 
-        /* Movimiento reducido (WCAG 2.2.2): el diseño queda pintado, pero quieto */
-        @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+        /* Movimiento reducido (WCAG 2.2.2): el diseño queda pintado, pero quieto.
+           - scroll-behavior:auto anula el desplazamiento suave, que es el movimiento de mayor
+             superficie de la página (la pantalla entera al pulsar cualquier enlace del menú).
+           - animation-delay negativo: las animaciones 'fu' del hero arrancan con retardo y
+             'fill-mode:both', así que solo con acortar la duración el contenido se quedaba
+             invisible durante el retardo; con el retardo negativo nacen ya terminadas. */
+        @media(prefers-reduced-motion:reduce){
+            *,*::before,*::after{animation-duration:.01ms!important;animation-delay:-1ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0ms!important;scroll-behavior:auto!important}
+        }
     </style>
 
     <!-- Datos estructurados de negocio local (ayuda a Google a mostrarte en búsquedas locales) -->
@@ -493,7 +508,7 @@
 <section class="hero" id="inicio"><div class="hero-in">
     <div>
         <h1><span class="acc">Automatización</span>, ingeniería y soluciones industriales</h1>
-        <p class="hero-desc">Resolvemos problemas de producción. Automatizamos procesos, diseñamos soluciones mecánicas y prototipamos las máquinas que tu industria necesita, en sectores como el agua, la energía o el textil.</p>
+        <p class="hero-desc">Resolvemos problemas de producción. Automatizamos procesos, diseñamos soluciones mecánicas y prototipamos las máquinas que tu industria necesita.</p>
         <div class="hero-actions"><a href="#contacto" class="btn btn-f">Contactar →</a><a href="#servicios" class="btn btn-o">Ver servicios</a></div>
     </div>
     <div class="widgets">
@@ -539,7 +554,7 @@
         <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">🏭</div><h3 class="svc-name">Desarrollo de maquinaria</h3><p class="svc-text">Diseñamos y fabricamos máquinas y elementos a medida para tu proceso: desbobinadoras, empaquetadoras, cintas transportadoras, útiles, soportes y protecciones.</p><a href="#contacto" class="svc-link">Hablemos de tu caso →</a></div>
         <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">🔧</div><h3 class="svc-name">Reforma y retrofit de maquinaria</h3><p class="svc-text">Modernizamos máquinas en producción —onduladoras, rames, cortadoras, enrolladoras— renovando control y mecánica para devolverlas a la línea con años de vida por delante.</p><a href="#contacto" class="svc-link">Hablemos de tu caso →</a></div>
         <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">📡</div><h3 class="svc-name">IoT e Industria 4.0</h3><p class="svc-text">Sensorizamos equipos e instalaciones y llevamos el dato a la nube por redes IoT de bajo consumo: agua, energía y estado de máquina, con paneles accesibles desde cualquier sitio y avisos automáticos.</p><a href="#ejemplos" data-tab="ejAgua" class="svc-link">Ver ejemplo en vivo →</a></div>
-        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">📊</div><h3 class="svc-name">Control de producción</h3><p class="svc-text">Sistemas de control de producción que registran lo que de verdad pasa en planta: unidades, paradas, rechazos, tiempos y rendimiento por máquina y turno, conectando las máquinas por OPC UA, MQTT y buses industriales.</p><a href="#ejemplos" data-tab="ejSensores" class="svc-link">Ver ejemplo en vivo →</a></div>
+        <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">📊</div><h3 class="svc-name">Control de producción</h3><p class="svc-text">Sistemas de control de producción que registran lo que de verdad pasa en planta: unidades, paradas, rechazos, tiempos y rendimiento por máquina y turno, conectando las máquinas por OPC UA, MQTT y buses industriales.</p><a href="#pruebalo" class="svc-link">Ver ejemplo en vivo →</a></div>
         <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">💻</div><h3 class="svc-name">Software industrial a medida</h3><p class="svc-text">Desarrollamos las aplicaciones que faltan entre la máquina y la oficina: paneles de planta, partes de trabajo digitales, trazabilidad, informes e integración con tu ERP.</p><a href="#contacto" class="svc-link">Hablemos de tu caso →</a></div>
         <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">🛡️</div><h3 class="svc-name">Seguridad industrial y ATEX</h3><p class="svc-text">Barreras y relés de seguridad, protecciones y adecuación de máquina, e instalaciones en zona ATEX, con su informe técnico.</p><a href="#contacto" class="svc-link">Hablemos de tu caso →</a></div>
         <div class="svc reveal"><div class="svc-bar"></div><div class="svc-icon" aria-hidden="true">🚨</div><h3 class="svc-name">Averías y asistencia técnica</h3><p class="svc-text">Atendemos paradas de producción con diagnóstico en planta o conexión remota segura al equipo, para resolver sin esperar al desplazamiento.</p><a href="#contacto" class="svc-link">Hablemos de tu caso →</a></div>
@@ -1143,7 +1158,9 @@ document.querySelectorAll('[role="tablist"]').forEach(tl=>tl.addEventListener('k
 /* Tarjeta de email → enfoca el formulario en vez de abrir la app de correo */
 document.getElementById('ccEmail').addEventListener('click',e=>{
     e.preventDefault();
-    document.getElementById('cForm').scrollIntoView({behavior:'smooth',block:'center'});
+    /* Con movimiento reducido el salto es instantáneo: el CSS no puede desactivar un
+       comportamiento pedido por JavaScript, hay que decidirlo aquí */
+    document.getElementById('cForm').scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
     setTimeout(()=>{const n=document.getElementById('fmNombre');if(n)n.focus({preventScroll:true})},700);
 });
 

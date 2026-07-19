@@ -20,9 +20,12 @@
         }
         *{margin:0;padding:0;box-sizing:border-box}
         body{
-            font-family:var(--font);background:var(--white);color:var(--ink);
+            font-family:var(--font);color:var(--ink);
             min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;
-            background:radial-gradient(900px 320px at 50% 0%,rgba(249,216,21,.13),transparent 62%);
+            /* Una sola declaración: el degradado y el color de fondo juntos. Separados, este
+               'background' reseteaba a transparente el 'background:var(--white)' anterior y la
+               página se pintaba sobre blanco puro en vez de sobre el crema del resto del sitio. */
+            background:radial-gradient(900px 320px at 50% 0%,rgba(249,216,21,.13),transparent 62%) var(--white);
             -webkit-font-smoothing:antialiased;
         }
         body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;background:var(--yellow);z-index:200}
