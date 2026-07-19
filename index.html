@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer onerror="window.__tsFailed=true"></script>
     <style>
         :root{
             --white:#FAFAF7;--pure:#FFF;--cream:#F4F4F0;--sand:#EAEAE5;
@@ -217,6 +217,10 @@
         .fm-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:6px}
         .fm-status{font-family:var(--mono);font-size:.68rem;color:var(--ink3)}
         .fm-status.ok{color:var(--green-tx)}.fm-status.err{color:var(--red-tx)}
+        .cf-turnstile{width:100%}
+        .fm-alt{font-size:.82rem;line-height:1.5;color:var(--ink2);background:var(--cream);border:1px solid var(--line2);border-radius:8px;padding:12px 14px}
+        .fm-alt a{font-weight:600;text-decoration:underline}
+        .fm-alt[hidden]{display:none}
 
         /* CTA */
         .cta{max-width:var(--max-w);margin:0 auto;padding:0 2rem 6rem}
@@ -382,10 +386,13 @@
         .nav-l a:focus-visible,.footer-l a:focus-visible{outline:2px solid var(--charcoal);outline-offset:2px}
 
         @media(max-width:1024px){.hero-in{grid-template-columns:1fr;gap:2rem}.svc-grid{grid-template-columns:1fr 1fr}.contact-grid{grid-template-columns:1fr 1fr}.sim-body,.line-body{grid-template-columns:1fr}.pz-wells,.pz-how-body{grid-template-columns:1fr 1fr}.pz-metrics.m4{grid-template-columns:repeat(2,1fr)}.au-iotable{grid-template-columns:1fr}}
-        @media(max-width:768px){
+        /* La nav de escritorio deja de caber por debajo de ~850px (logo 157 + 6 enlaces 536 + "Online" 45 + 64 de padding = 802 de colisión): el burger se adelanta a 900px */
+        @media(max-width:900px){
             .nav-l,.nav-r{display:none}
-            .nav-l.open{display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:rgba(250,250,247,.97);backdrop-filter:blur(24px);padding:12px 2rem 18px;border-bottom:1px solid var(--line);gap:2px}
+            .nav-l.open{display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:#FAFAF7;backdrop-filter:blur(24px);padding:12px 2rem 18px;border-bottom:1px solid var(--line);gap:2px}
             .burger{display:block}
+        }
+        @media(max-width:768px){
             .hero{padding:5rem 1.5rem 2rem}.hero h1{font-size:1.9rem}
             .section{padding:4.5rem 1.5rem}
             .svc-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
@@ -393,12 +400,26 @@
             .pz-metrics,.pz-wells,.pz-how-body{grid-template-columns:1fr}.pz-chart{height:120px}
             .pz-metrics.m4{grid-template-columns:1fr}
             .au-flow{flex-direction:column}.au-arrow{transform:rotate(90deg)}.au-drv-n{min-width:0;width:100%}
+            .pz-head-t{min-width:0}
             .fm-row{grid-template-columns:1fr}
             .cta-box{padding:3rem 1.5rem}
             .footer-in{flex-direction:column;gap:12px;text-align:center}
             .footer-l{flex-wrap:wrap;justify-content:center;gap:8px 16px}
+            /* Áreas táctiles de ~44px (WCAG 2.5.5) sin tocar el ancho ni la tipografía */
+            .ej-tab,.au-subtab,.line-btn{padding-top:14px;padding-bottom:14px}
+            .au-mode,.au-btn{padding-top:15px;padding-bottom:15px}
+            .bt-selector button{padding-top:16px;padding-bottom:16px}
+            .burger{padding:11px}
+            .cc-v a{display:inline-block;padding:6px 0}
+            .footer-l a{padding:4px 0}
+            .sim-slider::-webkit-slider-thumb{width:26px;height:26px}
+            .sim-slider::-moz-range-thumb{width:26px;height:26px}
         }
-        @media(max-width:480px){.hero-actions{flex-direction:column}.btn{width:100%;justify-content:center}}
+        @media(max-width:480px){
+            .hero-actions{flex-direction:column}.btn{width:100%;justify-content:center}
+            .bt-sliders,.line-kpis{grid-template-columns:1fr}
+            .bt-reads{grid-template-columns:1fr 1fr}
+        }
 
         /* Movimiento reducido (WCAG 2.2.2): el diseño queda pintado, pero quieto */
         @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
@@ -777,7 +798,8 @@
         </div>
         <div class="fm-field"><label class="fm-l" for="fmEmail">Email *</label><input class="fm-in" id="fmEmail" name="email" type="email" required autocomplete="email"></div>
         <div class="fm-field"><label class="fm-l" for="fmMsg">Mensaje *</label><textarea class="fm-in" id="fmMsg" name="mensaje" rows="5" required></textarea></div>
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAAD0izLhC4k6RQMma" data-action="turnstile-spin-v1"></div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAD0izLhC4k6RQMma" data-action="turnstile-spin-v1" data-size="flexible"></div>
+        <p class="fm-alt" id="fmAlt" hidden>No se ha podido cargar la verificación anti-robots (puede deberse a un bloqueador de anuncios). Escríbenos directamente a <a href="mailto:info@plazasys.com">info@plazasys.com</a> o llámanos al <a href="tel:+34683355759">+34 683 355 759</a>.</p>
         <div class="fm-actions">
             <button type="submit" class="btn btn-y">Enviar mensaje →</button>
             <span class="fm-status" id="fmStatus" role="status"></span>
@@ -1090,6 +1112,11 @@ document.getElementById('ctaPresu').addEventListener('click',()=>{
     const btn=form.querySelector('button[type=submit]');
     const btnTxt=btn?btn.textContent:'';
     function msg(t,c){st.textContent=t;st.className='fm-status'+(c?' '+c:'')}
+    /* Turnstile caído o bloqueado: el usuario nunca debe quedarse sin vía de contacto */
+    const alt=document.getElementById('fmAlt');
+    const tsDown=()=>!!window.__tsFailed||!window.turnstile;
+    function checkTs(){if(alt&&tsDown())alt.hidden=false}
+    setTimeout(checkTs,5000);
     /* Validación con marca propia: el campo que falla se resalta y se limpia al escribir */
     form.addEventListener('invalid',e=>{if(e.target.classList)e.target.classList.add('err')},true);
     form.addEventListener('input',e=>{if(e.target.classList)e.target.classList.remove('err')});
@@ -1097,7 +1124,7 @@ document.getElementById('ctaPresu').addEventListener('click',()=>{
         e.preventDefault();
         if(!form.reportValidity())return;
         const token=(form.querySelector('[name="cf-turnstile-response"]')||{}).value;
-        if(!token){msg('Completa la verificación anti-robots','err');return}
+        if(!token){checkTs();msg(tsDown()?'La verificación anti-robots no está disponible. Usa el email o el teléfono de aquí arriba.':'Completa la verificación anti-robots','err');return}
         msg('Enviando…','');
         if(btn){btn.disabled=true;btn.textContent='Enviando…'}
         try{
