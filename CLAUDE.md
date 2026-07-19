@@ -39,3 +39,14 @@ Varios archivos codifican los mismos datos del sitio y deben actualizarse juntos
 - `404.html` (página independiente; no comparte los estilos de `index.html`)
 
 El contenido está en **español** — mantén los textos, el alt y los metadatos en español.
+
+## Tipografías
+
+Las fuentes están **autoalojadas en `fonts/`** (no se cargan desde Google: eso enviaba la IP de
+cada visitante a un tercero no declarado en la política de privacidad, y bloqueaba el primer
+pintado). Detalles y licencia en `fonts/LICENSE.md`.
+
+El bloque de seis `@font-face` está **duplicado en las cuatro páginas** (`index.html`,
+`legal.html`, `privacidad.html`, `404.html`), porque cada una lleva su propio `<style>`. Si
+añades una página nueva o cambias un archivo de fuente, hay que tocar las cuatro. **No vuelvas a
+meter `<link>` a `fonts.googleapis.com`**: rompería lo que declara `privacidad.html`.
