@@ -37,6 +37,7 @@
             --white:#FAFAF7;--pure:#FFF;--cream:#F4F4F0;--sand:#EAEAE5;
             --yellow:#F9D815;--yellow-h:#E8C910;--yellow-s:rgba(249,216,21,.10);--yellow-b:rgba(249,216,21,.30);
             --charcoal:#3E3E3D;--dark:#333332;--dark-b:rgba(255,255,255,.07);
+            /* --ink4 solo para elementos decorativos (flechas, iconos): 3,4:1 basta para el umbral 3:1 de componentes no textuales, pero NO para texto (AA exige 4,5:1) — para texto usa --ink3. */
             --ink:#1C1C1A;--ink2:#4A4A48;--ink3:#6D6D6A;--ink4:#8C8C8A;
             --line:rgba(28,28,26,.07);--line2:rgba(28,28,26,.14);
             --green:#4ADE80;--green-d:#16A34A;--green-s:rgba(74,222,128,.12);--green-tx:#15803D;
@@ -99,7 +100,7 @@
         .w-gauge-track{fill:none;stroke:var(--sand);stroke-width:5;stroke-linecap:round}
         .w-gauge-fill{fill:none;stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset 1.8s var(--ease)}
         .w-val{font-family:var(--mono);font-size:1.3rem;font-weight:600;color:var(--ink);letter-spacing:-.5px;line-height:1}
-        .w-val .u{font-size:.66rem;font-weight:400;color:var(--ink4);margin-left:2px}
+        .w-val .u{font-size:.66rem;font-weight:400;color:var(--ink3);margin-left:2px}
         .w-status{font-family:var(--mono);font-size:.6rem;letter-spacing:.5px;margin-top:3px;display:flex;align-items:center;gap:4px}
         .w-status .d{width:4px;height:4px;border-radius:50%}
         .w-spark-svg{width:100%;height:40px;display:block;margin-top:4px}
@@ -142,9 +143,9 @@
         .sim{background:linear-gradient(145deg,#383837,#30302f);border:none;border-radius:16px;overflow:hidden;margin-top:2.5rem}
         .sim-bar{padding:11px 18px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--dark-b);display:flex;align-items:center;gap:7px}
         .sim-dot{width:8px;height:8px;border-radius:50%;opacity:.7}
-        .sim-bar-t{margin-left:auto;font-family:var(--mono);font-size:.62rem;font-weight:400;color:rgba(255,255,255,.45);letter-spacing:.5px;text-transform:uppercase}
+        .sim-bar-t{margin-left:auto;font-family:var(--mono);font-size:.62rem;font-weight:400;color:rgba(255,255,255,.62);letter-spacing:.5px;text-transform:uppercase}
 
-        .sim-cl{font-family:var(--mono);font-size:.64rem;color:rgba(255,255,255,.50);letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px}
+        .sim-cl{font-family:var(--mono);font-size:.64rem;color:rgba(255,255,255,.62);letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px}
         .sim-slider{-webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:3px;background:rgba(255,255,255,.15);outline:none;cursor:pointer}
         .sim-slider::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--yellow);cursor:pointer;box-shadow:0 2px 8px rgba(249,216,21,.35)}
         .sim-slider::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--yellow);cursor:pointer;border:none}
@@ -166,7 +167,8 @@
         .bt-selector button{font-family:var(--mono);font-size:.62rem;letter-spacing:.5px;padding:9px 16px;border:none;background:none;color:rgba(255,255,255,.5);cursor:pointer;transition:.2s var(--ease)}
         .bt-selector button.on{background:var(--yellow);color:var(--ink);font-weight:600}
         .bt-pilots{display:flex;gap:16px;flex-wrap:wrap}
-        .bt-lamp{display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--mono);font-size:.58rem;letter-spacing:.4px;text-transform:uppercase;color:rgba(255,255,255,.4)}
+        /* Los rótulos apagados llevan .62 (5,6:1 sobre el degradado del panel): por debajo de eso no llegan al 4,5:1 de AA. El diferencial encendido/apagado lo sigue marcando .85 en .bt-lamp.on. */
+        .bt-lamp{display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--mono);font-size:.58rem;letter-spacing:.4px;text-transform:uppercase;color:rgba(255,255,255,.62)}
         .bt-lamp .b{width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid var(--dark-b);transition:.25s}
         .bt-lamp.on{color:rgba(255,255,255,.85)}
         .bt-lamp.on.green .b{background:var(--green);box-shadow:0 0 10px var(--green)}
@@ -246,6 +248,9 @@
 
         .reveal{opacity:0;transform:translateY(16px);transition:opacity .65s var(--ease),transform .65s var(--ease)}.reveal.visible{opacity:1;transform:translateY(0)}
 
+        /* Texto solo para lectores de pantalla: da el estado de los pilotos y señales, que si no viaja solo en el color. */
+        .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
         /* ===== PRUÉBALO — demos interactivos ===== */
         .demo-cap{font-family:var(--mono);font-size:.66rem;color:var(--ink3);letter-spacing:.2px;margin:9px 4px 0;line-height:1.5}
 
@@ -290,7 +295,7 @@
         .pz-m-l{font-family:var(--mono);font-size:.62rem;letter-spacing:.7px;text-transform:uppercase;color:var(--ink3);margin-bottom:7px}
         .pz-m.hl .pz-m-l{color:rgba(28,28,26,.75)}
         .pz-m-v{font-family:var(--mono);font-size:1.85rem;font-weight:700;color:var(--ink);line-height:1;letter-spacing:-1px}
-        .pz-m-v .u{font-size:.68rem;font-weight:400;color:var(--ink4);margin-left:4px}
+        .pz-m-v .u{font-size:.68rem;font-weight:400;color:var(--ink3);margin-left:4px}
         .pz-m.hl .pz-m-v .u{color:rgba(28,28,26,.75)}
         .pz-m-v.ok{color:var(--green-d)}
         .pz-wells{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:1.4rem}
@@ -300,12 +305,12 @@
         .pz-w-n{font-size:.92rem;font-weight:600}
         .pz-w-net{font-family:var(--mono);font-size:.6rem;letter-spacing:.4px;padding:3px 9px;border-radius:100px;background:var(--cream);color:var(--ink3);white-space:nowrap}
         .pz-w-v{font-family:var(--mono);font-size:1.35rem;font-weight:600;color:var(--ink);letter-spacing:-.5px;line-height:1}
-        .pz-w-v .u{font-size:.66rem;font-weight:400;color:var(--ink4);margin-left:3px}
+        .pz-w-v .u{font-size:.66rem;font-weight:400;color:var(--ink3);margin-left:3px}
         .pz-w-f{font-family:var(--mono);font-size:.64rem;color:var(--ink3);margin-top:9px}
         .pz-chart-l{font-family:var(--mono);font-size:.64rem;letter-spacing:.7px;text-transform:uppercase;color:var(--ink3);margin-bottom:12px}
         .pz-chart{display:flex;align-items:flex-end;gap:3px;height:150px}
         .pz-bar{flex:1;background:var(--yellow);border-radius:3px 3px 0 0;min-height:3px;transition:height .8s var(--ease)}
-        .pz-axis{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.62rem;color:var(--ink4);margin-top:8px}
+        .pz-axis{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.62rem;color:var(--ink3);margin-top:8px}
         .pz-arch{display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:center;margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--line)}
         .pz-arch span{font-family:var(--mono);font-size:.62rem;color:var(--ink2);padding:6px 12px;border:1px solid var(--line);border-radius:7px;background:var(--white)}
         .pz-arch .ar{border:none;background:none;color:var(--ink4);padding:0}
@@ -343,7 +348,7 @@
         .pz-m-v.warnv{color:var(--orange)}.pz-m-v.alm{color:var(--red)}
         .pz-log{background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px;font-family:var(--mono);font-size:.62rem;line-height:1.7;max-height:130px;overflow:hidden}
         .pz-log .lg{display:flex;gap:8px;align-items:baseline;color:var(--ink3);padding:2px 0;opacity:0;animation:ti .3s var(--ease) forwards}
-        .pz-log .lg time{color:var(--ink4);flex-shrink:0}
+        .pz-log .lg time{color:var(--ink3);flex-shrink:0}
         .pz-log .tag{font-weight:600;flex-shrink:0;width:46px}
 
         /* ===== AUTOMATIZACIÓN — célula HMI + autómata (tema claro) ===== */
@@ -421,6 +426,8 @@
             .svc-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
             .widgets{grid-template-columns:1fr}
             .pz-metrics,.pz-wells,.pz-how-body{grid-template-columns:1fr}.pz-chart{height:120px}
+            /* En móvil los mensajes del registro pasan a 2-3 líneas y el tope de 130px cortaba entradas por la mitad sin barra de desplazamiento. Como push() nunca guarda más de 5, dejarlo crecer es seguro. */
+            .pz-log{max-height:none}
             .pz-metrics.m4{grid-template-columns:1fr}
             .au-flow{flex-direction:column}.au-arrow{transform:rotate(90deg)}.au-drv-n{min-width:0;width:100%}
             .pz-head-t{min-width:0}
@@ -459,6 +466,11 @@
             *,*::before,*::after{animation-duration:.01ms!important;animation-delay:-1ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0ms!important;scroll-behavior:auto!important}
         }
     </style>
+
+    <!-- Sin JavaScript no corre el IntersectionObserver que añade .visible, así que todo lo marcado
+         con .reveal (servicios, ejemplos, pruébalo, nosotros, contacto y el formulario) se quedaría
+         a opacity:0: la página se vería vacía del hero para abajo. Esto lo deja visible sin animación. -->
+    <noscript><style>.reveal{opacity:1;transform:none;transition:none}</style></noscript>
 
     <!-- Datos estructurados de negocio local (ayuda a Google a mostrarte en búsquedas locales) -->
     <script type="application/ld+json">
@@ -784,11 +796,11 @@
                     </div>
                 </div>
                 <div class="bt-pilots">
-                    <div class="bt-lamp on white" id="lpTen"><span class="b"></span>Tensión</div>
-                    <div class="bt-lamp green" id="lpMar"><span class="b"></span>Marcha</div>
-                    <div class="bt-lamp orange" id="lpCal"><span class="b"></span>Calentando</div>
-                    <div class="bt-lamp green" id="lpLis"><span class="b"></span>Lista</div>
-                    <div class="bt-lamp red" id="lpAvr"><span class="b"></span>Avería</div>
+                    <div class="bt-lamp on white" id="lpTen"><span class="b"></span>Tensión<span class="sr"> encendido</span></div>
+                    <div class="bt-lamp green" id="lpMar"><span class="b"></span>Marcha<span class="sr"> apagado</span></div>
+                    <div class="bt-lamp orange" id="lpCal"><span class="b"></span>Calentando<span class="sr"> apagado</span></div>
+                    <div class="bt-lamp green" id="lpLis"><span class="b"></span>Lista<span class="sr"> apagado</span></div>
+                    <div class="bt-lamp red" id="lpAvr"><span class="b"></span>Avería<span class="sr"> apagado</span></div>
                 </div>
             </div>
             <div class="bt-controls">
@@ -796,8 +808,8 @@
                 <button class="bt-push red" id="btStop">PARO</button>
                 <button class="bt-seta" id="btSeta">SETA<br>EMERG.</button>
                 <div class="bt-toggles">
-                    <div class="sim-tog"><button class="sim-sw on" id="btVent"></button><span class="sim-sw-l">Ventiladores</span></div>
-                    <div class="sim-tog"><button class="sim-sw on" id="btQuem"></button><span class="sim-sw-l">Quemador</span></div>
+                    <div class="sim-tog"><button class="sim-sw on" id="btVent" type="button" aria-pressed="true" aria-labelledby="btVentL"></button><span class="sim-sw-l" id="btVentL">Ventiladores</span></div>
+                    <div class="sim-tog"><button class="sim-sw on" id="btQuem" type="button" aria-pressed="true" aria-labelledby="btQuemL"></button><span class="sim-sw-l" id="btQuemL">Quemador</span></div>
                 </div>
             </div>
             <div class="bt-sliders">
@@ -845,7 +857,7 @@
         <div class="fm-field"><label class="fm-l" for="fmEmail">Email *</label><input class="fm-in" id="fmEmail" name="email" type="email" required autocomplete="email"></div>
         <div class="fm-field"><label class="fm-l" for="fmMsg">Mensaje *</label><textarea class="fm-in" id="fmMsg" name="mensaje" rows="5" required></textarea></div>
         <div class="fm-field fm-consent">
-            <label class="fm-check" for="fmRgpd"><input type="checkbox" id="fmRgpd" name="rgpd" required><span>He leído y acepto la <a href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y el tratamiento de mis datos para responder a esta consulta. *</span></label>
+            <label class="fm-check" for="fmRgpd"><input type="checkbox" id="fmRgpd" name="rgpd" required><span>He leído y acepto la <a href="/privacidad" target="_blank" rel="noopener">política de privacidad</a> y el tratamiento de mis datos para responder a esta consulta. *</span></label>
         </div>
         <div class="cf-turnstile" data-sitekey="0x4AAAAAAD0izLhC4k6RQMma" data-action="turnstile-spin-v1" data-size="flexible" data-callback="tsOk" data-error-callback="tsError" data-expired-callback="tsExpirado" data-timeout-callback="tsExpirado" data-unsupported-callback="tsError"></div>
         <!-- Vía de escape: el teléfono va PRIMERO porque los enlaces tel: no los toca la ofuscación de email de Cloudflare (quien ve este aviso suele tener un bloqueador que también tumba el script de desofuscación) -->
@@ -868,7 +880,7 @@
 
 <footer class="footer"><div class="footer-in">
     <span class="footer-c">© 2026 PlazaSys — Plaza Automated Systems S.L. · Ontinyent, Valencia</span>
-    <div class="footer-l"><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#ejemplos">Ejemplos</a><a href="#pruebalo">Pruébalo</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a><a href="/legal.html">Aviso legal</a><a href="/privacidad.html">Privacidad</a></div>
+    <div class="footer-l"><a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#ejemplos">Ejemplos</a><a href="#pruebalo">Pruébalo</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a><a href="/legal">Aviso legal</a><a href="/privacidad">Privacidad</a></div>
 </div></footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -1057,7 +1069,7 @@ document.querySelectorAll('[role="tablist"]').forEach(tl=>tl.addEventListener('k
             let on=false;
             if(s==='Seta')on=true;
             else if(running&&modo==='auto'&&!alarma){if(s==='Marcha')on=true;else if(s==='S1')on=activa===0;else if(s==='S2')on=activa===1;else if(s==='FC1')on=activa===2;else if(s==='FC2')on=activa===3}
-            return '<span class="au-sig'+(on?' on':'')+'"><span class="d"></span>'+s+'</span>';
+            return '<span class="au-sig'+(on?' on':'')+'"><span class="d"></span>'+s+'<span class="sr">'+(on?' activa':' inactiva')+'</span></span>';
         }).join('');
     }
     function pintarEstaciones(){estaciones.forEach((n,i)=>{const st=el('auSt'+i),ss=el('auSt'+i+'s');if(!st)return;const act=running&&modo==='auto'&&!alarma&&i===activa;st.classList.toggle('on',act);if(ss)ss.textContent=act?'procesando':(modo==='paro'?'paro':modo==='manual'?'manual':'en espera')})}
@@ -1277,7 +1289,7 @@ document.getElementById('ctaPresu').addEventListener('click',()=>{
         modo=b.dataset.m;if(modo==='off')running=false;aviso='';rep();
     }));
     // conmutadores
-    function tog(btn,set){btn.addEventListener('click',()=>{const on=!btn.classList.contains('on');btn.classList.toggle('on',on);set(on);rep()})}
+    function tog(btn,set){btn.addEventListener('click',()=>{const on=!btn.classList.contains('on');btn.classList.toggle('on',on);btn.setAttribute('aria-pressed',on);set(on);rep()})}
     tog(el('btVent'),v=>vent=v);tog(el('btQuem'),v=>quem=v);
     // deslizadores
     vel.addEventListener('input',()=>{el('btVelV').textContent=vel.value;rep()});
@@ -1292,7 +1304,8 @@ document.getElementById('ctaPresu').addEventListener('click',()=>{
     el('btStop').addEventListener('click',()=>{running=false;aviso='';rep()});
     el('btSeta').addEventListener('click',()=>{emerg=!emerg;el('btSeta').classList.toggle('armed',emerg);if(emerg)running=false;rep()});
     // bucle de simulación (solo corre en pantalla y con la pestaña visible)
-    function lamp(id,on,blink){const l=el(id);l.classList.toggle('on',on);l.classList.toggle('blink',!!(on&&blink))}
+    // El estado del piloto va por color, así que se duplica en un texto oculto para lectores de pantalla (WCAG 1.4.1).
+    function lamp(id,on,blink){const l=el(id);l.classList.toggle('on',on);l.classList.toggle('blink',!!(on&&blink));const s=l.querySelector('.sr');if(s)s.textContent=on?' encendido':' apagado'}
     let enVista=true,raf=0;
     /* pintar() = un fotograma del panel. Separado de la programación del rAF para poder
        repintar bajo demanda (movimiento reducido: sin animación, pero sí respuesta a cada pulsación). */
